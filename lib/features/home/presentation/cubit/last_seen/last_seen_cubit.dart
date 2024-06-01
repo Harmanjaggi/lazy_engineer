@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:lazy_engineer/features/home/data/models/last_seen_response/last_seen_response.dart';
-import 'package:lazy_engineer/features/home/domain/repositories/home_repository.dart';
+import 'package:lazy_engineer/features/home/domain/home_repository.dart';
 
 part 'last_seen_state.dart';
 part 'last_seen_cubit.freezed.dart';

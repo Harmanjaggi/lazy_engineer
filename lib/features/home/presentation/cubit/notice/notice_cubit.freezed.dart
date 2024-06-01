@@ -19,44 +19,44 @@ mixin _$NoticeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function(List<NoticeModel> data) success,
     required TResult Function(dynamic e) failure,
-    required TResult Function(dynamic data) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
+    TResult? Function(List<NoticeModel> data)? success,
     TResult? Function(dynamic e)? failure,
-    TResult? Function(dynamic data)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function(List<NoticeModel> data)? success,
     TResult Function(dynamic e)? failure,
-    TResult Function(dynamic data)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_NoticeLoading value) loading,
-    required TResult Function(_NoticeFailure value) failure,
     required TResult Function(_NoticeSuccess value) success,
+    required TResult Function(_NoticeFailure value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_NoticeLoading value)? loading,
-    TResult? Function(_NoticeFailure value)? failure,
     TResult? Function(_NoticeSuccess value)? success,
+    TResult? Function(_NoticeFailure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NoticeLoading value)? loading,
-    TResult Function(_NoticeFailure value)? failure,
     TResult Function(_NoticeSuccess value)? success,
+    TResult Function(_NoticeFailure value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,8 +119,8 @@ class _$NoticeLoadingImpl implements _NoticeLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function(List<NoticeModel> data) success,
     required TResult Function(dynamic e) failure,
-    required TResult Function(dynamic data) success,
   }) {
     return loading();
   }
@@ -129,8 +129,8 @@ class _$NoticeLoadingImpl implements _NoticeLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
+    TResult? Function(List<NoticeModel> data)? success,
     TResult? Function(dynamic e)? failure,
-    TResult? Function(dynamic data)? success,
   }) {
     return loading?.call();
   }
@@ -139,8 +139,8 @@ class _$NoticeLoadingImpl implements _NoticeLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function(List<NoticeModel> data)? success,
     TResult Function(dynamic e)? failure,
-    TResult Function(dynamic data)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -153,8 +153,8 @@ class _$NoticeLoadingImpl implements _NoticeLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_NoticeLoading value) loading,
-    required TResult Function(_NoticeFailure value) failure,
     required TResult Function(_NoticeSuccess value) success,
+    required TResult Function(_NoticeFailure value) failure,
   }) {
     return loading(this);
   }
@@ -163,8 +163,8 @@ class _$NoticeLoadingImpl implements _NoticeLoading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_NoticeLoading value)? loading,
-    TResult? Function(_NoticeFailure value)? failure,
     TResult? Function(_NoticeSuccess value)? success,
+    TResult? Function(_NoticeFailure value)? failure,
   }) {
     return loading?.call(this);
   }
@@ -173,8 +173,8 @@ class _$NoticeLoadingImpl implements _NoticeLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NoticeLoading value)? loading,
-    TResult Function(_NoticeFailure value)? failure,
     TResult Function(_NoticeSuccess value)? success,
+    TResult Function(_NoticeFailure value)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -186,6 +186,152 @@ class _$NoticeLoadingImpl implements _NoticeLoading {
 
 abstract class _NoticeLoading implements NoticeState {
   const factory _NoticeLoading() = _$NoticeLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$NoticeSuccessImplCopyWith<$Res> {
+  factory _$$NoticeSuccessImplCopyWith(
+          _$NoticeSuccessImpl value, $Res Function(_$NoticeSuccessImpl) then) =
+      __$$NoticeSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<NoticeModel> data});
+}
+
+/// @nodoc
+class __$$NoticeSuccessImplCopyWithImpl<$Res>
+    extends _$NoticeStateCopyWithImpl<$Res, _$NoticeSuccessImpl>
+    implements _$$NoticeSuccessImplCopyWith<$Res> {
+  __$$NoticeSuccessImplCopyWithImpl(
+      _$NoticeSuccessImpl _value, $Res Function(_$NoticeSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$NoticeSuccessImpl(
+      null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<NoticeModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NoticeSuccessImpl implements _NoticeSuccess {
+  const _$NoticeSuccessImpl(final List<NoticeModel> data) : _data = data;
+
+  final List<NoticeModel> _data;
+  @override
+  List<NoticeModel> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'NoticeState.success(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NoticeSuccessImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NoticeSuccessImplCopyWith<_$NoticeSuccessImpl> get copyWith =>
+      __$$NoticeSuccessImplCopyWithImpl<_$NoticeSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<NoticeModel> data) success,
+    required TResult Function(dynamic e) failure,
+  }) {
+    return success(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<NoticeModel> data)? success,
+    TResult? Function(dynamic e)? failure,
+  }) {
+    return success?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<NoticeModel> data)? success,
+    TResult Function(dynamic e)? failure,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NoticeLoading value) loading,
+    required TResult Function(_NoticeSuccess value) success,
+    required TResult Function(_NoticeFailure value) failure,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NoticeLoading value)? loading,
+    TResult? Function(_NoticeSuccess value)? success,
+    TResult? Function(_NoticeFailure value)? failure,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NoticeLoading value)? loading,
+    TResult Function(_NoticeSuccess value)? success,
+    TResult Function(_NoticeFailure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoticeSuccess implements NoticeState {
+  const factory _NoticeSuccess(final List<NoticeModel> data) =
+      _$NoticeSuccessImpl;
+
+  List<NoticeModel> get data;
+  @JsonKey(ignore: true)
+  _$$NoticeSuccessImplCopyWith<_$NoticeSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -254,8 +400,8 @@ class _$NoticeFailureImpl implements _NoticeFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function(List<NoticeModel> data) success,
     required TResult Function(dynamic e) failure,
-    required TResult Function(dynamic data) success,
   }) {
     return failure(e);
   }
@@ -264,8 +410,8 @@ class _$NoticeFailureImpl implements _NoticeFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
+    TResult? Function(List<NoticeModel> data)? success,
     TResult? Function(dynamic e)? failure,
-    TResult? Function(dynamic data)? success,
   }) {
     return failure?.call(e);
   }
@@ -274,8 +420,8 @@ class _$NoticeFailureImpl implements _NoticeFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function(List<NoticeModel> data)? success,
     TResult Function(dynamic e)? failure,
-    TResult Function(dynamic data)? success,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -288,8 +434,8 @@ class _$NoticeFailureImpl implements _NoticeFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_NoticeLoading value) loading,
-    required TResult Function(_NoticeFailure value) failure,
     required TResult Function(_NoticeSuccess value) success,
+    required TResult Function(_NoticeFailure value) failure,
   }) {
     return failure(this);
   }
@@ -298,8 +444,8 @@ class _$NoticeFailureImpl implements _NoticeFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_NoticeLoading value)? loading,
-    TResult? Function(_NoticeFailure value)? failure,
     TResult? Function(_NoticeSuccess value)? success,
+    TResult? Function(_NoticeFailure value)? failure,
   }) {
     return failure?.call(this);
   }
@@ -308,8 +454,8 @@ class _$NoticeFailureImpl implements _NoticeFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NoticeLoading value)? loading,
-    TResult Function(_NoticeFailure value)? failure,
     TResult Function(_NoticeSuccess value)? success,
+    TResult Function(_NoticeFailure value)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -325,145 +471,5 @@ abstract class _NoticeFailure implements NoticeState {
   dynamic get e;
   @JsonKey(ignore: true)
   _$$NoticeFailureImplCopyWith<_$NoticeFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$NoticeSuccessImplCopyWith<$Res> {
-  factory _$$NoticeSuccessImplCopyWith(
-          _$NoticeSuccessImpl value, $Res Function(_$NoticeSuccessImpl) then) =
-      __$$NoticeSuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({dynamic data});
-}
-
-/// @nodoc
-class __$$NoticeSuccessImplCopyWithImpl<$Res>
-    extends _$NoticeStateCopyWithImpl<$Res, _$NoticeSuccessImpl>
-    implements _$$NoticeSuccessImplCopyWith<$Res> {
-  __$$NoticeSuccessImplCopyWithImpl(
-      _$NoticeSuccessImpl _value, $Res Function(_$NoticeSuccessImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = freezed,
-  }) {
-    return _then(_$NoticeSuccessImpl(
-      freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$NoticeSuccessImpl implements _NoticeSuccess {
-  const _$NoticeSuccessImpl(this.data);
-
-  @override
-  final dynamic data;
-
-  @override
-  String toString() {
-    return 'NoticeState.success(data: $data)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NoticeSuccessImpl &&
-            const DeepCollectionEquality().equals(other.data, data));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NoticeSuccessImplCopyWith<_$NoticeSuccessImpl> get copyWith =>
-      __$$NoticeSuccessImplCopyWithImpl<_$NoticeSuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(dynamic e) failure,
-    required TResult Function(dynamic data) success,
-  }) {
-    return success(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(dynamic e)? failure,
-    TResult? Function(dynamic data)? success,
-  }) {
-    return success?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(dynamic e)? failure,
-    TResult Function(dynamic data)? success,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NoticeLoading value) loading,
-    required TResult Function(_NoticeFailure value) failure,
-    required TResult Function(_NoticeSuccess value) success,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NoticeLoading value)? loading,
-    TResult? Function(_NoticeFailure value)? failure,
-    TResult? Function(_NoticeSuccess value)? success,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NoticeLoading value)? loading,
-    TResult Function(_NoticeFailure value)? failure,
-    TResult Function(_NoticeSuccess value)? success,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _NoticeSuccess implements NoticeState {
-  const factory _NoticeSuccess(final dynamic data) = _$NoticeSuccessImpl;
-
-  dynamic get data;
-  @JsonKey(ignore: true)
-  _$$NoticeSuccessImplCopyWith<_$NoticeSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

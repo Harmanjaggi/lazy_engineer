@@ -11,6 +11,7 @@ import 'package:lazy_engineer/features/components/grid_card.dart';
 import 'package:lazy_engineer/features/components/loading_screen.dart';
 import 'package:lazy_engineer/features/components/staggered_view.dart';
 import 'package:lazy_engineer/features/home/data/repositories/home_repository_impl.dart';
+import 'package:lazy_engineer/features/home/presentation/cubit/notice/notice_cubit.dart';
 import 'package:lazy_engineer/features/home/presentation/cubit/user/user_cubit.dart';
 import 'package:lazy_engineer/features/home/presentation/widgets/slider_view.dart';
 import 'package:lazy_engineer/navigation/routes.dart';
@@ -26,8 +27,15 @@ class HomeScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 28),
-            child: BlocProvider(
-              create: (context) => UserCubit(HomeRepositoryImpl()),
+            child: MultiBlocProvider(
+              providers: [
+                BlocProvider<UserCubit>(
+                  create: (BuildContext context) =>UserCubit(HomeRepositoryImpl()),
+                ),
+                BlocProvider<NoticeCubit>(
+                  create: (BuildContext context) => NoticeCubit(HomeRepositoryImpl()),
+                ),
+              ],
               child: BlocBuilder<UserCubit, UserState>(
                 builder: (context, state) {
                   return state.when(
@@ -40,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                           _nametag(context, user.userName),
                           const SizedBox(height: 12),
                           const SizedBox(height: 28),
-                          SliderView(sliderImageList),
+                          SliderView(),
                           const SizedBox(height: 24),
                           // _titleLabel(lastOpened, theme),
                           // const SizedBox(height: 24),

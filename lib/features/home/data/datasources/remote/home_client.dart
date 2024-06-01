@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:lazy_engineer/config/app_config.dart';
 import 'package:lazy_engineer/core/models/base_response/base_response.dart';
+import 'package:lazy_engineer/features/home/data/models/notice_model/notice_model.dart';
 import 'package:lazy_engineer/model/user.dart';
 import 'package:retrofit/http.dart';
 
@@ -12,4 +13,6 @@ abstract class HomeClient {
 
   @GET(AppConfig.user)
   Future<BaseResponse<List<User>>> getUser();
+  @GET(AppConfig.notice)
+  Future<BaseResponse<List<NoticeModel>>> getNotice();
 }

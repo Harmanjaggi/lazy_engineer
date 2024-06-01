@@ -8,6 +8,7 @@ class AppConfig {
 
   /// home
   static const String user = '/home/user';
+  static const String notice = '/alert';
   static const String notes = '/note';
   static const String notesSearch = '/home/notes/search';
   static const String notesFilter = '/home/notes/filter';

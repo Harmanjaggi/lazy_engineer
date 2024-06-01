@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lazy_engineer/assets/constants/lists.dart';
 import 'package:lazy_engineer/assets/constants/strings.dart';
 import 'package:lazy_engineer/assets/icons.dart';
 import 'package:lazy_engineer/features/components/custom_button.dart';
-import 'package:lazy_engineer/features/components/custom_dropdown.dart';
 import 'package:lazy_engineer/features/components/custom_text_field.dart';
-import 'package:lazy_engineer/features/components/multi_option_filter.dart';
 import 'package:lazy_engineer/features/profile/data/models/profile_modal/profile_modal.dart';
 import 'package:lazy_engineer/features/profile/presentation/cubit/edit_profile/edit_profile_cubit.dart';
 import 'package:lazy_engineer/helper/input_validation.dart';
