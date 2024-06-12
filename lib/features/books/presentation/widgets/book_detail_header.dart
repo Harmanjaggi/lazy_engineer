@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lazy_engineer/assets/constants/decoration.dart';
 import 'package:lazy_engineer/assets/constants/strings.dart';
 import 'package:lazy_engineer/assets/images.dart';
+import 'package:lazy_engineer/config/theme/app_theme.dart';
 import 'package:lazy_engineer/core/helper_function.dart';
-import 'package:lazy_engineer/features/books/data/repositories/books_repository_impl.dart';
 import 'package:lazy_engineer/features/books/presentation/cubit/books_detail_cubit/books_detail_cubit.dart';
 import 'package:lazy_engineer/features/components/custom_button.dart';
 import 'package:lazy_engineer/features/components/custom_image.dart';
@@ -19,6 +20,7 @@ class BooksDetailHeader extends StatelessWidget {
     required this.semesterValue,
     this.pagesValue,
     required this.bookEditionValue,
+    required this.isFavourite,
   });
   final String title;
   final String userId;
@@ -27,14 +29,18 @@ class BooksDetailHeader extends StatelessWidget {
   final int? bookEditionValue;
   final String file;
   final String? image;
+  final bool isFavourite;
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.all(8),
       child: BlocProvider(
-        create: (context) =>
-            BooksDetailCubit(BooksRepositoryImpl(), userId, file),
+        create: (context) => BooksDetailCubit(
+          userId,
+          file,
+          isFavourite,
+        ),
         child: BlocBuilder<BooksDetailCubit, BooksDetailState>(
           builder: (context, state) {
             final read = context.read<BooksDetailCubit>();
@@ -55,8 +61,7 @@ class BooksDetailHeader extends StatelessWidget {
                       color: Colors.grey.shade100,
                     ),
                     Container(
-                      decoration:
-                          kRoundedContainer.copyWith(color: Colors.blueGrey),
+                      decoration: kRoundedContainer.copyWith(color: Colors.blueGrey),
                       padding: const EdgeInsets.all(4.0),
                       child: Text(
                         '$pagesValue pages',
@@ -132,22 +137,19 @@ class BooksDetailHeader extends StatelessWidget {
                       //   ],
                       // ),
                       Table(
-                        defaultVerticalAlignment:
-                            TableCellVerticalAlignment.middle,
-                        defaultColumnWidth:
-                            const IntrinsicColumnWidth(flex: 4.0),
+                        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                        defaultColumnWidth: const IntrinsicColumnWidth(flex: 4.0),
                         children: [
                           TableRow(
                             children: [
                               Text(
                                 'Semester: ',
-                                style: theme.textTheme.titleMedium
-                                    ?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 4),
                                 child: Text(
-                                  '${addOrdinals(int.parse(semesterValue))} Semester',
+                                  '${addOrdinals(int.parse(semesterValue))}',
                                   style: theme.textTheme.titleMedium,
                                 ),
                               ),
@@ -171,7 +173,7 @@ class BooksDetailHeader extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 4),
                                   child: Text(
-                                    '${addOrdinals(bookEditionValue!)} Edition',
+                                    '${addOrdinals(bookEditionValue!)}',
                                     style: theme.textTheme.titleMedium,
                                   ),
                                 ),
@@ -180,21 +182,30 @@ class BooksDetailHeader extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 16),
-                      Center(
-                        child: CustomButton(
-                          text: download,
-                          onPressed: () => read.download(file),
-                          width: 120,
-                        ),
-                      ),
-                      if (context.watch<BooksDetailCubit>().isDownloaded !=
-                          null)
-                        Center(
-                          child: Text(
-                            watch.isDownloaded!
-                                ? 'Book is Downloaded'
-                                : 'Book is not Downloaded',
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomButton(
+                            text: download,
+                            onPressed: () => read.download(file),
                           ),
+                          IconButton(
+                            onPressed: () => read.like(),
+                            icon: state.isFavourite
+                                ? FaIcon(
+                                    FontAwesomeIcons.solidThumbsUp,
+                                    color: AppThemes.favouriteColor,
+                                  )
+                                : FaIcon(
+                                    FontAwesomeIcons.thumbsUp,
+                                    color: AppThemes.favouriteColor,
+                                  ),
+                          ),
+                        ],
+                      ),
+                      if (context.watch<BooksDetailCubit>().isDownloaded != null)
+                        Text(
+                          watch.isDownloaded! ? 'Book is Downloaded' : 'Book is not Downloaded',
                         ),
                     ],
                   ),

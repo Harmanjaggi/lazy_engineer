@@ -19,7 +19,7 @@ class NoteResponse with _$NoteResponse {
 @freezed
 class NoteDetail with _$NoteDetail {
   const factory NoteDetail(
-    String? userId,
+    @JsonKey(name: '_id') String? id,
     String? title,
     String? about,
     String? semester,
@@ -30,8 +30,7 @@ class NoteDetail with _$NoteDetail {
     List<String>? tags,
     String? mediaLink,
     String? imageLink,
-    int? like,
-    int? dislike,
+    bool? isFavorited,
   ) = _NoteDetail;
 
   factory NoteDetail.fromJson(Map<String, dynamic> json) =>

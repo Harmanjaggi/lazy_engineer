@@ -18,7 +18,7 @@ class FileResponse with _$FileResponse {
 @freezed
 class FileDetail with _$FileDetail {
     const factory FileDetail(
-        String? userId,
+        @JsonKey(name: '_id') String? id,
         String? title,
         String? about,
         String? subject,
@@ -26,9 +26,8 @@ class FileDetail with _$FileDetail {
         String? semester,
         String? mediaLink,
         String? imageLink,
-        int? like,
-        int? dislike,
         List<String>? tags,
+        bool? isFavorited,
     ) = _FileDetail;
 
     factory FileDetail.fromJson(Map<String, dynamic> json) => _$FileDetailFromJson(json);

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lazy_engineer/assets/constants/strings.dart';
 import 'package:lazy_engineer/assets/icons.dart';
 import 'package:lazy_engineer/config/theme/app_theme.dart';
 import 'package:lazy_engineer/core/helper_function.dart';
+import 'package:lazy_engineer/features/components/custom_button.dart';
 import 'package:lazy_engineer/features/components/custom_icon.dart';
 import 'package:lazy_engineer/features/components/custom_image.dart';
 import 'package:lazy_engineer/features/components/show_tags_widget.dart';
 import 'package:lazy_engineer/features/jobs/data/models/job_response/job_response.dart';
+import 'package:lazy_engineer/features/jobs/presentation/cubit/jobs_detail_cubit/jobs_detail_cubit.dart';
 import 'package:lazy_engineer/features/jobs/presentation/widgets/company_tag.dart';
 
 class JobsDescriptionScreen extends StatelessWidget {
@@ -36,8 +40,7 @@ class JobsDescriptionScreen extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             'Date Posted - ${data?.datePosted}',
-            style: theme.textTheme.bodyMedium
-                ?.copyWith(color: AppThemes.subTitleColor),
+            style: theme.textTheme.bodyMedium?.copyWith(color: AppThemes.subTitleColor),
           ),
           const SizedBox(height: 12),
           Row(
@@ -86,6 +89,38 @@ class JobsDescriptionScreen extends StatelessWidget {
                 style: theme.textTheme.titleMedium,
               ),
             ],
+          ),
+          SizedBox(height: 16),
+          BlocProvider<JobsDetailCubit>(
+            create: (context) => JobsDetailCubit(data?.id ?? '', data?.isFavorited ?? false),
+            child: BlocBuilder<JobsDetailCubit, JobsDetailState>(builder: (context, state) {
+              final read = context.read<JobsDetailCubit>();
+              return Row(
+                children: [
+                  Expanded(
+                    child: CustomButton(
+                      text: apply,
+                      onPressed: () => read.apply(data?.applyLink ?? ''),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 40, right: 16),
+                    child: IconButton(
+                      onPressed: () => read.like(),
+                      icon: state.isFavourite
+                          ? FaIcon(
+                              FontAwesomeIcons.solidThumbsUp,
+                              color: AppThemes.favouriteColor,
+                            )
+                          : FaIcon(
+                              FontAwesomeIcons.thumbsUp,
+                              color: AppThemes.favouriteColor,
+                            ),
+                    ),
+                  ),
+                ],
+              );
+            }),
           ),
           // Row(
           //   children: [

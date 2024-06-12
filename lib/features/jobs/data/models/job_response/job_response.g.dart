@@ -26,28 +26,28 @@ Map<String, dynamic> _$$JobResponseImplToJson(_$JobResponseImpl instance) =>
 
 _$JobDetailImpl _$$JobDetailImplFromJson(Map<String, dynamic> json) =>
     _$JobDetailImpl(
-      json['userId'] as String?,
-      json['title'] as String?,
-      json['profile'] as String?,
-      json['company'] as String?,
-      json['aboutCompany'] as String?,
-      json['location'] as String?,
-      json['jobType'] as String?,
-      json['experienceLevel'] as String?,
-      json['datePosted'] as String?,
-      (json['skillsNeeded'] as List<dynamic>?)
+      id: json['_id'] as String?,
+      title: json['title'] as String?,
+      profile: json['profile'] as String?,
+      company: json['company'] as String?,
+      aboutCompany: json['aboutCompany'] as String?,
+      location: json['location'] as String?,
+      jobType: json['jobType'] as String?,
+      experienceLevel: json['experienceLevel'] as String?,
+      datePosted: json['datePosted'] as String?,
+      skillsNeeded: (json['skillsNeeded'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      json['expectedSalary'] as int?,
-      json['mediaLink'] as String?,
-      json['imageLink'] as String?,
-      json['like'] as int?,
-      json['dislike'] as int?,
+      expectedSalary: json['expectedSalary'],
+      applyLink: json['applyLink'] as String?,
+      mediaLink: json['mediaLink'] as String?,
+      imageLink: json['imageLink'] as String?,
+      isFavorited: json['isFavorited'] as bool?,
     );
 
 Map<String, dynamic> _$$JobDetailImplToJson(_$JobDetailImpl instance) =>
     <String, dynamic>{
-      'userId': instance.userId,
+      '_id': instance.id,
       'title': instance.title,
       'profile': instance.profile,
       'company': instance.company,
@@ -58,8 +58,8 @@ Map<String, dynamic> _$$JobDetailImplToJson(_$JobDetailImpl instance) =>
       'datePosted': instance.datePosted,
       'skillsNeeded': instance.skillsNeeded,
       'expectedSalary': instance.expectedSalary,
+      'applyLink': instance.applyLink,
       'mediaLink': instance.mediaLink,
       'imageLink': instance.imageLink,
-      'like': instance.like,
-      'dislike': instance.dislike,
+      'isFavorited': instance.isFavorited,
     };

@@ -50,6 +50,8 @@ class QuestionPaperDataBox extends StatelessWidget {
                       child: Text(
                         topic,
                         style: theme.textTheme.titleSmall,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Padding(
@@ -57,6 +59,8 @@ class QuestionPaperDataBox extends StatelessWidget {
                       child: Text(
                         paperDetail.topic ?? '',
                         style: theme.textTheme.bodyMedium,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],
@@ -73,7 +77,7 @@ class QuestionPaperDataBox extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(8, 4, 0, 4),
                       child: Text(
-                        'Unit - ${paperDetail.unit}',
+                        paperDetail.unit ?? '',
                         style: theme.textTheme.bodyMedium,
                       ),
                     ),

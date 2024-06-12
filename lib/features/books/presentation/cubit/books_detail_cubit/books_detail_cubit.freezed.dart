@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BooksDetailState {
-  bool? get rating => throw _privateConstructorUsedError;
+  bool get isFavourite => throw _privateConstructorUsedError;
   bool? get isDownloaded => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,7 @@ abstract class $BooksDetailStateCopyWith<$Res> {
           BooksDetailState value, $Res Function(BooksDetailState) then) =
       _$BooksDetailStateCopyWithImpl<$Res, BooksDetailState>;
   @useResult
-  $Res call({bool? rating, bool? isDownloaded});
+  $Res call({bool isFavourite, bool? isDownloaded});
 }
 
 /// @nodoc
@@ -46,14 +46,14 @@ class _$BooksDetailStateCopyWithImpl<$Res, $Val extends BooksDetailState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rating = freezed,
+    Object? isFavourite = null,
     Object? isDownloaded = freezed,
   }) {
     return _then(_value.copyWith(
-      rating: freezed == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      isFavourite: null == isFavourite
+          ? _value.isFavourite
+          : isFavourite // ignore: cast_nullable_to_non_nullable
+              as bool,
       isDownloaded: freezed == isDownloaded
           ? _value.isDownloaded
           : isDownloaded // ignore: cast_nullable_to_non_nullable
@@ -70,7 +70,7 @@ abstract class _$$BooksDetailImplCopyWith<$Res>
       __$$BooksDetailImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool? rating, bool? isDownloaded});
+  $Res call({bool isFavourite, bool? isDownloaded});
 }
 
 /// @nodoc
@@ -84,14 +84,14 @@ class __$$BooksDetailImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rating = freezed,
+    Object? isFavourite = null,
     Object? isDownloaded = freezed,
   }) {
     return _then(_$BooksDetailImpl(
-      rating: freezed == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      isFavourite: null == isFavourite
+          ? _value.isFavourite
+          : isFavourite // ignore: cast_nullable_to_non_nullable
+              as bool,
       isDownloaded: freezed == isDownloaded
           ? _value.isDownloaded
           : isDownloaded // ignore: cast_nullable_to_non_nullable
@@ -103,16 +103,16 @@ class __$$BooksDetailImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BooksDetailImpl implements BooksDetail {
-  const _$BooksDetailImpl({this.rating, this.isDownloaded});
+  const _$BooksDetailImpl({required this.isFavourite, this.isDownloaded});
 
   @override
-  final bool? rating;
+  final bool isFavourite;
   @override
   final bool? isDownloaded;
 
   @override
   String toString() {
-    return 'BooksDetailState(rating: $rating, isDownloaded: $isDownloaded)';
+    return 'BooksDetailState(isFavourite: $isFavourite, isDownloaded: $isDownloaded)';
   }
 
   @override
@@ -120,13 +120,14 @@ class _$BooksDetailImpl implements BooksDetail {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BooksDetailImpl &&
-            (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.isFavourite, isFavourite) ||
+                other.isFavourite == isFavourite) &&
             (identical(other.isDownloaded, isDownloaded) ||
                 other.isDownloaded == isDownloaded));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, rating, isDownloaded);
+  int get hashCode => Object.hash(runtimeType, isFavourite, isDownloaded);
 
   @JsonKey(ignore: true)
   @override
@@ -136,11 +137,12 @@ class _$BooksDetailImpl implements BooksDetail {
 }
 
 abstract class BooksDetail implements BooksDetailState {
-  const factory BooksDetail({final bool? rating, final bool? isDownloaded}) =
-      _$BooksDetailImpl;
+  const factory BooksDetail(
+      {required final bool isFavourite,
+      final bool? isDownloaded}) = _$BooksDetailImpl;
 
   @override
-  bool? get rating;
+  bool get isFavourite;
   @override
   bool? get isDownloaded;
   @override

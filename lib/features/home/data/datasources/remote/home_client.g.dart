@@ -19,20 +19,20 @@ class _HomeClient implements HomeClient {
   String? baseUrl;
 
   @override
-  Future<BaseResponse<List<User>>> getUser() async {
+  Future<BaseResponse<AccountModal>> getUser() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponse<List<User>>>(Options(
-      method: 'GET',
+        _setStreamType<BaseResponse<AccountModal>>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/home/user',
+              '/auth/verifyToken',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -41,13 +41,9 @@ class _HomeClient implements HomeClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = BaseResponse<List<User>>.fromJson(
+    final value = BaseResponse<AccountModal>.fromJson(
       _result.data!,
-      (json) => json is List<dynamic>
-          ? json
-              .map<User>((i) => User.fromJson(i as Map<String, dynamic>))
-              .toList()
-          : List.empty(),
+      (json) => AccountModal.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

@@ -9,6 +9,8 @@ import 'package:lazy_engineer/features/books/presentation/pages/book_screen.dart
 import 'package:lazy_engineer/features/bottom_navigation/ui/bottom_nav_screen.dart';
 import 'package:lazy_engineer/features/components/error_screen.dart';
 import 'package:lazy_engineer/features/download/presentation/pages/download_screen.dart';
+import 'package:lazy_engineer/features/favourites/notifications/presentation/notifications_screen.dart';
+import 'package:lazy_engineer/features/favourites/presentation/pages/favourites_screen.dart';
 import 'package:lazy_engineer/features/file/data/models/files_response/file_response.dart';
 import 'package:lazy_engineer/features/file/presentation/pages/file_detail_screen.dart';
 import 'package:lazy_engineer/features/file/presentation/pages/file_screen.dart';
@@ -20,7 +22,7 @@ import 'package:lazy_engineer/features/notes/data/models/notes_response/note_res
 import 'package:lazy_engineer/features/notes/presentation/pages/notes_detail_screen.dart';
 import 'package:lazy_engineer/features/notes/presentation/pages/notes_screen.dart';
 import 'package:lazy_engineer/features/papers/data/models/paper_response/paper_response.dart';
-import 'package:lazy_engineer/features/papers/presentation/pages/question_paper_description_screen.dart';
+import 'package:lazy_engineer/features/papers/presentation/pages/question_paper_detail_screen.dart';
 import 'package:lazy_engineer/features/papers/presentation/pages/question_paper_screen.dart';
 import 'package:lazy_engineer/features/profile/presentation/pages/profile_screen.dart';
 import 'package:lazy_engineer/features/settings/presentation/pages/settings_screen.dart';
@@ -44,22 +46,27 @@ class RouteGenerator {
   static const String notesRoute = '/home/notes';
   static const String notesDescriptionRoute = '/home/notes/notes_description';
   static const String fileRoute = '/home/practical_file';
-  static const String fileDescriptionRoute =
-      '/home/practical_file/practicle_file_description';
+  static const String fileDescriptionRoute = '/home/practical_file/practicle_file_description';
   static const String questionPaperRoute = '/home/question_paper';
-  static const String questionPaperDescriptionRoute =
-      '/home/question_paper/question_paper_description';
+  static const String questionPaperDescriptionRoute = '/home/question_paper/question_paper_description';
   static const String booksRoute = '/home/books';
   static const String bookDescriptionRoute = '/home/books/book_description';
   static const String jobsRoute = '/home/jobs';
   static const String jobsDescriptionRoute = '/home/jobs/jobs_description';
 
+  /// Account Screen
+  static const String accountRoute = '/home/account';
+  static const String profileRoute = '/home/account/profile';
+  static const String notificationsRoute = '/home/account/notifications';
+
+  /// Favourites
+  static const String favouritesRoute = '/favourites';
+
   /// Upload Screen
   static const String uploadRoute = '/upload';
   static const String uploadNotesRoute = '/upload/notes';
   static const String uploadFileRoute = '/upload/practicle_file';
-  static const String uploadQuestionPaperRoute =
-      '/upload/upload_question_paper';
+  static const String uploadQuestionPaperRoute = '/upload/upload_question_paper';
   static const String uploadBooksRoute = '/upload/books';
   static const String uploadJobsRoute = '/upload/jobs';
   static const String uploadPaperRoute = '/upload/question_paper';
@@ -67,11 +74,6 @@ class RouteGenerator {
 
   /// Download Screen
   static const String downloadRoute = '/download';
-
-  /// Account Screen
-  static const String accountRoute = '/account';
-  static const String settingsRoute = '/account/settings';
-  static const String profileRoute = '/account/profile';
 
   // private navigators
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -107,6 +109,24 @@ class RouteGenerator {
               child: HomeScreen(),
             ),
             routes: [
+              GoRoute(
+                path: 'account',
+                builder: (_, __) => AccountScreen(),
+                routes: [
+                  GoRoute(
+                    path: 'settings',
+                    builder: (_, __) => const SettingsScreen(),
+                  ),
+                   GoRoute(
+                    path: 'notifications',
+                    builder: (_, __) => const NoticationsScreen(),
+                  ),
+                  GoRoute(
+                    path: 'profile',
+                    builder: (_, __) => const ProfileScreen(),
+                  ),
+                ],
+              ),
               GoRoute(
                 path: 'books',
                 builder: (_, __) => const BooksScreen(),
@@ -190,10 +210,10 @@ class RouteGenerator {
             ],
           ),
           GoRoute(
-            name: 'Download',
-            path: downloadRoute,
+            name: 'Favourites',
+            path: favouritesRoute,
             pageBuilder: (_, __) => const NoTransitionPage(
-              child: DownloadScreen(),
+              child: FavouritesScreen(),
             ),
           ),
           GoRoute(
@@ -235,21 +255,11 @@ class RouteGenerator {
             ],
           ),
           GoRoute(
-            name: 'Account',
-            path: accountRoute,
+            name: 'Download',
+            path: downloadRoute,
             pageBuilder: (_, __) => const NoTransitionPage(
-              child: AccountScreen(),
+              child: DownloadScreen(),
             ),
-            routes: [
-              GoRoute(
-                path: 'settings',
-                builder: (_, __) => const SettingsScreen(),
-              ),
-              GoRoute(
-                path: 'profile',
-                builder: (_, __) => const ProfileScreen(),
-              ),
-            ],
           ),
         ],
       ),
@@ -266,7 +276,6 @@ CustomTransitionPage buildPageWithDefaultTransition<T>({
   return CustomTransitionPage<T>(
     key: state.pageKey,
     child: child,
-    transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-        FadeTransition(opacity: animation, child: child),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(opacity: animation, child: child),
   );
 }

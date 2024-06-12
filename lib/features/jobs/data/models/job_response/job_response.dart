@@ -12,14 +12,13 @@ class JobResponse with _$JobResponse {
     int? limit,
   ) = _JobResponse;
 
-  factory JobResponse.fromJson(Map<String, dynamic> json) =>
-      _$JobResponseFromJson(json);
+  factory JobResponse.fromJson(Map<String, dynamic> json) => _$JobResponseFromJson(json);
 }
 
 @freezed
 class JobDetail with _$JobDetail {
-  const factory JobDetail(
-    String? userId,
+  const factory JobDetail({
+    @JsonKey(name: '_id') String? id,
     String? title,
     String? profile,
     String? company,
@@ -29,13 +28,12 @@ class JobDetail with _$JobDetail {
     String? experienceLevel,
     String? datePosted,
     List<String>? skillsNeeded,
-    int? expectedSalary,
+    dynamic expectedSalary,
+    String? applyLink,
     String? mediaLink,
     String? imageLink,
-    int? like,
-    int? dislike,
-  ) = _JobDetail;
+    bool? isFavorited,
+  }) = _JobDetail;
 
-  factory JobDetail.fromJson(Map<String, dynamic> json) =>
-      _$JobDetailFromJson(json);
+  factory JobDetail.fromJson(Map<String, dynamic> json) => _$JobDetailFromJson(json);
 }

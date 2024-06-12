@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:lazy_engineer/config/app_config.dart';
 import 'package:lazy_engineer/core/models/base_response/base_response.dart';
+import 'package:lazy_engineer/features/home/data/models/account_modal/account_modal.dart';
 import 'package:lazy_engineer/features/home/data/models/notice_model/notice_model.dart';
-import 'package:lazy_engineer/model/user.dart';
 import 'package:retrofit/http.dart';
 
 part 'home_client.g.dart';
@@ -11,8 +11,8 @@ part 'home_client.g.dart';
 abstract class HomeClient {
   factory HomeClient(Dio dio, {String baseUrl}) = _HomeClient;
 
-  @GET(AppConfig.user)
-  Future<BaseResponse<List<User>>> getUser();
+  @POST(AppConfig.account)
+  Future<BaseResponse<AccountModal>> getUser();
   @GET(AppConfig.notice)
   Future<BaseResponse<List<NoticeModel>>> getNotice();
 }

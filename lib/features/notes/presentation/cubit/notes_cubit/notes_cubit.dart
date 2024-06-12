@@ -8,14 +8,14 @@ part 'notes_state.dart';
 part 'notes_cubit.freezed.dart';
 
 class NotesCubit extends Cubit<NotesState> {
-  final NotesRepositoryImpl _repository;
-  NotesCubit(this._repository) : super(const NotesState.loading()) {
+  NotesCubit() : super(const NotesState.loading()) {
     getNotes();
   }
+  final NotesRepositoryImpl notesRepository = NotesRepositoryImpl();
   List<NoteDetail>? data;
   Future<void> getNotes() async {
     try {
-      data = await _repository.getNotesData();
+      data = await notesRepository.getNotesData();
       if (data != null) {
         emit(NotesState.success(data!));
       } else {
@@ -34,7 +34,7 @@ class NotesCubit extends Cubit<NotesState> {
         emit(NotesState.success(data!));
         return;
       }
-      final newData = await _repository.applyTextFeildFilter(
+      final newData = await notesRepository.applyTextFeildFilter(
         filterRequest.textField!,
         data!,
       );

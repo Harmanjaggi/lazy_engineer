@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$JobsDetailState {
-  bool? get rating => throw _privateConstructorUsedError;
-  bool? get isDownloaded => throw _privateConstructorUsedError;
+  bool get isFavourite => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $JobsDetailStateCopyWith<JobsDetailState> get copyWith =>
@@ -30,7 +29,7 @@ abstract class $JobsDetailStateCopyWith<$Res> {
           JobsDetailState value, $Res Function(JobsDetailState) then) =
       _$JobsDetailStateCopyWithImpl<$Res, JobsDetailState>;
   @useResult
-  $Res call({bool? rating, bool? isDownloaded});
+  $Res call({bool isFavourite});
 }
 
 /// @nodoc
@@ -46,18 +45,13 @@ class _$JobsDetailStateCopyWithImpl<$Res, $Val extends JobsDetailState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rating = freezed,
-    Object? isDownloaded = freezed,
+    Object? isFavourite = null,
   }) {
     return _then(_value.copyWith(
-      rating: freezed == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isDownloaded: freezed == isDownloaded
-          ? _value.isDownloaded
-          : isDownloaded // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      isFavourite: null == isFavourite
+          ? _value.isFavourite
+          : isFavourite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -70,7 +64,7 @@ abstract class _$$JobsDetailLoadingImplCopyWith<$Res>
       __$$JobsDetailLoadingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool? rating, bool? isDownloaded});
+  $Res call({bool isFavourite});
 }
 
 /// @nodoc
@@ -84,18 +78,13 @@ class __$$JobsDetailLoadingImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rating = freezed,
-    Object? isDownloaded = freezed,
+    Object? isFavourite = null,
   }) {
     return _then(_$JobsDetailLoadingImpl(
-      rating: freezed == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isDownloaded: freezed == isDownloaded
-          ? _value.isDownloaded
-          : isDownloaded // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      isFavourite: null == isFavourite
+          ? _value.isFavourite
+          : isFavourite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -103,16 +92,14 @@ class __$$JobsDetailLoadingImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$JobsDetailLoadingImpl implements _JobsDetailLoading {
-  const _$JobsDetailLoadingImpl({this.rating, this.isDownloaded});
+  const _$JobsDetailLoadingImpl({required this.isFavourite});
 
   @override
-  final bool? rating;
-  @override
-  final bool? isDownloaded;
+  final bool isFavourite;
 
   @override
   String toString() {
-    return 'JobsDetailState(rating: $rating, isDownloaded: $isDownloaded)';
+    return 'JobsDetailState(isFavourite: $isFavourite)';
   }
 
   @override
@@ -120,13 +107,12 @@ class _$JobsDetailLoadingImpl implements _JobsDetailLoading {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$JobsDetailLoadingImpl &&
-            (identical(other.rating, rating) || other.rating == rating) &&
-            (identical(other.isDownloaded, isDownloaded) ||
-                other.isDownloaded == isDownloaded));
+            (identical(other.isFavourite, isFavourite) ||
+                other.isFavourite == isFavourite));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, rating, isDownloaded);
+  int get hashCode => Object.hash(runtimeType, isFavourite);
 
   @JsonKey(ignore: true)
   @override
@@ -137,13 +123,11 @@ class _$JobsDetailLoadingImpl implements _JobsDetailLoading {
 }
 
 abstract class _JobsDetailLoading implements JobsDetailState {
-  const factory _JobsDetailLoading(
-      {final bool? rating, final bool? isDownloaded}) = _$JobsDetailLoadingImpl;
+  const factory _JobsDetailLoading({required final bool isFavourite}) =
+      _$JobsDetailLoadingImpl;
 
   @override
-  bool? get rating;
-  @override
-  bool? get isDownloaded;
+  bool get isFavourite;
   @override
   @JsonKey(ignore: true)
   _$$JobsDetailLoadingImplCopyWith<_$JobsDetailLoadingImpl> get copyWith =>

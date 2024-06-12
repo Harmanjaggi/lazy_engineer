@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lazy_engineer/assets/constants/decoration.dart';
 import 'package:lazy_engineer/assets/constants/strings.dart';
 import 'package:lazy_engineer/assets/images.dart';
+import 'package:lazy_engineer/config/theme/app_theme.dart';
 import 'package:lazy_engineer/core/helper_function.dart';
 import 'package:lazy_engineer/features/components/custom_button.dart';
 import 'package:lazy_engineer/features/components/custom_image.dart';
-import 'package:lazy_engineer/features/notes/data/repositories/notes_repository_impl.dart';
 import 'package:lazy_engineer/features/notes/presentation/cubit/notes_detail_cubit/notes_detail_cubit.dart';
 
 class NotesDetailHeader extends StatelessWidget {
@@ -18,6 +19,7 @@ class NotesDetailHeader extends StatelessWidget {
     this.imageLink,
     required this.semesterValue,
     required this.unitValue,
+    required this.isFavourite,
   });
   final String title;
   final String userId;
@@ -25,14 +27,18 @@ class NotesDetailHeader extends StatelessWidget {
   final String unitValue;
   final String fileLink;
   final String? imageLink;
+  final bool isFavourite;
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.all(8),
       child: BlocProvider(
-        create: (context) =>
-            NotesDetailCubit(NotesRepositoryImpl(), userId, fileLink),
+        create: (context) => NotesDetailCubit(
+          userId,
+          fileLink,
+          isFavourite,
+        ),
         child: BlocBuilder<NotesDetailCubit, NotesDetailState>(
           builder: (context, state) {
             final read = context.read<NotesDetailCubit>();
@@ -115,20 +121,17 @@ class NotesDetailHeader extends StatelessWidget {
                       // ],
                       // ),
                       Table(
-                        defaultVerticalAlignment:
-                            TableCellVerticalAlignment.middle,
-                        defaultColumnWidth:
-                            const IntrinsicColumnWidth(flex: 4.0),
+                        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                        defaultColumnWidth: const IntrinsicColumnWidth(flex: 4.0),
                         children: [
                           TableRow(
                             children: [
                               Text(
                                 'Semester: ',
-                                style: theme.textTheme.titleMedium
-                                    ?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                '${addOrdinals(int.parse(semesterValue))} Semester',
+                                addOrdinals(int.parse(semesterValue)),
                                 style: theme.textTheme.titleMedium,
                               ),
                             ],
@@ -143,11 +146,10 @@ class NotesDetailHeader extends StatelessWidget {
                             children: [
                               Text(
                                 'Unit: ',
-                                style: theme.textTheme.titleMedium
-                                    ?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                'Unit - $unitValue',
+                                unitValue,
                                 style: theme.textTheme.titleMedium,
                               ),
                             ],
@@ -155,22 +157,29 @@ class NotesDetailHeader extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 16),
-                      Center(
-                        child: CustomButton(
-                          text: download,
-                          onPressed: () => read.download(fileLink),
-                          width: 120,
-                        ),
-                      ),
-                      if (context.watch<NotesDetailCubit>().isDownloaded !=
-                          null)
-                        Center(
-                          child: Text(
-                            watch.isDownloaded!
-                                ? 'Note File is Downloaded'
-                                : 'Notes File is not Downloaded',
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomButton(
+                            text: download,
+                            onPressed: () => read.download(fileLink),
                           ),
-                        ),
+                          IconButton(
+                            onPressed: () => read.like(),
+                            icon: state.isFavourite
+                                ? FaIcon(
+                                    FontAwesomeIcons.solidThumbsUp,
+                                    color: AppThemes.favouriteColor,
+                                  )
+                                : FaIcon(
+                                    FontAwesomeIcons.thumbsUp,
+                                    color: AppThemes.favouriteColor,
+                                  ),
+                          ),
+                        ],
+                      ),
+                      if (context.watch<NotesDetailCubit>().isDownloaded != null)
+                        Text(watch.isDownloaded! ? 'Note File is Downloaded' : 'Notes File is not Downloaded'),
                     ],
                   ),
                 ),

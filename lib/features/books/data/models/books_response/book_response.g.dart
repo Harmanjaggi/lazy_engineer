@@ -26,29 +26,26 @@ Map<String, dynamic> _$$BookResponseImplToJson(_$BookResponseImpl instance) =>
 
 _$BookDetailImpl _$$BookDetailImplFromJson(Map<String, dynamic> json) =>
     _$BookDetailImpl(
-      json['userId'] as String?,
-      json['title'] as String?,
-      json['about'] as String?,
-      json['semester'] as String?,
-      json['fileLink'] as String?,
-      (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      (json['writer'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      json['pages'] as int?,
-      json['bookEdition'] as int?,
-      json['price'] as int?,
-      json['mediaLink'] as String?,
-      json['imageLink'] as String?,
-      json['like'] as int?,
-      json['dislike'] as int?,
+      id: json['_id'] as String?,
+      title: json['title'] as String?,
+      about: json['about'] as String?,
+      semester: json['semester'] as String?,
+      tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      writer: json['writer'] as String?,
+      pages: json['pages'] as int?,
+      bookEdition: json['bookEdition'] as int?,
+      price: json['price'] as int?,
+      mediaLink: json['mediaLink'] as String?,
+      imageLink: json['imageLink'] as String?,
+      isFavorited: json['isFavorited'] as bool?,
     );
 
 Map<String, dynamic> _$$BookDetailImplToJson(_$BookDetailImpl instance) =>
     <String, dynamic>{
-      'userId': instance.userId,
+      '_id': instance.id,
       'title': instance.title,
       'about': instance.about,
       'semester': instance.semester,
-      'fileLink': instance.fileLink,
       'tags': instance.tags,
       'writer': instance.writer,
       'pages': instance.pages,
@@ -56,6 +53,5 @@ Map<String, dynamic> _$$BookDetailImplToJson(_$BookDetailImpl instance) =>
       'price': instance.price,
       'mediaLink': instance.mediaLink,
       'imageLink': instance.imageLink,
-      'like': instance.like,
-      'dislike': instance.dislike,
+      'isFavorited': instance.isFavorited,
     };

@@ -26,7 +26,7 @@ Map<String, dynamic> _$$FileResponseImplToJson(_$FileResponseImpl instance) =>
 
 _$FileDetailImpl _$$FileDetailImplFromJson(Map<String, dynamic> json) =>
     _$FileDetailImpl(
-      json['userId'] as String?,
+      json['_id'] as String?,
       json['title'] as String?,
       json['about'] as String?,
       json['subject'] as String?,
@@ -34,14 +34,13 @@ _$FileDetailImpl _$$FileDetailImplFromJson(Map<String, dynamic> json) =>
       json['semester'] as String?,
       json['mediaLink'] as String?,
       json['imageLink'] as String?,
-      json['like'] as int?,
-      json['dislike'] as int?,
       (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      json['isFavorited'] as bool?,
     );
 
 Map<String, dynamic> _$$FileDetailImplToJson(_$FileDetailImpl instance) =>
     <String, dynamic>{
-      'userId': instance.userId,
+      '_id': instance.id,
       'title': instance.title,
       'about': instance.about,
       'subject': instance.subject,
@@ -49,7 +48,6 @@ Map<String, dynamic> _$$FileDetailImplToJson(_$FileDetailImpl instance) =>
       'semester': instance.semester,
       'mediaLink': instance.mediaLink,
       'imageLink': instance.imageLink,
-      'like': instance.like,
-      'dislike': instance.dislike,
       'tags': instance.tags,
+      'isFavorited': instance.isFavorited,
     };

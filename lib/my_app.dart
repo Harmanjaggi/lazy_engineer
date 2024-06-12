@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:feedback/feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lazy_engineer/config/theme/app_theme.dart';
@@ -14,34 +15,52 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final route = RouteGenerator().goRouter;
-    return MultiBlocProvider(
-      providers: [
-        // BlocProvider(create: (context) => UserCubit(UserRepository())),
-        BlocProvider(
-          create: (context) => AuthCubit(AuthRepositoryImpl()),
+    return BetterFeedback(
+      // feedbackBuilder: _useCustomFeedback
+      //     ? (context, onSubmit, scrollController) => CustomFeedbackForm(
+      //           onSubmit: onSubmit,
+      //           scrollController: scrollController,
+      //         )
+      //     : null,
+      theme: FeedbackThemeData(
+        background: Colors.grey,
+        feedbackSheetColor: Colors.grey[50]!,
+        drawColors: [
+          Colors.red,
+          Colors.green,
+          Colors.blue,
+          Colors.yellow,
+        ],
+      ),
+      localeOverride: const Locale('en'),
+      mode: FeedbackMode.draw,
+      pixelRatio: 1,
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => AuthCubit(AuthRepositoryImpl())),
+          BlocProvider(create: (context) => SettingsCubit()),
+        ],
+        child: Builder(
+          builder: (context) {
+            return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              routerDelegate: route.routerDelegate,
+              routeInformationParser: route.routeInformationParser,
+              routeInformationProvider: route.routeInformationProvider,
+              scrollBehavior: MyScrollBehavior(),
+              theme: AppThemes().appThemeData[AppTheme.lightTheme],
+              builder: (context, child) => GestureDetector(
+                onTap: () {
+                  final currentFocus = FocusScope.of(context);
+                  if (!currentFocus.hasPrimaryFocus) {
+                    currentFocus.focusedChild?.unfocus();
+                  }
+                },
+                child: LayoutTemplate(child: child!),
+              ),
+            );
+          },
         ),
-        BlocProvider(create: (context) => SettingsCubit()),
-      ],
-      child: Builder(
-        builder: (context) {
-          return MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            routerDelegate: route.routerDelegate,
-            routeInformationParser: route.routeInformationParser,
-            routeInformationProvider: route.routeInformationProvider,
-            scrollBehavior: MyScrollBehavior(),
-            theme: AppThemes().appThemeData[AppTheme.lightTheme],
-            builder: (context, child) => GestureDetector(
-              onTap: () {
-                final currentFocus = FocusScope.of(context);
-                if (!currentFocus.hasPrimaryFocus) {
-                  currentFocus.focusedChild?.unfocus();
-                }
-              },
-              child: LayoutTemplate(child: child!),
-            ),
-          );
-        },
       ),
     );
   }

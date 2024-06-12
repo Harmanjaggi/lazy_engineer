@@ -11,12 +11,14 @@ class GridCard extends StatelessWidget {
     required this.title,
     required this.body,
     this.placeHolder,
+    this.fixedHeight = false,
   });
   final String? networkImage;
   final String? placeHolder;
   final String? image;
   final String title;
   final String body;
+  final bool fixedHeight;
 
   factory GridCard.category(CategoriesModel data) {
     return GridCard(
@@ -49,14 +51,19 @@ class GridCard extends StatelessWidget {
           const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(title, style: theme.textTheme.titleLarge),
+            child: Text(
+              title,
+              maxLines: fixedHeight ? 1 : null,
+              overflow: fixedHeight ? TextOverflow.ellipsis : null,
+              style: theme.textTheme.titleLarge,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
             child: Text(
               body,
               style: theme.textTheme.bodyMedium,
-              maxLines: 3,
+              maxLines: fixedHeight ? 2 : 3,
               overflow: TextOverflow.ellipsis,
             ),
           ),

@@ -18,22 +18,20 @@ class BookResponse with _$BookResponse {
 
 @freezed
 class BookDetail with _$BookDetail {
-  const factory BookDetail(
-    String? userId,
-    String? title,
-    String? about,
-    String? semester,
-    String? fileLink,
-    List<String>? tags,
-    List<String>? writer,
-    int? pages,
-    int? bookEdition,
-    int? price,
-    String? mediaLink,
-    String? imageLink,
-    int? like,
-    int? dislike,
-  ) = _BookDetail;
+    const factory BookDetail({
+        @JsonKey(name: '_id') String? id,
+        String? title,
+        String? about,
+        String? semester,
+        List<String>? tags,
+        String? writer,
+        int? pages,
+        int? bookEdition,
+        int? price,
+        String? mediaLink,
+        String? imageLink,
+        bool? isFavorited,
+    }) = _BookDetail;
 
   factory BookDetail.fromJson(Map<String, dynamic> json) => _$BookDetailFromJson(json);
 }

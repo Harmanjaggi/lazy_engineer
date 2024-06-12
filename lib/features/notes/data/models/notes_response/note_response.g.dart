@@ -26,7 +26,7 @@ Map<String, dynamic> _$$NoteResponseImplToJson(_$NoteResponseImpl instance) =>
 
 _$NoteDetailImpl _$$NoteDetailImplFromJson(Map<String, dynamic> json) =>
     _$NoteDetailImpl(
-      json['userId'] as String?,
+      json['_id'] as String?,
       json['title'] as String?,
       json['about'] as String?,
       json['semester'] as String?,
@@ -37,13 +37,12 @@ _$NoteDetailImpl _$$NoteDetailImplFromJson(Map<String, dynamic> json) =>
       (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
       json['mediaLink'] as String?,
       json['imageLink'] as String?,
-      json['like'] as int?,
-      json['dislike'] as int?,
+      json['isFavorited'] as bool?,
     );
 
 Map<String, dynamic> _$$NoteDetailImplToJson(_$NoteDetailImpl instance) =>
     <String, dynamic>{
-      'userId': instance.userId,
+      '_id': instance.id,
       'title': instance.title,
       'about': instance.about,
       'semester': instance.semester,
@@ -54,6 +53,5 @@ Map<String, dynamic> _$$NoteDetailImplToJson(_$NoteDetailImpl instance) =>
       'tags': instance.tags,
       'mediaLink': instance.mediaLink,
       'imageLink': instance.imageLink,
-      'like': instance.like,
-      'dislike': instance.dislike,
+      'isFavorited': instance.isFavorited,
     };

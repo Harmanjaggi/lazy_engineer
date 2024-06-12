@@ -34,11 +34,12 @@ class NotesDetailScreen extends StatelessWidget {
               children: [
                 NotesDetailHeader(
                   title: data?.title ?? '',
-                  userId: data?.userId ?? '',
+                  userId: data?.id ?? '',
                   semesterValue: data?.semester ?? '',
                   unitValue: data?.unit ?? '',
                   fileLink: workingLink(data?.mediaLink) ?? '',
                   imageLink: workingLink(data?.imageLink) ?? '',
+                  isFavourite: data?.isFavorited ?? false,
                 ),
                 const SizedBox(height: 12),
                 ShowTagsWidget(data?.tags ?? []),

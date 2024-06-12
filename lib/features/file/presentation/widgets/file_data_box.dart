@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lazy_engineer/assets/constants/strings.dart';
 import 'package:lazy_engineer/core/helper_function.dart';
 
-class FileDataBox extends StatelessWidget {
+
+ class FileDataBox extends StatelessWidget {
   const FileDataBox({
     super.key,
     required this.subjectValue,
@@ -19,7 +20,7 @@ class FileDataBox extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     return Flexible(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,6 +28,7 @@ class FileDataBox extends StatelessWidget {
             Text(
               title,
               style: theme.textTheme.headlineSmall,
+              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 4),
             Table(
@@ -58,6 +60,8 @@ class FileDataBox extends StatelessWidget {
                       child: Text(
                         college,
                         style: theme.textTheme.titleSmall,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Padding(
@@ -65,6 +69,8 @@ class FileDataBox extends StatelessWidget {
                       child: Text(
                         collegeValue,
                         style: theme.textTheme.bodyMedium,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],
@@ -81,7 +87,7 @@ class FileDataBox extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(8, 4, 0, 4),
                       child: Text(
-                        '${addOrdinals(int.parse(semesterValue))} Semester',
+                        '${addOrdinals(int.parse(semesterValue))}',
                         style: theme.textTheme.bodyMedium,
                       ),
                     ),

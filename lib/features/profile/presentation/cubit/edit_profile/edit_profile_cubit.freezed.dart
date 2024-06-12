@@ -19,7 +19,7 @@ mixin _$EditProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ProfileModal data) success,
+    required TResult Function(UserDetail data) success,
     required TResult Function() loading,
     required TResult Function(dynamic e) failure,
   }) =>
@@ -27,7 +27,7 @@ mixin _$EditProfileState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ProfileModal data)? success,
+    TResult? Function(UserDetail data)? success,
     TResult? Function()? loading,
     TResult? Function(dynamic e)? failure,
   }) =>
@@ -35,7 +35,7 @@ mixin _$EditProfileState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ProfileModal data)? success,
+    TResult Function(UserDetail data)? success,
     TResult Function()? loading,
     TResult Function(dynamic e)? failure,
     required TResult orElse(),
@@ -125,7 +125,7 @@ class _$EditProfileInitialImpl implements EditProfileInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ProfileModal data) success,
+    required TResult Function(UserDetail data) success,
     required TResult Function() loading,
     required TResult Function(dynamic e) failure,
   }) {
@@ -136,7 +136,7 @@ class _$EditProfileInitialImpl implements EditProfileInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ProfileModal data)? success,
+    TResult? Function(UserDetail data)? success,
     TResult? Function()? loading,
     TResult? Function(dynamic e)? failure,
   }) {
@@ -147,7 +147,7 @@ class _$EditProfileInitialImpl implements EditProfileInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ProfileModal data)? success,
+    TResult Function(UserDetail data)? success,
     TResult Function()? loading,
     TResult Function(dynamic e)? failure,
     required TResult orElse(),
@@ -206,9 +206,9 @@ abstract class _$$EditProfileSuccessImplCopyWith<$Res> {
           $Res Function(_$EditProfileSuccessImpl) then) =
       __$$EditProfileSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ProfileModal data});
+  $Res call({UserDetail data});
 
-  $ProfileModalCopyWith<$Res> get data;
+  $UserDetailCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -228,14 +228,14 @@ class __$$EditProfileSuccessImplCopyWithImpl<$Res>
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as ProfileModal,
+              as UserDetail,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ProfileModalCopyWith<$Res> get data {
-    return $ProfileModalCopyWith<$Res>(_value.data, (value) {
+  $UserDetailCopyWith<$Res> get data {
+    return $UserDetailCopyWith<$Res>(_value.data, (value) {
       return _then(_value.copyWith(data: value));
     });
   }
@@ -247,7 +247,7 @@ class _$EditProfileSuccessImpl implements EditProfileSuccess {
   const _$EditProfileSuccessImpl(this.data);
 
   @override
-  final ProfileModal data;
+  final UserDetail data;
 
   @override
   String toString() {
@@ -276,7 +276,7 @@ class _$EditProfileSuccessImpl implements EditProfileSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ProfileModal data) success,
+    required TResult Function(UserDetail data) success,
     required TResult Function() loading,
     required TResult Function(dynamic e) failure,
   }) {
@@ -287,7 +287,7 @@ class _$EditProfileSuccessImpl implements EditProfileSuccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ProfileModal data)? success,
+    TResult? Function(UserDetail data)? success,
     TResult? Function()? loading,
     TResult? Function(dynamic e)? failure,
   }) {
@@ -298,7 +298,7 @@ class _$EditProfileSuccessImpl implements EditProfileSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ProfileModal data)? success,
+    TResult Function(UserDetail data)? success,
     TResult Function()? loading,
     TResult Function(dynamic e)? failure,
     required TResult orElse(),
@@ -348,10 +348,10 @@ class _$EditProfileSuccessImpl implements EditProfileSuccess {
 }
 
 abstract class EditProfileSuccess implements EditProfileState {
-  const factory EditProfileSuccess(final ProfileModal data) =
+  const factory EditProfileSuccess(final UserDetail data) =
       _$EditProfileSuccessImpl;
 
-  ProfileModal get data;
+  UserDetail get data;
   @JsonKey(ignore: true)
   _$$EditProfileSuccessImplCopyWith<_$EditProfileSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -396,7 +396,7 @@ class _$EditProfileLoadingImpl implements EditProfileLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ProfileModal data) success,
+    required TResult Function(UserDetail data) success,
     required TResult Function() loading,
     required TResult Function(dynamic e) failure,
   }) {
@@ -407,7 +407,7 @@ class _$EditProfileLoadingImpl implements EditProfileLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ProfileModal data)? success,
+    TResult? Function(UserDetail data)? success,
     TResult? Function()? loading,
     TResult? Function(dynamic e)? failure,
   }) {
@@ -418,7 +418,7 @@ class _$EditProfileLoadingImpl implements EditProfileLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ProfileModal data)? success,
+    TResult Function(UserDetail data)? success,
     TResult Function()? loading,
     TResult Function(dynamic e)? failure,
     required TResult orElse(),
@@ -538,7 +538,7 @@ class _$EditProfileFailureImpl implements EditProfileFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ProfileModal data) success,
+    required TResult Function(UserDetail data) success,
     required TResult Function() loading,
     required TResult Function(dynamic e) failure,
   }) {
@@ -549,7 +549,7 @@ class _$EditProfileFailureImpl implements EditProfileFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ProfileModal data)? success,
+    TResult? Function(UserDetail data)? success,
     TResult? Function()? loading,
     TResult? Function(dynamic e)? failure,
   }) {
@@ -560,7 +560,7 @@ class _$EditProfileFailureImpl implements EditProfileFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ProfileModal data)? success,
+    TResult Function(UserDetail data)? success,
     TResult Function()? loading,
     TResult Function(dynamic e)? failure,
     required TResult orElse(),

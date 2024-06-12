@@ -28,13 +28,13 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         label: string.home,
       ),
       ScaffoldWithNavBarTabItem(
-        initialLocation: RouteGenerator.downloadRoute,
-        icon: CustomIcon(AppIcons.downloadIcon, color: Colors.grey),
+        initialLocation: RouteGenerator.favouritesRoute,
+        icon: CustomIcon(AppIcons.accounts, color: Colors.grey),
         activeIcon: CustomIcon(
-          AppIcons.downloadIcon,
+          AppIcons.favourites,
           color: AppThemes.primaryColor2,
         ),
-        label: string.download,
+        label: string.favourites,
       ),
       ScaffoldWithNavBarTabItem(
         initialLocation: RouteGenerator.uploadRoute,
@@ -45,14 +45,14 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         ),
         label: string.upload,
       ),
-      ScaffoldWithNavBarTabItem(
-        initialLocation: RouteGenerator.accountRoute,
-        icon: CustomIcon(AppIcons.accounts, color: Colors.grey),
+       ScaffoldWithNavBarTabItem(
+        initialLocation: RouteGenerator.downloadRoute,
+        icon: CustomIcon(AppIcons.downloadIcon, color: Colors.grey),
         activeIcon: CustomIcon(
-          AppIcons.accounts,
+          AppIcons.downloadIcon,
           color: AppThemes.primaryColor2,
         ),
-        label: string.account,
+        label: string.download,
       ),
     ];
 

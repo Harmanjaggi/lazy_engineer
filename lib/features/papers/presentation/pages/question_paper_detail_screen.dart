@@ -32,11 +32,12 @@ class PaperDetailScreen extends StatelessWidget {
               children: [
                 PapersDetailHeader(
                   title: data?.title ?? '',
-                  userId: data?.userId ?? '',
+                  userId: data?.id ?? '',
                   semesterValue: data?.semester ?? '',
                   unitValue: data?.unit ?? '',
                   file: workingLink(data?.mediaLink) ?? '',
                   image: workingLink(data?.imageLink) ?? '',
+                  isFavourite: data?.isFavorited ?? false,
                 ),
                 const SizedBox(height: 12),
                 ShowTagsWidget(data?.tags ?? []),

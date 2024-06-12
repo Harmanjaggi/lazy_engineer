@@ -9,6 +9,8 @@ class AppConfig {
   /// home
   static const String user = '/home/user';
   static const String notice = '/alert';
+  static const String account = '/auth/verifyToken';
+  static const String updateProfile = 'auth/updateUser';
   static const String notes = '/note';
   static const String notesSearch = '/home/notes/search';
   static const String notesFilter = '/home/notes/filter';
@@ -36,6 +38,9 @@ class AppConfig {
   static const String uploadQuestionPaper = '/question_paper';
   static const String uploadBooks = '/books';
   static const String uploadJobs = '/jobs';
+
+  /// favourites
+  static const String favourites = '/favourite';
 
   /// tag
   static const String companyPhotoTag = 'company_photo';

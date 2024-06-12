@@ -33,10 +33,11 @@ class FileDetailScreen extends StatelessWidget {
               children: [
                 FilesDetailHeader(
                   title: data?.title ?? '',
-                  userId: data?.userId ?? '',
+                  userId: data?.id ?? '',
                   semesterValue: data?.semester ?? '',
                   file: workingLink(data?.mediaLink) ?? '',
-                  image: workingLink(data?.imageLink) ?? '',
+                  image: workingLink(data?.imageLink) ?? '', 
+                  isFavourite: data?.isFavorited ?? false,
                 ),
                 const SizedBox(height: 12),
                 ShowTagsWidget(data?.tags ?? []),

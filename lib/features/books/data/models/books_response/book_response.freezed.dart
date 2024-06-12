@@ -220,20 +220,19 @@ BookDetail _$BookDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BookDetail {
-  String? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: '_id')
+  String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get about => throw _privateConstructorUsedError;
   String? get semester => throw _privateConstructorUsedError;
-  String? get fileLink => throw _privateConstructorUsedError;
   List<String>? get tags => throw _privateConstructorUsedError;
-  List<String>? get writer => throw _privateConstructorUsedError;
+  String? get writer => throw _privateConstructorUsedError;
   int? get pages => throw _privateConstructorUsedError;
   int? get bookEdition => throw _privateConstructorUsedError;
   int? get price => throw _privateConstructorUsedError;
   String? get mediaLink => throw _privateConstructorUsedError;
   String? get imageLink => throw _privateConstructorUsedError;
-  int? get like => throw _privateConstructorUsedError;
-  int? get dislike => throw _privateConstructorUsedError;
+  bool? get isFavorited => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -248,20 +247,18 @@ abstract class $BookDetailCopyWith<$Res> {
       _$BookDetailCopyWithImpl<$Res, BookDetail>;
   @useResult
   $Res call(
-      {String? userId,
+      {@JsonKey(name: '_id') String? id,
       String? title,
       String? about,
       String? semester,
-      String? fileLink,
       List<String>? tags,
-      List<String>? writer,
+      String? writer,
       int? pages,
       int? bookEdition,
       int? price,
       String? mediaLink,
       String? imageLink,
-      int? like,
-      int? dislike});
+      bool? isFavorited});
 }
 
 /// @nodoc
@@ -277,11 +274,10 @@ class _$BookDetailCopyWithImpl<$Res, $Val extends BookDetail>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? id = freezed,
     Object? title = freezed,
     Object? about = freezed,
     Object? semester = freezed,
-    Object? fileLink = freezed,
     Object? tags = freezed,
     Object? writer = freezed,
     Object? pages = freezed,
@@ -289,13 +285,12 @@ class _$BookDetailCopyWithImpl<$Res, $Val extends BookDetail>
     Object? price = freezed,
     Object? mediaLink = freezed,
     Object? imageLink = freezed,
-    Object? like = freezed,
-    Object? dislike = freezed,
+    Object? isFavorited = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String?,
       title: freezed == title
           ? _value.title
@@ -309,10 +304,6 @@ class _$BookDetailCopyWithImpl<$Res, $Val extends BookDetail>
           ? _value.semester
           : semester // ignore: cast_nullable_to_non_nullable
               as String?,
-      fileLink: freezed == fileLink
-          ? _value.fileLink
-          : fileLink // ignore: cast_nullable_to_non_nullable
-              as String?,
       tags: freezed == tags
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
@@ -320,7 +311,7 @@ class _$BookDetailCopyWithImpl<$Res, $Val extends BookDetail>
       writer: freezed == writer
           ? _value.writer
           : writer // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as String?,
       pages: freezed == pages
           ? _value.pages
           : pages // ignore: cast_nullable_to_non_nullable
@@ -341,14 +332,10 @@ class _$BookDetailCopyWithImpl<$Res, $Val extends BookDetail>
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
               as String?,
-      like: freezed == like
-          ? _value.like
-          : like // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dislike: freezed == dislike
-          ? _value.dislike
-          : dislike // ignore: cast_nullable_to_non_nullable
-              as int?,
+      isFavorited: freezed == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -362,20 +349,18 @@ abstract class _$$BookDetailImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? userId,
+      {@JsonKey(name: '_id') String? id,
       String? title,
       String? about,
       String? semester,
-      String? fileLink,
       List<String>? tags,
-      List<String>? writer,
+      String? writer,
       int? pages,
       int? bookEdition,
       int? price,
       String? mediaLink,
       String? imageLink,
-      int? like,
-      int? dislike});
+      bool? isFavorited});
 }
 
 /// @nodoc
@@ -389,11 +374,10 @@ class __$$BookDetailImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? id = freezed,
     Object? title = freezed,
     Object? about = freezed,
     Object? semester = freezed,
-    Object? fileLink = freezed,
     Object? tags = freezed,
     Object? writer = freezed,
     Object? pages = freezed,
@@ -401,66 +385,57 @@ class __$$BookDetailImplCopyWithImpl<$Res>
     Object? price = freezed,
     Object? mediaLink = freezed,
     Object? imageLink = freezed,
-    Object? like = freezed,
-    Object? dislike = freezed,
+    Object? isFavorited = freezed,
   }) {
     return _then(_$BookDetailImpl(
-      freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      freezed == title
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      freezed == about
+      about: freezed == about
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
               as String?,
-      freezed == semester
+      semester: freezed == semester
           ? _value.semester
           : semester // ignore: cast_nullable_to_non_nullable
               as String?,
-      freezed == fileLink
-          ? _value.fileLink
-          : fileLink // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == tags
+      tags: freezed == tags
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      freezed == writer
-          ? _value._writer
+      writer: freezed == writer
+          ? _value.writer
           : writer // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      freezed == pages
+              as String?,
+      pages: freezed == pages
           ? _value.pages
           : pages // ignore: cast_nullable_to_non_nullable
               as int?,
-      freezed == bookEdition
+      bookEdition: freezed == bookEdition
           ? _value.bookEdition
           : bookEdition // ignore: cast_nullable_to_non_nullable
               as int?,
-      freezed == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int?,
-      freezed == mediaLink
+      mediaLink: freezed == mediaLink
           ? _value.mediaLink
           : mediaLink // ignore: cast_nullable_to_non_nullable
               as String?,
-      freezed == imageLink
+      imageLink: freezed == imageLink
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
               as String?,
-      freezed == like
-          ? _value.like
-          : like // ignore: cast_nullable_to_non_nullable
-              as int?,
-      freezed == dislike
-          ? _value.dislike
-          : dislike // ignore: cast_nullable_to_non_nullable
-              as int?,
+      isFavorited: freezed == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -469,36 +444,32 @@ class __$$BookDetailImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BookDetailImpl implements _BookDetail {
   const _$BookDetailImpl(
-      this.userId,
+      {@JsonKey(name: '_id') this.id,
       this.title,
       this.about,
       this.semester,
-      this.fileLink,
       final List<String>? tags,
-      final List<String>? writer,
+      this.writer,
       this.pages,
       this.bookEdition,
       this.price,
       this.mediaLink,
       this.imageLink,
-      this.like,
-      this.dislike)
-      : _tags = tags,
-        _writer = writer;
+      this.isFavorited})
+      : _tags = tags;
 
   factory _$BookDetailImpl.fromJson(Map<String, dynamic> json) =>
       _$$BookDetailImplFromJson(json);
 
   @override
-  final String? userId;
+  @JsonKey(name: '_id')
+  final String? id;
   @override
   final String? title;
   @override
   final String? about;
   @override
   final String? semester;
-  @override
-  final String? fileLink;
   final List<String>? _tags;
   @override
   List<String>? get tags {
@@ -509,16 +480,8 @@ class _$BookDetailImpl implements _BookDetail {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String>? _writer;
   @override
-  List<String>? get writer {
-    final value = _writer;
-    if (value == null) return null;
-    if (_writer is EqualUnmodifiableListView) return _writer;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final String? writer;
   @override
   final int? pages;
   @override
@@ -530,13 +493,11 @@ class _$BookDetailImpl implements _BookDetail {
   @override
   final String? imageLink;
   @override
-  final int? like;
-  @override
-  final int? dislike;
+  final bool? isFavorited;
 
   @override
   String toString() {
-    return 'BookDetail(userId: $userId, title: $title, about: $about, semester: $semester, fileLink: $fileLink, tags: $tags, writer: $writer, pages: $pages, bookEdition: $bookEdition, price: $price, mediaLink: $mediaLink, imageLink: $imageLink, like: $like, dislike: $dislike)';
+    return 'BookDetail(id: $id, title: $title, about: $about, semester: $semester, tags: $tags, writer: $writer, pages: $pages, bookEdition: $bookEdition, price: $price, mediaLink: $mediaLink, imageLink: $imageLink, isFavorited: $isFavorited)';
   }
 
   @override
@@ -544,15 +505,13 @@ class _$BookDetailImpl implements _BookDetail {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookDetailImpl &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.about, about) || other.about == about) &&
             (identical(other.semester, semester) ||
                 other.semester == semester) &&
-            (identical(other.fileLink, fileLink) ||
-                other.fileLink == fileLink) &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
-            const DeepCollectionEquality().equals(other._writer, _writer) &&
+            (identical(other.writer, writer) || other.writer == writer) &&
             (identical(other.pages, pages) || other.pages == pages) &&
             (identical(other.bookEdition, bookEdition) ||
                 other.bookEdition == bookEdition) &&
@@ -561,28 +520,26 @@ class _$BookDetailImpl implements _BookDetail {
                 other.mediaLink == mediaLink) &&
             (identical(other.imageLink, imageLink) ||
                 other.imageLink == imageLink) &&
-            (identical(other.like, like) || other.like == like) &&
-            (identical(other.dislike, dislike) || other.dislike == dislike));
+            (identical(other.isFavorited, isFavorited) ||
+                other.isFavorited == isFavorited));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      userId,
+      id,
       title,
       about,
       semester,
-      fileLink,
       const DeepCollectionEquality().hash(_tags),
-      const DeepCollectionEquality().hash(_writer),
+      writer,
       pages,
       bookEdition,
       price,
       mediaLink,
       imageLink,
-      like,
-      dislike);
+      isFavorited);
 
   @JsonKey(ignore: true)
   @override
@@ -600,26 +557,25 @@ class _$BookDetailImpl implements _BookDetail {
 
 abstract class _BookDetail implements BookDetail {
   const factory _BookDetail(
-      final String? userId,
+      {@JsonKey(name: '_id') final String? id,
       final String? title,
       final String? about,
       final String? semester,
-      final String? fileLink,
       final List<String>? tags,
-      final List<String>? writer,
+      final String? writer,
       final int? pages,
       final int? bookEdition,
       final int? price,
       final String? mediaLink,
       final String? imageLink,
-      final int? like,
-      final int? dislike) = _$BookDetailImpl;
+      final bool? isFavorited}) = _$BookDetailImpl;
 
   factory _BookDetail.fromJson(Map<String, dynamic> json) =
       _$BookDetailImpl.fromJson;
 
   @override
-  String? get userId;
+  @JsonKey(name: '_id')
+  String? get id;
   @override
   String? get title;
   @override
@@ -627,11 +583,9 @@ abstract class _BookDetail implements BookDetail {
   @override
   String? get semester;
   @override
-  String? get fileLink;
-  @override
   List<String>? get tags;
   @override
-  List<String>? get writer;
+  String? get writer;
   @override
   int? get pages;
   @override
@@ -643,9 +597,7 @@ abstract class _BookDetail implements BookDetail {
   @override
   String? get imageLink;
   @override
-  int? get like;
-  @override
-  int? get dislike;
+  bool? get isFavorited;
   @override
   @JsonKey(ignore: true)
   _$$BookDetailImplCopyWith<_$BookDetailImpl> get copyWith =>

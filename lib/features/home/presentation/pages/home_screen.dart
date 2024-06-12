@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lazy_engineer/assets/constants/decoration.dart';
 import 'package:lazy_engineer/assets/constants/lists.dart';
 import 'package:lazy_engineer/assets/constants/strings.dart';
-import 'package:lazy_engineer/assets/icons.dart';
 import 'package:lazy_engineer/features/components/custom_image.dart';
 import 'package:lazy_engineer/features/components/failiure_screen.dart';
 import 'package:lazy_engineer/features/components/grid_card.dart';
@@ -30,7 +28,7 @@ class HomeScreen extends StatelessWidget {
             child: MultiBlocProvider(
               providers: [
                 BlocProvider<UserCubit>(
-                  create: (BuildContext context) =>UserCubit(HomeRepositoryImpl()),
+                  create: (BuildContext context) => UserCubit(HomeRepositoryImpl()),
                 ),
                 BlocProvider<NoticeCubit>(
                   create: (BuildContext context) => NoticeCubit(HomeRepositoryImpl()),
@@ -45,7 +43,11 @@ class HomeScreen extends StatelessWidget {
                       return Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          _nametag(context, user.userName),
+                          _nametag(
+                            context: context,
+                            name: user.fullName ?? "",
+                            image: user.imageLink ?? "",
+                          ),
                           const SizedBox(height: 12),
                           const SizedBox(height: 28),
                           SliderView(),
@@ -58,11 +60,8 @@ class HomeScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: StaggeredView(
-                              categoriesList
-                                  .map((element) => GridCard.category(element))
-                                  .toList(),
-                              onTap: (context, index) =>
-                                  _navigation(context, index),
+                              categoriesList.map((element) => GridCard.category(element)).toList(),
+                              onTap: (context, index) => _navigation(context, index),
                             ),
                           ),
                         ],
@@ -110,10 +109,11 @@ class HomeScreen extends StatelessWidget {
     context.push(nav());
   }
 
-  Widget _nametag(BuildContext context, String name) {
+  Widget _nametag({required BuildContext context, required String name, required String image}) {
     void onPress() {
-      ScaffoldMessenger.of(context).showSnackBar(toBeBuildInFutureSnackBar);
+      context.go(RouteGenerator.accountRoute);
     }
+
     final ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -136,10 +136,13 @@ class HomeScreen extends StatelessWidget {
           const Spacer(),
           GestureDetector(
             onTap: onPress,
-            child: const CustomImage(
-              image: AppIcons.notificationCircleIcon,
+            child: CustomImage(
+              networkImage: image,
               width: 48,
               height: 48,
+              radius: 24,
+              color: Colors.grey,
+              isBorder: true,
             ),
           ),
         ],

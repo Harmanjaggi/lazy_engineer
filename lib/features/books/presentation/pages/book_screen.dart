@@ -89,7 +89,7 @@ class BookListView extends StatelessWidget {
         image: workingLink(data[index].imageLink),
         pages: data[index].pages,
         child: BookDataBox(
-          writers: data[index].writer ?? [],
+          writers: data[index].writer ?? '',
           bookName: data[index].title ?? '',
           description: data[index].about ?? '',
         ),

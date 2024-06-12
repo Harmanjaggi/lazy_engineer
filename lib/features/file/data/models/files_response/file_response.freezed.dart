@@ -220,7 +220,8 @@ FileDetail _$FileDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FileDetail {
-  String? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: '_id')
+  String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get about => throw _privateConstructorUsedError;
   String? get subject => throw _privateConstructorUsedError;
@@ -228,9 +229,8 @@ mixin _$FileDetail {
   String? get semester => throw _privateConstructorUsedError;
   String? get mediaLink => throw _privateConstructorUsedError;
   String? get imageLink => throw _privateConstructorUsedError;
-  int? get like => throw _privateConstructorUsedError;
-  int? get dislike => throw _privateConstructorUsedError;
   List<String>? get tags => throw _privateConstructorUsedError;
+  bool? get isFavorited => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -245,7 +245,7 @@ abstract class $FileDetailCopyWith<$Res> {
       _$FileDetailCopyWithImpl<$Res, FileDetail>;
   @useResult
   $Res call(
-      {String? userId,
+      {@JsonKey(name: '_id') String? id,
       String? title,
       String? about,
       String? subject,
@@ -253,9 +253,8 @@ abstract class $FileDetailCopyWith<$Res> {
       String? semester,
       String? mediaLink,
       String? imageLink,
-      int? like,
-      int? dislike,
-      List<String>? tags});
+      List<String>? tags,
+      bool? isFavorited});
 }
 
 /// @nodoc
@@ -271,7 +270,7 @@ class _$FileDetailCopyWithImpl<$Res, $Val extends FileDetail>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? id = freezed,
     Object? title = freezed,
     Object? about = freezed,
     Object? subject = freezed,
@@ -279,14 +278,13 @@ class _$FileDetailCopyWithImpl<$Res, $Val extends FileDetail>
     Object? semester = freezed,
     Object? mediaLink = freezed,
     Object? imageLink = freezed,
-    Object? like = freezed,
-    Object? dislike = freezed,
     Object? tags = freezed,
+    Object? isFavorited = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String?,
       title: freezed == title
           ? _value.title
@@ -316,18 +314,14 @@ class _$FileDetailCopyWithImpl<$Res, $Val extends FileDetail>
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
               as String?,
-      like: freezed == like
-          ? _value.like
-          : like // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dislike: freezed == dislike
-          ? _value.dislike
-          : dislike // ignore: cast_nullable_to_non_nullable
-              as int?,
       tags: freezed == tags
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      isFavorited: freezed == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -341,7 +335,7 @@ abstract class _$$FileDetailImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? userId,
+      {@JsonKey(name: '_id') String? id,
       String? title,
       String? about,
       String? subject,
@@ -349,9 +343,8 @@ abstract class _$$FileDetailImplCopyWith<$Res>
       String? semester,
       String? mediaLink,
       String? imageLink,
-      int? like,
-      int? dislike,
-      List<String>? tags});
+      List<String>? tags,
+      bool? isFavorited});
 }
 
 /// @nodoc
@@ -365,7 +358,7 @@ class __$$FileDetailImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? id = freezed,
     Object? title = freezed,
     Object? about = freezed,
     Object? subject = freezed,
@@ -373,14 +366,13 @@ class __$$FileDetailImplCopyWithImpl<$Res>
     Object? semester = freezed,
     Object? mediaLink = freezed,
     Object? imageLink = freezed,
-    Object? like = freezed,
-    Object? dislike = freezed,
     Object? tags = freezed,
+    Object? isFavorited = freezed,
   }) {
     return _then(_$FileDetailImpl(
-      freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String?,
       freezed == title
           ? _value.title
@@ -410,18 +402,14 @@ class __$$FileDetailImplCopyWithImpl<$Res>
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
               as String?,
-      freezed == like
-          ? _value.like
-          : like // ignore: cast_nullable_to_non_nullable
-              as int?,
-      freezed == dislike
-          ? _value.dislike
-          : dislike // ignore: cast_nullable_to_non_nullable
-              as int?,
       freezed == tags
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      freezed == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -430,7 +418,7 @@ class __$$FileDetailImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$FileDetailImpl implements _FileDetail {
   const _$FileDetailImpl(
-      this.userId,
+      @JsonKey(name: '_id') this.id,
       this.title,
       this.about,
       this.subject,
@@ -438,16 +426,16 @@ class _$FileDetailImpl implements _FileDetail {
       this.semester,
       this.mediaLink,
       this.imageLink,
-      this.like,
-      this.dislike,
-      final List<String>? tags)
+      final List<String>? tags,
+      this.isFavorited)
       : _tags = tags;
 
   factory _$FileDetailImpl.fromJson(Map<String, dynamic> json) =>
       _$$FileDetailImplFromJson(json);
 
   @override
-  final String? userId;
+  @JsonKey(name: '_id')
+  final String? id;
   @override
   final String? title;
   @override
@@ -462,10 +450,6 @@ class _$FileDetailImpl implements _FileDetail {
   final String? mediaLink;
   @override
   final String? imageLink;
-  @override
-  final int? like;
-  @override
-  final int? dislike;
   final List<String>? _tags;
   @override
   List<String>? get tags {
@@ -477,8 +461,11 @@ class _$FileDetailImpl implements _FileDetail {
   }
 
   @override
+  final bool? isFavorited;
+
+  @override
   String toString() {
-    return 'FileDetail(userId: $userId, title: $title, about: $about, subject: $subject, college: $college, semester: $semester, mediaLink: $mediaLink, imageLink: $imageLink, like: $like, dislike: $dislike, tags: $tags)';
+    return 'FileDetail(id: $id, title: $title, about: $about, subject: $subject, college: $college, semester: $semester, mediaLink: $mediaLink, imageLink: $imageLink, tags: $tags, isFavorited: $isFavorited)';
   }
 
   @override
@@ -486,7 +473,7 @@ class _$FileDetailImpl implements _FileDetail {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FileDetailImpl &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.about, about) || other.about == about) &&
             (identical(other.subject, subject) || other.subject == subject) &&
@@ -497,16 +484,16 @@ class _$FileDetailImpl implements _FileDetail {
                 other.mediaLink == mediaLink) &&
             (identical(other.imageLink, imageLink) ||
                 other.imageLink == imageLink) &&
-            (identical(other.like, like) || other.like == like) &&
-            (identical(other.dislike, dislike) || other.dislike == dislike) &&
-            const DeepCollectionEquality().equals(other._tags, _tags));
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
+            (identical(other.isFavorited, isFavorited) ||
+                other.isFavorited == isFavorited));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      userId,
+      id,
       title,
       about,
       subject,
@@ -514,9 +501,8 @@ class _$FileDetailImpl implements _FileDetail {
       semester,
       mediaLink,
       imageLink,
-      like,
-      dislike,
-      const DeepCollectionEquality().hash(_tags));
+      const DeepCollectionEquality().hash(_tags),
+      isFavorited);
 
   @JsonKey(ignore: true)
   @override
@@ -534,7 +520,7 @@ class _$FileDetailImpl implements _FileDetail {
 
 abstract class _FileDetail implements FileDetail {
   const factory _FileDetail(
-      final String? userId,
+      @JsonKey(name: '_id') final String? id,
       final String? title,
       final String? about,
       final String? subject,
@@ -542,15 +528,15 @@ abstract class _FileDetail implements FileDetail {
       final String? semester,
       final String? mediaLink,
       final String? imageLink,
-      final int? like,
-      final int? dislike,
-      final List<String>? tags) = _$FileDetailImpl;
+      final List<String>? tags,
+      final bool? isFavorited) = _$FileDetailImpl;
 
   factory _FileDetail.fromJson(Map<String, dynamic> json) =
       _$FileDetailImpl.fromJson;
 
   @override
-  String? get userId;
+  @JsonKey(name: '_id')
+  String? get id;
   @override
   String? get title;
   @override
@@ -566,11 +552,9 @@ abstract class _FileDetail implements FileDetail {
   @override
   String? get imageLink;
   @override
-  int? get like;
-  @override
-  int? get dislike;
-  @override
   List<String>? get tags;
+  @override
+  bool? get isFavorited;
   @override
   @JsonKey(ignore: true)
   _$$FileDetailImplCopyWith<_$FileDetailImpl> get copyWith =>

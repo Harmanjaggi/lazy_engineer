@@ -7,8 +7,8 @@ import 'package:lazy_engineer/features/auth/data/models/user_dto/user_dto.dart';
 import 'package:lazy_engineer/features/auth/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
-  final AuthRemoteDataSource _remoteDataSource = AuthRemoteDataSource();
   final AuthLocalDataSource _localDataSource = AuthLocalDataSource();
+  final AuthRemoteDataSource _remoteDataSource = AuthRemoteDataSource();
 
   /// return [Token] in String format
   Future<String?> getToken() async {

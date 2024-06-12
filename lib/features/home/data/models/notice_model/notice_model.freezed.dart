@@ -20,8 +20,6 @@ NoticeModel _$NoticeModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NoticeModel {
-  String? get id => throw _privateConstructorUsedError;
-  String? get userId => throw _privateConstructorUsedError;
   String? get imageLink => throw _privateConstructorUsedError;
   String? get link => throw _privateConstructorUsedError;
   String? get heading => throw _privateConstructorUsedError;
@@ -29,7 +27,6 @@ mixin _$NoticeModel {
   List<String>? get tags => throw _privateConstructorUsedError;
   DateTime? get startDate => throw _privateConstructorUsedError;
   DateTime? get endDate => throw _privateConstructorUsedError;
-  int? get v => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,16 +41,13 @@ abstract class $NoticeModelCopyWith<$Res> {
       _$NoticeModelCopyWithImpl<$Res, NoticeModel>;
   @useResult
   $Res call(
-      {String? id,
-      String? userId,
-      String? imageLink,
+      {String? imageLink,
       String? link,
       String? heading,
       String? message,
       List<String>? tags,
       DateTime? startDate,
-      DateTime? endDate,
-      int? v});
+      DateTime? endDate});
 }
 
 /// @nodoc
@@ -69,8 +63,6 @@ class _$NoticeModelCopyWithImpl<$Res, $Val extends NoticeModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? userId = freezed,
     Object? imageLink = freezed,
     Object? link = freezed,
     Object? heading = freezed,
@@ -78,17 +70,8 @@ class _$NoticeModelCopyWithImpl<$Res, $Val extends NoticeModel>
     Object? tags = freezed,
     Object? startDate = freezed,
     Object? endDate = freezed,
-    Object? v = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
       imageLink: freezed == imageLink
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
@@ -117,10 +100,6 @@ class _$NoticeModelCopyWithImpl<$Res, $Val extends NoticeModel>
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      v: freezed == v
-          ? _value.v
-          : v // ignore: cast_nullable_to_non_nullable
-              as int?,
     ) as $Val);
   }
 }
@@ -134,16 +113,13 @@ abstract class _$$NoticeModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? id,
-      String? userId,
-      String? imageLink,
+      {String? imageLink,
       String? link,
       String? heading,
       String? message,
       List<String>? tags,
       DateTime? startDate,
-      DateTime? endDate,
-      int? v});
+      DateTime? endDate});
 }
 
 /// @nodoc
@@ -157,8 +133,6 @@ class __$$NoticeModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? userId = freezed,
     Object? imageLink = freezed,
     Object? link = freezed,
     Object? heading = freezed,
@@ -166,17 +140,8 @@ class __$$NoticeModelImplCopyWithImpl<$Res>
     Object? tags = freezed,
     Object? startDate = freezed,
     Object? endDate = freezed,
-    Object? v = freezed,
   }) {
     return _then(_$NoticeModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
       imageLink: freezed == imageLink
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
@@ -205,10 +170,6 @@ class __$$NoticeModelImplCopyWithImpl<$Res>
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      v: freezed == v
-          ? _value.v
-          : v // ignore: cast_nullable_to_non_nullable
-              as int?,
     ));
   }
 }
@@ -217,25 +178,18 @@ class __$$NoticeModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NoticeModelImpl implements _NoticeModel {
   const _$NoticeModelImpl(
-      {this.id,
-      this.userId,
-      this.imageLink,
+      {this.imageLink,
       this.link,
       this.heading,
       this.message,
       final List<String>? tags,
       this.startDate,
-      this.endDate,
-      this.v})
+      this.endDate})
       : _tags = tags;
 
   factory _$NoticeModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$NoticeModelImplFromJson(json);
 
-  @override
-  final String? id;
-  @override
-  final String? userId;
   @override
   final String? imageLink;
   @override
@@ -258,12 +212,10 @@ class _$NoticeModelImpl implements _NoticeModel {
   final DateTime? startDate;
   @override
   final DateTime? endDate;
-  @override
-  final int? v;
 
   @override
   String toString() {
-    return 'NoticeModel(id: $id, userId: $userId, imageLink: $imageLink, link: $link, heading: $heading, message: $message, tags: $tags, startDate: $startDate, endDate: $endDate, v: $v)';
+    return 'NoticeModel(imageLink: $imageLink, link: $link, heading: $heading, message: $message, tags: $tags, startDate: $startDate, endDate: $endDate)';
   }
 
   @override
@@ -271,8 +223,6 @@ class _$NoticeModelImpl implements _NoticeModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoticeModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.imageLink, imageLink) ||
                 other.imageLink == imageLink) &&
             (identical(other.link, link) || other.link == link) &&
@@ -281,24 +231,13 @@ class _$NoticeModelImpl implements _NoticeModel {
             const DeepCollectionEquality().equals(other._tags, _tags) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
-            (identical(other.endDate, endDate) || other.endDate == endDate) &&
-            (identical(other.v, v) || other.v == v));
+            (identical(other.endDate, endDate) || other.endDate == endDate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      userId,
-      imageLink,
-      link,
-      heading,
-      message,
-      const DeepCollectionEquality().hash(_tags),
-      startDate,
-      endDate,
-      v);
+  int get hashCode => Object.hash(runtimeType, imageLink, link, heading,
+      message, const DeepCollectionEquality().hash(_tags), startDate, endDate);
 
   @JsonKey(ignore: true)
   @override
@@ -316,24 +255,17 @@ class _$NoticeModelImpl implements _NoticeModel {
 
 abstract class _NoticeModel implements NoticeModel {
   const factory _NoticeModel(
-      {final String? id,
-      final String? userId,
-      final String? imageLink,
+      {final String? imageLink,
       final String? link,
       final String? heading,
       final String? message,
       final List<String>? tags,
       final DateTime? startDate,
-      final DateTime? endDate,
-      final int? v}) = _$NoticeModelImpl;
+      final DateTime? endDate}) = _$NoticeModelImpl;
 
   factory _NoticeModel.fromJson(Map<String, dynamic> json) =
       _$NoticeModelImpl.fromJson;
 
-  @override
-  String? get id;
-  @override
-  String? get userId;
   @override
   String? get imageLink;
   @override
@@ -348,8 +280,6 @@ abstract class _NoticeModel implements NoticeModel {
   DateTime? get startDate;
   @override
   DateTime? get endDate;
-  @override
-  int? get v;
   @override
   @JsonKey(ignore: true)
   _$$NoticeModelImplCopyWith<_$NoticeModelImpl> get copyWith =>

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lazy_engineer/assets/constants/decoration.dart';
 import 'package:lazy_engineer/assets/constants/strings.dart';
 import 'package:lazy_engineer/assets/images.dart';
+import 'package:lazy_engineer/config/theme/app_theme.dart';
 import 'package:lazy_engineer/core/helper_function.dart';
 import 'package:lazy_engineer/features/components/custom_button.dart';
 import 'package:lazy_engineer/features/components/custom_image.dart';
-import 'package:lazy_engineer/features/file/data/repositories/files_repository_impl.dart';
 import 'package:lazy_engineer/features/file/presentation/cubit/files_detail_cubit/files_detail_cubit.dart';
 
 class FilesDetailHeader extends StatelessWidget {
@@ -17,20 +18,21 @@ class FilesDetailHeader extends StatelessWidget {
     required this.semesterValue,
     required this.file,
     required this.image,
+    required this.isFavourite,
   });
   final String title;
   final String userId;
   final String semesterValue;
   final String file;
   final String image;
+  final bool isFavourite;
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.all(8),
       child: BlocProvider(
-        create: (context) =>
-            FilesDetailCubit(FilesRepositoryImpl(), userId, file),
+        create: (context) => FilesDetailCubit(userId, file, isFavourite),
         child: BlocBuilder<FilesDetailCubit, FilesDetailState>(
           builder: (context, state) {
             final read = context.read<FilesDetailCubit>();
@@ -112,20 +114,17 @@ class FilesDetailHeader extends StatelessWidget {
                       //   ],
                       // ),
                       Table(
-                        defaultVerticalAlignment:
-                            TableCellVerticalAlignment.middle,
-                        defaultColumnWidth:
-                            const IntrinsicColumnWidth(flex: 4.0),
+                        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                        defaultColumnWidth: const IntrinsicColumnWidth(flex: 4.0),
                         children: [
                           TableRow(
                             children: [
                               Text(
                                 'Semester: ',
-                                style: theme.textTheme.titleMedium
-                                    ?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                '${addOrdinals(int.parse(semesterValue))} Semester',
+                                '${addOrdinals(int.parse(semesterValue))}',
                                 style: theme.textTheme.titleMedium,
                               ),
                             ],
@@ -133,21 +132,30 @@ class FilesDetailHeader extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 16),
-                      Center(
-                        child: CustomButton(
-                          text: download,
-                          onPressed: () => read.download(file),
-                          width: 120,
-                        ),
-                      ),
-                      if (context.watch<FilesDetailCubit>().isDownloaded !=
-                          null)
-                        Center(
-                          child: Text(
-                            watch.isDownloaded!
-                                ? 'File is Downloaded'
-                                : 'File is not Downloaded',
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomButton(
+                            text: download,
+                            onPressed: () => read.download(file),
                           ),
+                          IconButton(
+                            onPressed: () => read.like(),
+                            icon: state.isFavourite
+                                ? FaIcon(
+                                    FontAwesomeIcons.solidThumbsUp,
+                                    color: AppThemes.favouriteColor,
+                                  )
+                                : FaIcon(
+                                    FontAwesomeIcons.thumbsUp,
+                                    color: AppThemes.favouriteColor,
+                                  ),
+                          ),
+                        ],
+                      ),
+                      if (context.watch<FilesDetailCubit>().isDownloaded != null)
+                        Text(
+                          watch.isDownloaded! ? 'File is Downloaded' : 'File is not Downloaded',
                         ),
                     ],
                   ),

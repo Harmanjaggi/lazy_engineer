@@ -70,7 +70,7 @@ class BooksRepositoryImpl extends BooksRepository {
     try {
       final List<BookDetail> newData = [];
       for (final book in data) {
-        final bool check = writerCheck(filter[0], book.writer);
+        final bool check = writerCheck(filter[0], book.writer?.split(','));
         if (check) newData.add(book);
       }
       return newData;

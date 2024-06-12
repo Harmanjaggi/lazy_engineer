@@ -19,7 +19,7 @@ class PaperResponse with _$PaperResponse {
 @freezed
 class PaperDetail with _$PaperDetail {
   const factory PaperDetail(
-    String? userId,
+    @JsonKey(name: '_id') String? id,
     String? title,
     String? about,
     String? semester,
@@ -31,8 +31,7 @@ class PaperDetail with _$PaperDetail {
     List<String>? tags,
     String? mediaLink,
     String? imageLink,
-    int? like,
-    int? dislike,
+    bool? isFavorited,
   ) = _PaperDetail;
 
   factory PaperDetail.fromJson(Map<String, dynamic> json) => _$PaperDetailFromJson(json);

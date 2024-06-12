@@ -222,7 +222,8 @@ PaperDetail _$PaperDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PaperDetail {
-  String? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: '_id')
+  String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get about => throw _privateConstructorUsedError;
   String? get semester => throw _privateConstructorUsedError;
@@ -234,8 +235,7 @@ mixin _$PaperDetail {
   List<String>? get tags => throw _privateConstructorUsedError;
   String? get mediaLink => throw _privateConstructorUsedError;
   String? get imageLink => throw _privateConstructorUsedError;
-  int? get like => throw _privateConstructorUsedError;
-  int? get dislike => throw _privateConstructorUsedError;
+  bool? get isFavorited => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -250,7 +250,7 @@ abstract class $PaperDetailCopyWith<$Res> {
       _$PaperDetailCopyWithImpl<$Res, PaperDetail>;
   @useResult
   $Res call(
-      {String? userId,
+      {@JsonKey(name: '_id') String? id,
       String? title,
       String? about,
       String? semester,
@@ -262,8 +262,7 @@ abstract class $PaperDetailCopyWith<$Res> {
       List<String>? tags,
       String? mediaLink,
       String? imageLink,
-      int? like,
-      int? dislike});
+      bool? isFavorited});
 }
 
 /// @nodoc
@@ -279,7 +278,7 @@ class _$PaperDetailCopyWithImpl<$Res, $Val extends PaperDetail>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? id = freezed,
     Object? title = freezed,
     Object? about = freezed,
     Object? semester = freezed,
@@ -291,13 +290,12 @@ class _$PaperDetailCopyWithImpl<$Res, $Val extends PaperDetail>
     Object? tags = freezed,
     Object? mediaLink = freezed,
     Object? imageLink = freezed,
-    Object? like = freezed,
-    Object? dislike = freezed,
+    Object? isFavorited = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String?,
       title: freezed == title
           ? _value.title
@@ -343,14 +341,10 @@ class _$PaperDetailCopyWithImpl<$Res, $Val extends PaperDetail>
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
               as String?,
-      like: freezed == like
-          ? _value.like
-          : like // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dislike: freezed == dislike
-          ? _value.dislike
-          : dislike // ignore: cast_nullable_to_non_nullable
-              as int?,
+      isFavorited: freezed == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -364,7 +358,7 @@ abstract class _$$PaperDetailImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? userId,
+      {@JsonKey(name: '_id') String? id,
       String? title,
       String? about,
       String? semester,
@@ -376,8 +370,7 @@ abstract class _$$PaperDetailImplCopyWith<$Res>
       List<String>? tags,
       String? mediaLink,
       String? imageLink,
-      int? like,
-      int? dislike});
+      bool? isFavorited});
 }
 
 /// @nodoc
@@ -391,7 +384,7 @@ class __$$PaperDetailImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? id = freezed,
     Object? title = freezed,
     Object? about = freezed,
     Object? semester = freezed,
@@ -403,13 +396,12 @@ class __$$PaperDetailImplCopyWithImpl<$Res>
     Object? tags = freezed,
     Object? mediaLink = freezed,
     Object? imageLink = freezed,
-    Object? like = freezed,
-    Object? dislike = freezed,
+    Object? isFavorited = freezed,
   }) {
     return _then(_$PaperDetailImpl(
-      freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String?,
       freezed == title
           ? _value.title
@@ -455,14 +447,10 @@ class __$$PaperDetailImplCopyWithImpl<$Res>
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
               as String?,
-      freezed == like
-          ? _value.like
-          : like // ignore: cast_nullable_to_non_nullable
-              as int?,
-      freezed == dislike
-          ? _value.dislike
-          : dislike // ignore: cast_nullable_to_non_nullable
-              as int?,
+      freezed == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -471,7 +459,7 @@ class __$$PaperDetailImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PaperDetailImpl implements _PaperDetail {
   const _$PaperDetailImpl(
-      this.userId,
+      @JsonKey(name: '_id') this.id,
       this.title,
       this.about,
       this.semester,
@@ -483,15 +471,15 @@ class _$PaperDetailImpl implements _PaperDetail {
       final List<String>? tags,
       this.mediaLink,
       this.imageLink,
-      this.like,
-      this.dislike)
+      this.isFavorited)
       : _tags = tags;
 
   factory _$PaperDetailImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaperDetailImplFromJson(json);
 
   @override
-  final String? userId;
+  @JsonKey(name: '_id')
+  final String? id;
   @override
   final String? title;
   @override
@@ -523,13 +511,11 @@ class _$PaperDetailImpl implements _PaperDetail {
   @override
   final String? imageLink;
   @override
-  final int? like;
-  @override
-  final int? dislike;
+  final bool? isFavorited;
 
   @override
   String toString() {
-    return 'PaperDetail(userId: $userId, title: $title, about: $about, semester: $semester, subject: $subject, unit: $unit, chapter: $chapter, topic: $topic, fileLink: $fileLink, tags: $tags, mediaLink: $mediaLink, imageLink: $imageLink, like: $like, dislike: $dislike)';
+    return 'PaperDetail(id: $id, title: $title, about: $about, semester: $semester, subject: $subject, unit: $unit, chapter: $chapter, topic: $topic, fileLink: $fileLink, tags: $tags, mediaLink: $mediaLink, imageLink: $imageLink, isFavorited: $isFavorited)';
   }
 
   @override
@@ -537,7 +523,7 @@ class _$PaperDetailImpl implements _PaperDetail {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaperDetailImpl &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.about, about) || other.about == about) &&
             (identical(other.semester, semester) ||
@@ -553,15 +539,15 @@ class _$PaperDetailImpl implements _PaperDetail {
                 other.mediaLink == mediaLink) &&
             (identical(other.imageLink, imageLink) ||
                 other.imageLink == imageLink) &&
-            (identical(other.like, like) || other.like == like) &&
-            (identical(other.dislike, dislike) || other.dislike == dislike));
+            (identical(other.isFavorited, isFavorited) ||
+                other.isFavorited == isFavorited));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      userId,
+      id,
       title,
       about,
       semester,
@@ -573,8 +559,7 @@ class _$PaperDetailImpl implements _PaperDetail {
       const DeepCollectionEquality().hash(_tags),
       mediaLink,
       imageLink,
-      like,
-      dislike);
+      isFavorited);
 
   @JsonKey(ignore: true)
   @override
@@ -592,7 +577,7 @@ class _$PaperDetailImpl implements _PaperDetail {
 
 abstract class _PaperDetail implements PaperDetail {
   const factory _PaperDetail(
-      final String? userId,
+      @JsonKey(name: '_id') final String? id,
       final String? title,
       final String? about,
       final String? semester,
@@ -604,14 +589,14 @@ abstract class _PaperDetail implements PaperDetail {
       final List<String>? tags,
       final String? mediaLink,
       final String? imageLink,
-      final int? like,
-      final int? dislike) = _$PaperDetailImpl;
+      final bool? isFavorited) = _$PaperDetailImpl;
 
   factory _PaperDetail.fromJson(Map<String, dynamic> json) =
       _$PaperDetailImpl.fromJson;
 
   @override
-  String? get userId;
+  @JsonKey(name: '_id')
+  String? get id;
   @override
   String? get title;
   @override
@@ -635,9 +620,7 @@ abstract class _PaperDetail implements PaperDetail {
   @override
   String? get imageLink;
   @override
-  int? get like;
-  @override
-  int? get dislike;
+  bool? get isFavorited;
   @override
   @JsonKey(ignore: true)
   _$$PaperDetailImplCopyWith<_$PaperDetailImpl> get copyWith =>

@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:lazy_engineer/features/auth/data/models/sign_in_model/sign_in_model.dart';
 import 'package:lazy_engineer/features/auth/data/models/sign_up_model/sign_up_model.dart';
 import 'package:lazy_engineer/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:lazy_engineer/navigation/dio/header.dart';
 
 part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';
@@ -37,8 +38,8 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> currentState() async {
-    await Future.delayed(const Duration(seconds: 3));
     token = await repository.getToken();
+    HeaderValues(token);
     if (token != null) {
       emit(AuthState.authorized(token!));
     } else {

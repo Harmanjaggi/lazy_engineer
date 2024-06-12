@@ -220,7 +220,8 @@ NoteDetail _$NoteDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NoteDetail {
-  String? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: '_id')
+  String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get about => throw _privateConstructorUsedError;
   String? get semester => throw _privateConstructorUsedError;
@@ -231,8 +232,7 @@ mixin _$NoteDetail {
   List<String>? get tags => throw _privateConstructorUsedError;
   String? get mediaLink => throw _privateConstructorUsedError;
   String? get imageLink => throw _privateConstructorUsedError;
-  int? get like => throw _privateConstructorUsedError;
-  int? get dislike => throw _privateConstructorUsedError;
+  bool? get isFavorited => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -247,7 +247,7 @@ abstract class $NoteDetailCopyWith<$Res> {
       _$NoteDetailCopyWithImpl<$Res, NoteDetail>;
   @useResult
   $Res call(
-      {String? userId,
+      {@JsonKey(name: '_id') String? id,
       String? title,
       String? about,
       String? semester,
@@ -258,8 +258,7 @@ abstract class $NoteDetailCopyWith<$Res> {
       List<String>? tags,
       String? mediaLink,
       String? imageLink,
-      int? like,
-      int? dislike});
+      bool? isFavorited});
 }
 
 /// @nodoc
@@ -275,7 +274,7 @@ class _$NoteDetailCopyWithImpl<$Res, $Val extends NoteDetail>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? id = freezed,
     Object? title = freezed,
     Object? about = freezed,
     Object? semester = freezed,
@@ -286,13 +285,12 @@ class _$NoteDetailCopyWithImpl<$Res, $Val extends NoteDetail>
     Object? tags = freezed,
     Object? mediaLink = freezed,
     Object? imageLink = freezed,
-    Object? like = freezed,
-    Object? dislike = freezed,
+    Object? isFavorited = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String?,
       title: freezed == title
           ? _value.title
@@ -334,14 +332,10 @@ class _$NoteDetailCopyWithImpl<$Res, $Val extends NoteDetail>
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
               as String?,
-      like: freezed == like
-          ? _value.like
-          : like // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dislike: freezed == dislike
-          ? _value.dislike
-          : dislike // ignore: cast_nullable_to_non_nullable
-              as int?,
+      isFavorited: freezed == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -355,7 +349,7 @@ abstract class _$$NoteDetailImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? userId,
+      {@JsonKey(name: '_id') String? id,
       String? title,
       String? about,
       String? semester,
@@ -366,8 +360,7 @@ abstract class _$$NoteDetailImplCopyWith<$Res>
       List<String>? tags,
       String? mediaLink,
       String? imageLink,
-      int? like,
-      int? dislike});
+      bool? isFavorited});
 }
 
 /// @nodoc
@@ -381,7 +374,7 @@ class __$$NoteDetailImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? id = freezed,
     Object? title = freezed,
     Object? about = freezed,
     Object? semester = freezed,
@@ -392,13 +385,12 @@ class __$$NoteDetailImplCopyWithImpl<$Res>
     Object? tags = freezed,
     Object? mediaLink = freezed,
     Object? imageLink = freezed,
-    Object? like = freezed,
-    Object? dislike = freezed,
+    Object? isFavorited = freezed,
   }) {
     return _then(_$NoteDetailImpl(
-      freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
+      freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String?,
       freezed == title
           ? _value.title
@@ -440,14 +432,10 @@ class __$$NoteDetailImplCopyWithImpl<$Res>
           ? _value.imageLink
           : imageLink // ignore: cast_nullable_to_non_nullable
               as String?,
-      freezed == like
-          ? _value.like
-          : like // ignore: cast_nullable_to_non_nullable
-              as int?,
-      freezed == dislike
-          ? _value.dislike
-          : dislike // ignore: cast_nullable_to_non_nullable
-              as int?,
+      freezed == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -456,7 +444,7 @@ class __$$NoteDetailImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NoteDetailImpl implements _NoteDetail {
   const _$NoteDetailImpl(
-      this.userId,
+      @JsonKey(name: '_id') this.id,
       this.title,
       this.about,
       this.semester,
@@ -467,15 +455,15 @@ class _$NoteDetailImpl implements _NoteDetail {
       final List<String>? tags,
       this.mediaLink,
       this.imageLink,
-      this.like,
-      this.dislike)
+      this.isFavorited)
       : _tags = tags;
 
   factory _$NoteDetailImpl.fromJson(Map<String, dynamic> json) =>
       _$$NoteDetailImplFromJson(json);
 
   @override
-  final String? userId;
+  @JsonKey(name: '_id')
+  final String? id;
   @override
   final String? title;
   @override
@@ -505,13 +493,11 @@ class _$NoteDetailImpl implements _NoteDetail {
   @override
   final String? imageLink;
   @override
-  final int? like;
-  @override
-  final int? dislike;
+  final bool? isFavorited;
 
   @override
   String toString() {
-    return 'NoteDetail(userId: $userId, title: $title, about: $about, semester: $semester, subject: $subject, unit: $unit, chapter: $chapter, topic: $topic, tags: $tags, mediaLink: $mediaLink, imageLink: $imageLink, like: $like, dislike: $dislike)';
+    return 'NoteDetail(id: $id, title: $title, about: $about, semester: $semester, subject: $subject, unit: $unit, chapter: $chapter, topic: $topic, tags: $tags, mediaLink: $mediaLink, imageLink: $imageLink, isFavorited: $isFavorited)';
   }
 
   @override
@@ -519,7 +505,7 @@ class _$NoteDetailImpl implements _NoteDetail {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoteDetailImpl &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.about, about) || other.about == about) &&
             (identical(other.semester, semester) ||
@@ -533,15 +519,15 @@ class _$NoteDetailImpl implements _NoteDetail {
                 other.mediaLink == mediaLink) &&
             (identical(other.imageLink, imageLink) ||
                 other.imageLink == imageLink) &&
-            (identical(other.like, like) || other.like == like) &&
-            (identical(other.dislike, dislike) || other.dislike == dislike));
+            (identical(other.isFavorited, isFavorited) ||
+                other.isFavorited == isFavorited));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      userId,
+      id,
       title,
       about,
       semester,
@@ -552,8 +538,7 @@ class _$NoteDetailImpl implements _NoteDetail {
       const DeepCollectionEquality().hash(_tags),
       mediaLink,
       imageLink,
-      like,
-      dislike);
+      isFavorited);
 
   @JsonKey(ignore: true)
   @override
@@ -571,7 +556,7 @@ class _$NoteDetailImpl implements _NoteDetail {
 
 abstract class _NoteDetail implements NoteDetail {
   const factory _NoteDetail(
-      final String? userId,
+      @JsonKey(name: '_id') final String? id,
       final String? title,
       final String? about,
       final String? semester,
@@ -582,14 +567,14 @@ abstract class _NoteDetail implements NoteDetail {
       final List<String>? tags,
       final String? mediaLink,
       final String? imageLink,
-      final int? like,
-      final int? dislike) = _$NoteDetailImpl;
+      final bool? isFavorited) = _$NoteDetailImpl;
 
   factory _NoteDetail.fromJson(Map<String, dynamic> json) =
       _$NoteDetailImpl.fromJson;
 
   @override
-  String? get userId;
+  @JsonKey(name: '_id')
+  String? get id;
   @override
   String? get title;
   @override
@@ -611,9 +596,7 @@ abstract class _NoteDetail implements NoteDetail {
   @override
   String? get imageLink;
   @override
-  int? get like;
-  @override
-  int? get dislike;
+  bool? get isFavorited;
   @override
   @JsonKey(ignore: true)
   _$$NoteDetailImplCopyWith<_$NoteDetailImpl> get copyWith =>

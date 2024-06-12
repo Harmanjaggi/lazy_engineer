@@ -7,7 +7,7 @@ class BookDataBox extends StatelessWidget {
     required this.bookName,
     required this.description,
   });
-  final List<String> writers;
+  final String writers;
   final String bookName;
   final String description;
 
@@ -15,8 +15,7 @@ class BookDataBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     String allWriters = writers.toString();
-    allWriters =
-        'By- ${writers.toString().substring(1, writers.toString().length - 1)}';
+    allWriters = 'By- $writers';
     return Flexible(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -29,7 +28,12 @@ class BookDataBox extends StatelessWidget {
               style: theme.textTheme.labelSmall,
             ),
             const SizedBox(height: 8),
-            Text(bookName, style: theme.textTheme.headlineSmall),
+            Text(
+              bookName,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: theme.textTheme.headlineSmall,
+            ),
             const SizedBox(height: 8),
             Text(
               description,

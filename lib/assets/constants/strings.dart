@@ -14,6 +14,9 @@ const String categories = 'Categories';
 const String loginAccount = 'Login Account';
 const String registerAccount = 'Register Account';
 const String fullName = 'Full Name';
+const String designation = 'Designation';
+const String company = 'Company';
+const String yourCompany = 'Your Company';
 const String login = 'Log In';
 const String register = 'Register';
 const String email = 'E-mail';
@@ -29,6 +32,11 @@ const String next = 'Next';
 const String classD = 'Class';
 const String university = 'University';
 const String semester = 'Semester';
+
+const String linkedinHandle = 'Linkedin Handle';
+const String githubHandle = 'Github Handle';
+const String twitterHandle = 'Twitter Handle';
+const String instagramHandle = 'Instagram Handle';
 
 const String notes = 'Notes';
 const String files = 'Files';
@@ -54,6 +62,9 @@ const String similarCompanies = 'Similar Companies';
 const String activelyRecruiting = 'Actively recruiting';
 const String noData = 'No Data';
 
+// favourites
+const String favourites = 'Favourites';
+
 // uplaod
 const String uploadNotes = 'Upload Notes';
 const String uploadPaper = 'Upload Paper';
@@ -65,7 +76,6 @@ const String title = 'Title';
 const String subject = 'Subject';
 const String writers = 'Writers';
 const String writer = 'Writer';
-const String company = 'Company';
 const String noOfEmployees = 'No. of Employees';
 const String payRange = 'Pay Range';
 const String salary = 'Salary';
@@ -89,6 +99,7 @@ const String searchByName = 'Search by Name';
 const String tags = 'Tags';
 const String showMoreC = 'SHOW MORE';
 const String paper = 'Paper';
+const String papers = 'Papers';
 const String book = 'Book';
 const String jobRequest = 'Job Request';
 const String searchTags = 'Search Tags';
@@ -112,8 +123,8 @@ const String apply = 'Apply';
 const String pdf = 'PDF';
 
 // account
-const String settings = 'Settings';
 const String account = 'Account';
+const String settings = 'Settings';
 const String profile = 'Profile';
 const String changePassword = 'Change password';
 const String addPaymentMethod = 'Add a payment method';

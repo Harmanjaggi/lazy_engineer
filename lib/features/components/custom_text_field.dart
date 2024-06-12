@@ -26,6 +26,7 @@ class CustomTextField extends StatelessWidget {
     this.focusNode,
     this.suffixOnPress,
     this.suffixIconSize,
+    this.prefix,
   });
 
   final TextEditingController controller;
@@ -48,6 +49,7 @@ class CustomTextField extends StatelessWidget {
   final void Function(String? value)? onChange;
   final void Function()? suffixOnPress;
   final FocusNode? focusNode;
+  final Widget? prefix;
 
   factory CustomTextField.secondary({
     required TextEditingController controller,
@@ -109,16 +111,17 @@ class CustomTextField extends StatelessWidget {
               hintText: hintText,
               labelText: labelText,
               fillColor: Theme.of(context).canvasColor,
-              prefixIcon: prefixIcon != null
+              prefixIcon: (prefixIcon != null || prefix != null)
                   ? Padding(
                       padding: const EdgeInsets.symmetric(
-                        vertical: 8,
+                        vertical: 12,
                         horizontal: 12,
                       ),
-                      child: CustomIcon(
-                        prefixIcon!,
-                        color: Colors.black,
-                      ),
+                      child: prefix ??
+                          CustomIcon(
+                            prefixIcon!,
+                            color: Colors.black,
+                          ),
                     )
                   : null,
               suffixIcon: suffixIcon != null
@@ -138,24 +141,13 @@ class CustomTextField extends StatelessWidget {
                       ),
                     )
                   : null,
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               filled: filled,
-              border: underline
-                  ? circularBorder(AppThemes.lightDarkColor)
-                  : underlineBorder(AppThemes.lightDarkColor),
-              enabledBorder: !underline
-                  ? circularBorder(AppThemes.lightDarkColor)
-                  : underlineBorder(AppThemes.lightDarkColor),
-              disabledBorder: !underline
-                  ? circularBorder(AppThemes.lightDarkColor)
-                  : underlineBorder(AppThemes.lightDarkColor),
-              focusedBorder: !underline
-                  ? circularBorder(AppThemes.primaryColor1)
-                  : underlineBorder(AppThemes.primaryColor1),
-              errorBorder: !underline
-                  ? circularBorder(AppThemes.errorColor)
-                  : underlineBorder(AppThemes.errorColor),
+              border: underline ? circularBorder(AppThemes.lightDarkColor) : underlineBorder(AppThemes.lightDarkColor),
+              enabledBorder: !underline ? circularBorder(AppThemes.lightDarkColor) : underlineBorder(AppThemes.lightDarkColor),
+              disabledBorder: !underline ? circularBorder(AppThemes.lightDarkColor) : underlineBorder(AppThemes.lightDarkColor),
+              focusedBorder: !underline ? circularBorder(AppThemes.primaryColor1) : underlineBorder(AppThemes.primaryColor1),
+              errorBorder: !underline ? circularBorder(AppThemes.errorColor) : underlineBorder(AppThemes.errorColor),
             ),
           ),
         );
@@ -165,8 +157,7 @@ class CustomTextField extends StatelessWidget {
 
   InputBorder circularBorder(Color color) {
     return OutlineInputBorder(
-      borderSide:
-          showBorder ? BorderSide(color: color, width: 0.5) : BorderSide.none,
+      borderSide: showBorder ? BorderSide(color: color, width: 0.5) : BorderSide.none,
       borderRadius: const BorderRadius.all(
         Radius.circular(kRoundedRectangleRadius),
       ),

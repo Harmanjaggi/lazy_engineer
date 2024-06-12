@@ -37,12 +37,13 @@ class BookDescriptionScreen extends StatelessWidget {
               children: [
                 BooksDetailHeader(
                   title: data?.title ?? '',
-                  userId: data?.userId ?? '',
+                  userId: data?.id ?? '',
                   file: workingLink(data?.mediaLink) ?? '',
                   image: workingLink(data?.imageLink) ?? '',
                   pagesValue: data?.pages,
                   bookEditionValue: data?.bookEdition,
                   semesterValue: data?.semester ?? '',
+                  isFavourite: data?.isFavorited ?? false,
                 ),
                 const SizedBox(height: 12),
                 ShowTagsWidget(data?.tags ?? []),

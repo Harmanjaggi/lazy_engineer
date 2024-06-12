@@ -13,7 +13,6 @@ import 'package:lazy_engineer/features/components/search_bar/search_bar.dart';
 import 'package:lazy_engineer/features/components/search_bar/search_notes/search_bloc.dart';
 import 'package:lazy_engineer/features/components/staggered_view.dart';
 import 'package:lazy_engineer/features/home/presentation/pages/home_screen_widget.dart';
-import 'package:lazy_engineer/features/notes/data/repositories/notes_repository_impl.dart';
 import 'package:lazy_engineer/features/notes/presentation/cubit/notes_cubit/notes_cubit.dart';
 import 'package:lazy_engineer/navigation/routes.dart';
 
@@ -23,7 +22,7 @@ class NotesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => NotesCubit(NotesRepositoryImpl()),
+      create: (context) => NotesCubit(),
       child: BlocBuilder<NotesCubit, NotesState>(
         builder: (context, state) {
           return state.when(

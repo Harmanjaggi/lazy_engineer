@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lazy_engineer/assets/constants/decoration.dart';
 import 'package:lazy_engineer/assets/constants/strings.dart';
 import 'package:lazy_engineer/assets/images.dart';
+import 'package:lazy_engineer/config/theme/app_theme.dart';
 import 'package:lazy_engineer/core/helper_function.dart';
 import 'package:lazy_engineer/features/components/custom_button.dart';
 import 'package:lazy_engineer/features/components/custom_image.dart';
-import 'package:lazy_engineer/features/papers/data/repositories/papers_repository_impl.dart';
 import 'package:lazy_engineer/features/papers/presentation/cubit/papers_detail_cubit/papers_detail_cubit.dart';
 
 class PapersDetailHeader extends StatelessWidget {
@@ -17,7 +18,8 @@ class PapersDetailHeader extends StatelessWidget {
     required this.file,
     required this.image,
     required this.semesterValue,
-    required this.unitValue,
+    required this.unitValue, 
+    required this.isFavourite,
   });
   final String title;
   final String userId;
@@ -25,14 +27,14 @@ class PapersDetailHeader extends StatelessWidget {
   final String unitValue;
   final String file;
   final String image;
+  final bool isFavourite;
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.all(8),
       child: BlocProvider(
-        create: (context) =>
-            PapersDetailCubit(PapersRepositoryImpl(), userId, file),
+        create: (context) => PapersDetailCubit(userId, file, isFavourite),
         child: BlocBuilder<PapersDetailCubit, PapersDetailState>(
           builder: (context, state) {
             final read = context.read<PapersDetailCubit>();
@@ -114,20 +116,17 @@ class PapersDetailHeader extends StatelessWidget {
                       //   ],
                       // ),
                       Table(
-                        defaultVerticalAlignment:
-                            TableCellVerticalAlignment.middle,
-                        defaultColumnWidth:
-                            const IntrinsicColumnWidth(flex: 4.0),
+                        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                        defaultColumnWidth: const IntrinsicColumnWidth(flex: 4.0),
                         children: [
                           TableRow(
                             children: [
                               Text(
                                 'Semester: ',
-                                style: theme.textTheme.titleMedium
-                                    ?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                '${addOrdinals(int.parse(semesterValue))} Semester',
+                                addOrdinals(int.parse(semesterValue)),
                                 style: theme.textTheme.titleMedium,
                               ),
                             ],
@@ -142,11 +141,10 @@ class PapersDetailHeader extends StatelessWidget {
                             children: [
                               Text(
                                 'Unit: ',
-                                style: theme.textTheme.titleMedium
-                                    ?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                'Unit - $unitValue',
+                                unitValue,
                                 style: theme.textTheme.titleMedium,
                               ),
                             ],
@@ -154,21 +152,30 @@ class PapersDetailHeader extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 16),
-                      Center(
-                        child: CustomButton(
-                          text: download,
-                          onPressed: () => read.download(file),
-                          width: 120,
-                        ),
-                      ),
-                      if (context.watch<PapersDetailCubit>().isDownloaded !=
-                          null)
-                        Center(
-                          child: Text(
-                            watch.isDownloaded!
-                                ? 'Paper is Downloaded'
-                                : 'Paper is not Downloaded',
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomButton(
+                            text: download,
+                            onPressed: () => read.download(file),
                           ),
+                          IconButton(
+                            onPressed: () => read.like(),
+                            icon: state.isFavourite
+                                ? FaIcon(
+                                    FontAwesomeIcons.solidThumbsUp,
+                                    color: AppThemes.favouriteColor,
+                                  )
+                                : FaIcon(
+                                    FontAwesomeIcons.thumbsUp,
+                                    color: AppThemes.favouriteColor,
+                                  ),
+                          ),
+                        ],
+                      ),
+                      if (context.watch<PapersDetailCubit>().isDownloaded != null)
+                        Text(
+                          watch.isDownloaded! ? 'Paper is Downloaded' : 'Paper is not Downloaded',
                         ),
                     ],
                   ),
