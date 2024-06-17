@@ -52,9 +52,11 @@ dev_dependencies:
   url_strategy: ^0.2.0
 
 flutter_icons:
-  image_path: "assets/icons/logo.jpg"
   android: true
   ios: true
+  image_path: "assets/icons/logo.png"
+  # adaptive_icon_background: "#ffffff"
+  # adaptive_icon_foreground: "assets/icons/logo_foreground.png"
 
 flutter:
   uses-material-design: true

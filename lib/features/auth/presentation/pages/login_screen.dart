@@ -17,6 +17,7 @@ class LoginScreen extends StatelessWidget with InputValidationMixin {
     final formGlobalKey = GlobalKey<FormState>();
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
+    final passwordObsecureView = ValueNotifier(true);
     final ThemeData theme = Theme.of(context);
 
     return Align(
@@ -48,14 +49,24 @@ class LoginScreen extends StatelessWidget with InputValidationMixin {
                   validator: emailValidation,
                 ),
                 const SizedBox(height: 16),
-                CustomTextField(
-                  controller: passwordController,
-                  hintText: password,
-                  prefixIcon: AppIcons.passwordIcon,
-                  obscureText: true,
-                  keyboardType: TextInputType.visiblePassword,
-                  validator: passwordValidation,
-                ),
+                ValueListenableBuilder(
+                    valueListenable: passwordObsecureView,
+                    builder: (context, _, __) {
+                      return CustomTextField(
+                        controller: passwordController,
+                        hintText: password,
+                        prefixIcon: AppIcons.passwordIcon,
+                        obscureText: passwordObsecureView.value,
+                        suffixIconSize: 22,
+                        suffixIcon: passwordObsecureView.value
+                            ? AppIcons.hidePasswordIcon
+                            : AppIcons.showPasswordIcon,
+                        suffixOnPress: () => passwordObsecureView.value =
+                            !passwordObsecureView.value,
+                        keyboardType: TextInputType.visiblePassword,
+                        validator: passwordValidation,
+                      );
+                    }),
                 const SizedBox(height: 4),
                 Align(
                   alignment: Alignment.centerRight,
