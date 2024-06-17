@@ -19,11 +19,45 @@ class _ProfileClient implements ProfileClient {
   String? baseUrl;
 
   @override
-  Future<BaseResponse<AccountModal>> updateProfile() async {
+  Future<BaseResponse<AccountModal>> updateProfileWithImage(
+      FormData body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = body;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponse<AccountModal>>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+            .compose(
+              _dio.options,
+              '/auth/updateUser',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BaseResponse<AccountModal>.fromJson(
+      _result.data!,
+      (json) => AccountModal.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<BaseResponse<AccountModal>> updateProfile(
+      Map<String, dynamic> body) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseResponse<AccountModal>>(Options(
       method: 'POST',
@@ -32,7 +66,7 @@ class _ProfileClient implements ProfileClient {
     )
             .compose(
               _dio.options,
-              'auth/updateUser',
+              '/auth/updateUser',
               queryParameters: queryParameters,
               data: _data,
             )

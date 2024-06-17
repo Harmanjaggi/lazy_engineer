@@ -73,7 +73,9 @@ class AppThemes {
                 fontWeight: FontWeight.bold,
               ),
               titleSmall: const TextStyle(
-                  color: subTitleColor, fontWeight: FontWeight.bold,),
+                color: subTitleColor,
+                fontWeight: FontWeight.bold,
+              ),
               labelSmall: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: subTitleColor,
@@ -96,6 +98,7 @@ class AppThemes {
     ),
   };
 }
+
 /// NAME         SIZE  WEIGHT  SPACING
 /// headline1    96.0  light   -1.5
 /// headline2    60.0  light   -0.5
@@ -109,4 +112,4 @@ class AppThemes {
 /// body2        14.0  regular  0.25  (bodyText2)
 /// button       14.0  medium   1.25
 /// caption      12.0  regular  0.4
-/// overline     10.0  regular  1.5 
+/// overline     10.0  regular  1.5

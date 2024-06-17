@@ -22,7 +22,7 @@ Map<String, dynamic> _$$AccountModalImplToJson(_$AccountModalImpl instance) =>
 
 _$UserDetailImpl _$$UserDetailImplFromJson(Map<String, dynamic> json) =>
     _$UserDetailImpl(
-      id: json['id'] as String?,
+      id: json['_id'] as String?,
       fullName: json['fullName'] as String?,
       email: json['email'] as String?,
       bio: json['bio'] as String?,
@@ -44,7 +44,7 @@ _$UserDetailImpl _$$UserDetailImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$UserDetailImplToJson(_$UserDetailImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      '_id': instance.id,
       'fullName': instance.fullName,
       'email': instance.email,
       'bio': instance.bio,

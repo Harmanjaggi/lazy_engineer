@@ -121,14 +121,17 @@ class NotesDetailHeader extends StatelessWidget {
                       // ],
                       // ),
                       Table(
-                        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                        defaultColumnWidth: const IntrinsicColumnWidth(flex: 4.0),
+                        defaultVerticalAlignment:
+                            TableCellVerticalAlignment.middle,
+                        defaultColumnWidth:
+                            const IntrinsicColumnWidth(flex: 4.0),
                         children: [
                           TableRow(
                             children: [
                               Text(
                                 'Semester: ',
-                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium
+                                    ?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 addOrdinals(int.parse(semesterValue)),
@@ -146,7 +149,8 @@ class NotesDetailHeader extends StatelessWidget {
                             children: [
                               Text(
                                 'Unit: ',
-                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium
+                                    ?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 unitValue,
@@ -178,8 +182,11 @@ class NotesDetailHeader extends StatelessWidget {
                           ),
                         ],
                       ),
-                      if (context.watch<NotesDetailCubit>().isDownloaded != null)
-                        Text(watch.isDownloaded! ? 'Note File is Downloaded' : 'Notes File is not Downloaded'),
+                      if (context.watch<NotesDetailCubit>().isDownloaded !=
+                          null)
+                        Text(watch.isDownloaded!
+                            ? 'Note File is Downloaded'
+                            : 'Notes File is not Downloaded'),
                     ],
                   ),
                 ),

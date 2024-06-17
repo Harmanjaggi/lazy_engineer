@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lazy_engineer/config/theme/app_theme.dart';
 import 'package:lazy_engineer/features/account/presentation/cubit/settings/settings_cubit.dart';
+import 'package:lazy_engineer/features/account/presentation/pages/widgets/rate_app_init_widget.dart';
 import 'package:lazy_engineer/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:lazy_engineer/features/auth/presentation/auth_cubit/auth_cubit.dart';
+import 'package:lazy_engineer/features/home/presentation/cubit/user/user_cubit.dart';
 import 'package:lazy_engineer/features/layout_template/layout_template.dart';
+import 'package:lazy_engineer/navigation/dio/rate_my_app.dart';
 import 'package:lazy_engineer/navigation/routes.dart';
 
 class MyApp extends StatelessWidget {
@@ -42,22 +45,27 @@ class MyApp extends StatelessWidget {
         ],
         child: Builder(
           builder: (context) {
-            return MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              routerDelegate: route.routerDelegate,
-              routeInformationParser: route.routeInformationParser,
-              routeInformationProvider: route.routeInformationProvider,
-              scrollBehavior: MyScrollBehavior(),
-              theme: AppThemes().appThemeData[AppTheme.lightTheme],
-              builder: (context, child) => GestureDetector(
-                onTap: () {
-                  final currentFocus = FocusScope.of(context);
-                  if (!currentFocus.hasPrimaryFocus) {
-                    currentFocus.focusedChild?.unfocus();
-                  }
-                },
-                child: LayoutTemplate(child: child!),
-              ),
+            return RateAppInitWidget(
+              builder: (rateMyApp) {
+                RateMyAppProvider(rateMyApp);
+                return MaterialApp.router(
+                  debugShowCheckedModeBanner: false,
+                  routerDelegate: route.routerDelegate,
+                  routeInformationParser: route.routeInformationParser,
+                  routeInformationProvider: route.routeInformationProvider,
+                  scrollBehavior: MyScrollBehavior(),
+                  theme: AppThemes().appThemeData[AppTheme.lightTheme],
+                  builder: (context, child) => GestureDetector(
+                    onTap: () {
+                      final currentFocus = FocusScope.of(context);
+                      if (!currentFocus.hasPrimaryFocus) {
+                        currentFocus.focusedChild?.unfocus();
+                      }
+                    },
+                    child: LayoutTemplate(child: child!),
+                  ),
+                );
+              },
             );
           },
         ),

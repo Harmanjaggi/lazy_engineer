@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lazy_engineer/features/account/presentation/pages/account_screen.dart';
+import 'package:lazy_engineer/features/account/presentation/pages/contact_us.dart';
 import 'package:lazy_engineer/features/auth/presentation/pages/auth_screen.dart';
 import 'package:lazy_engineer/features/auth/presentation/pages/lazy_engineer.dart';
 import 'package:lazy_engineer/features/books/data/models/books_response/book_response.dart';
@@ -46,9 +47,11 @@ class RouteGenerator {
   static const String notesRoute = '/home/notes';
   static const String notesDescriptionRoute = '/home/notes/notes_description';
   static const String fileRoute = '/home/practical_file';
-  static const String fileDescriptionRoute = '/home/practical_file/practicle_file_description';
+  static const String fileDescriptionRoute =
+      '/home/practical_file/practicle_file_description';
   static const String questionPaperRoute = '/home/question_paper';
-  static const String questionPaperDescriptionRoute = '/home/question_paper/question_paper_description';
+  static const String questionPaperDescriptionRoute =
+      '/home/question_paper/question_paper_description';
   static const String booksRoute = '/home/books';
   static const String bookDescriptionRoute = '/home/books/book_description';
   static const String jobsRoute = '/home/jobs';
@@ -58,6 +61,7 @@ class RouteGenerator {
   static const String accountRoute = '/home/account';
   static const String profileRoute = '/home/account/profile';
   static const String notificationsRoute = '/home/account/notifications';
+  static const String contactUsRoute = '/home/account/contact_us';
 
   /// Favourites
   static const String favouritesRoute = '/favourites';
@@ -66,7 +70,8 @@ class RouteGenerator {
   static const String uploadRoute = '/upload';
   static const String uploadNotesRoute = '/upload/notes';
   static const String uploadFileRoute = '/upload/practicle_file';
-  static const String uploadQuestionPaperRoute = '/upload/upload_question_paper';
+  static const String uploadQuestionPaperRoute =
+      '/upload/upload_question_paper';
   static const String uploadBooksRoute = '/upload/books';
   static const String uploadJobsRoute = '/upload/jobs';
   static const String uploadPaperRoute = '/upload/question_paper';
@@ -117,13 +122,17 @@ class RouteGenerator {
                     path: 'settings',
                     builder: (_, __) => const SettingsScreen(),
                   ),
-                   GoRoute(
+                  GoRoute(
                     path: 'notifications',
                     builder: (_, __) => const NoticationsScreen(),
                   ),
                   GoRoute(
                     path: 'profile',
                     builder: (_, __) => const ProfileScreen(),
+                  ),
+                  GoRoute(
+                    path: 'contact_us',
+                    builder: (_, __) => const ContatctUs(),
                   ),
                 ],
               ),
@@ -137,7 +146,8 @@ class RouteGenerator {
                       // String? id = state.params['id'];
                       return MaterialPage<void>(
                         key: state.pageKey,
-                        child: BookDescriptionScreen(state.extra as BookDetail?),
+                        child:
+                            BookDescriptionScreen(state.extra as BookDetail?),
                       );
                     },
                   ),
@@ -276,6 +286,7 @@ CustomTransitionPage buildPageWithDefaultTransition<T>({
   return CustomTransitionPage<T>(
     key: state.pageKey,
     child: child,
-    transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(opacity: animation, child: child),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+        FadeTransition(opacity: animation, child: child),
   );
 }

@@ -13,7 +13,8 @@ class HomeRemoteDatasource {
   factory HomeRemoteDatasource() {
     final Dio dio = Dio();
     dio.interceptors.add(PrettyDioLogger());
-    dio.options.headers.addAll({HeaderKeys.tokenHeaderKey: HeaderValues.userToken});
+    dio.options.headers
+        .addAll({HeaderKeys.tokenHeaderKey: HeaderValues.userToken});
     final HomeClient client = HomeClient(dio, baseUrl: AppConfig.apiBaseUrl);
     return HomeRemoteDatasource._(client);
   }
@@ -23,6 +24,7 @@ class HomeRemoteDatasource {
     final BaseResponse<AccountModal> response = await _client.getUser();
     return response;
   }
+
   Future<BaseResponse<List<NoticeModel>>> getNotice() async {
     final BaseResponse<List<NoticeModel>> response = await _client.getNotice();
     return response;

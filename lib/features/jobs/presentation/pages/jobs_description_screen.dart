@@ -40,7 +40,8 @@ class JobsDescriptionScreen extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             'Date Posted - ${data?.datePosted}',
-            style: theme.textTheme.bodyMedium?.copyWith(color: AppThemes.subTitleColor),
+            style: theme.textTheme.bodyMedium
+                ?.copyWith(color: AppThemes.subTitleColor),
           ),
           const SizedBox(height: 12),
           Row(
@@ -92,8 +93,10 @@ class JobsDescriptionScreen extends StatelessWidget {
           ),
           SizedBox(height: 16),
           BlocProvider<JobsDetailCubit>(
-            create: (context) => JobsDetailCubit(data?.id ?? '', data?.isFavorited ?? false),
-            child: BlocBuilder<JobsDetailCubit, JobsDetailState>(builder: (context, state) {
+            create: (context) =>
+                JobsDetailCubit(data?.id ?? '', data?.isFavorited ?? false),
+            child: BlocBuilder<JobsDetailCubit, JobsDetailState>(
+                builder: (context, state) {
               final read = context.read<JobsDetailCubit>();
               return Row(
                 children: [

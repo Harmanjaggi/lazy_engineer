@@ -6,19 +6,19 @@ part 'upload_paper_request.g.dart';
 
 @freezed
 class UploadPaperRequest with _$UploadPaperRequest {
-    const factory UploadPaperRequest({
-        required String title,
-        required String about,
-        required String semester,
-        String? subject,
-        String? unit,
-        String? chapter,
-        String? topic,
-        String? fileLink,
-        required List<String> tags,
-        dynamic file,
-        dynamic image,
-    }) = _UploadPaperRequest;
+  const factory UploadPaperRequest({
+    required String title,
+    required String about,
+    required String semester,
+    String? subject,
+    String? unit,
+    String? chapter,
+    String? topic,
+    String? fileLink,
+    required List<String> tags,
+    dynamic file,
+    dynamic image,
+  }) = _UploadPaperRequest;
 
   factory UploadPaperRequest.fromJson(Map<String, dynamic> json) =>
       _$UploadPaperRequestFromJson(json);

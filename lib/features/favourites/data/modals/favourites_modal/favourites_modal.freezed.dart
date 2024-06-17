@@ -21,6 +21,7 @@ FavouritesModal _$FavouritesModalFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FavouritesModal {
   List<FileDetail?>? get practicleFile => throw _privateConstructorUsedError;
+  @JsonKey(name: 'question_paper')
   List<PaperDetail?>? get questionPaper => throw _privateConstructorUsedError;
   List<BookDetail?>? get books => throw _privateConstructorUsedError;
   List<JobDetail?>? get job => throw _privateConstructorUsedError;
@@ -40,7 +41,7 @@ abstract class $FavouritesModalCopyWith<$Res> {
   @useResult
   $Res call(
       {List<FileDetail?>? practicleFile,
-      List<PaperDetail?>? questionPaper,
+      @JsonKey(name: 'question_paper') List<PaperDetail?>? questionPaper,
       List<BookDetail?>? books,
       List<JobDetail?>? job,
       List<NoteDetail?>? note});
@@ -100,7 +101,7 @@ abstract class _$$FavouritesModalImplCopyWith<$Res>
   @useResult
   $Res call(
       {List<FileDetail?>? practicleFile,
-      List<PaperDetail?>? questionPaper,
+      @JsonKey(name: 'question_paper') List<PaperDetail?>? questionPaper,
       List<BookDetail?>? books,
       List<JobDetail?>? job,
       List<NoteDetail?>? note});
@@ -153,7 +154,7 @@ class __$$FavouritesModalImplCopyWithImpl<$Res>
 class _$FavouritesModalImpl implements _FavouritesModal {
   const _$FavouritesModalImpl(
       {final List<FileDetail?>? practicleFile,
-      final List<PaperDetail?>? questionPaper,
+      @JsonKey(name: 'question_paper') final List<PaperDetail?>? questionPaper,
       final List<BookDetail?>? books,
       final List<JobDetail?>? job,
       final List<NoteDetail?>? note})
@@ -178,6 +179,7 @@ class _$FavouritesModalImpl implements _FavouritesModal {
 
   final List<PaperDetail?>? _questionPaper;
   @override
+  @JsonKey(name: 'question_paper')
   List<PaperDetail?>? get questionPaper {
     final value = _questionPaper;
     if (value == null) return null;
@@ -263,7 +265,7 @@ class _$FavouritesModalImpl implements _FavouritesModal {
 abstract class _FavouritesModal implements FavouritesModal {
   const factory _FavouritesModal(
       {final List<FileDetail?>? practicleFile,
-      final List<PaperDetail?>? questionPaper,
+      @JsonKey(name: 'question_paper') final List<PaperDetail?>? questionPaper,
       final List<BookDetail?>? books,
       final List<JobDetail?>? job,
       final List<NoteDetail?>? note}) = _$FavouritesModalImpl;
@@ -274,6 +276,7 @@ abstract class _FavouritesModal implements FavouritesModal {
   @override
   List<FileDetail?>? get practicleFile;
   @override
+  @JsonKey(name: 'question_paper')
   List<PaperDetail?>? get questionPaper;
   @override
   List<BookDetail?>? get books;

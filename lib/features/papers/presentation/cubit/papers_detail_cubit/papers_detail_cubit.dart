@@ -16,9 +16,9 @@ class PapersDetailCubit extends Cubit<PapersDetailState> {
   PapersDetailCubit(this.id, this.fileLink, this.isFavourite)
       : super(PapersDetailState(isFavourite: isFavourite));
 
-
   final PapersRepositoryImpl paperRepository = PapersRepositoryImpl();
-  final FavouritesRepositoryImpl favouritesRepository = FavouritesRepositoryImpl();
+  final FavouritesRepositoryImpl favouritesRepository =
+      FavouritesRepositoryImpl();
 
   bool? isDownloaded;
   bool? rating;
@@ -27,7 +27,7 @@ class PapersDetailCubit extends Cubit<PapersDetailState> {
       isDownloaded = await paperRepository.download(fileLink);
       emit(PapersDetailState(isDownloaded: true, isFavourite: isFavourite));
     } catch (e) {
-      emit(PapersDetailState(isDownloaded: false,isFavourite: isFavourite));
+      emit(PapersDetailState(isDownloaded: false, isFavourite: isFavourite));
     }
   }
 
@@ -47,15 +47,19 @@ class PapersDetailCubit extends Cubit<PapersDetailState> {
 
   void like() async {
     if (isFavourite == true) {
-      FavouriteBody body = FavouriteBody(id: id, update: false, type: 'question_paper');
-      FavouriteResponse? response = await favouritesRepository.removeFavourites(body);
+      FavouriteBody body =
+          FavouriteBody(id: id, update: false, type: 'question_paper');
+      FavouriteResponse? response =
+          await favouritesRepository.removeFavourites(body);
       if (response != null && response.acknowledged == true) {
         isFavourite = false;
         emit(const PapersDetailState(isFavourite: false));
       }
     } else {
-      FavouriteBody body = FavouriteBody(id: id, update: true, type: 'question_paper');
-      FavouritesModal? response = await favouritesRepository.addFavourites(body);
+      FavouriteBody body =
+          FavouriteBody(id: id, update: true, type: 'question_paper');
+      FavouritesModal? response =
+          await favouritesRepository.addFavourites(body);
       if (response != null) {
         isFavourite = true;
         emit(const PapersDetailState(isFavourite: true));

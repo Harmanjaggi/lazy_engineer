@@ -10,5 +10,6 @@ class UploadState with _$UploadState {
   // document
   const factory UploadState.documentLoading() = DocumentLoading;
   const factory UploadState.documentFailure(dynamic e) = DocumentFailure;
-  const factory UploadState.documentSuccess(PlatformFile data) = DocumentSuccess;
+  const factory UploadState.documentSuccess(PlatformFile data) =
+      DocumentSuccess;
 }

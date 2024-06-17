@@ -13,9 +13,11 @@ class FilesDetailCubit extends Cubit<FilesDetailState> {
   final String id;
   final String fileLink;
   bool isFavourite;
-  FilesDetailCubit(this.id, this.fileLink, this.isFavourite) : super(FilesDetailState(isFavourite: isFavourite));
+  FilesDetailCubit(this.id, this.fileLink, this.isFavourite)
+      : super(FilesDetailState(isFavourite: isFavourite));
   final FilesRepositoryImpl fileRepository = FilesRepositoryImpl();
-  final FavouritesRepositoryImpl favouritesRepository = FavouritesRepositoryImpl();
+  final FavouritesRepositoryImpl favouritesRepository =
+      FavouritesRepositoryImpl();
 
   bool? isDownloaded;
   bool? rating;
@@ -30,15 +32,19 @@ class FilesDetailCubit extends Cubit<FilesDetailState> {
 
   void like() async {
     if (isFavourite == true) {
-      FavouriteBody body = FavouriteBody(id: id, update: false, type: 'practicleFile');
-      FavouriteResponse? response = await favouritesRepository.removeFavourites(body);
+      FavouriteBody body =
+          FavouriteBody(id: id, update: false, type: 'practicleFile');
+      FavouriteResponse? response =
+          await favouritesRepository.removeFavourites(body);
       if (response != null && response.acknowledged == true) {
         isFavourite = false;
         emit(const FilesDetailState(isFavourite: false));
       }
     } else {
-      FavouriteBody body = FavouriteBody(id: id, update: true, type: 'practicleFile');
-      FavouritesModal? response = await favouritesRepository.addFavourites(body);
+      FavouriteBody body =
+          FavouriteBody(id: id, update: true, type: 'practicleFile');
+      FavouritesModal? response =
+          await favouritesRepository.addFavourites(body);
       if (response != null) {
         isFavourite = true;
         emit(const FilesDetailState(isFavourite: true));

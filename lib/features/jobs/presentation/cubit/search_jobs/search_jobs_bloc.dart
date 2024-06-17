@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:lazy_engineer/features/jobs/data/models/job_response/job_response.dart';
 import 'package:lazy_engineer/features/jobs/domain/jobs_repository.dart';
 
-
 part 'search_jobs_event.dart';
 part 'search_jobs_state.dart';
 part 'search_jobs_bloc.freezed.dart';

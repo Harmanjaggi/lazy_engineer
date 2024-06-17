@@ -53,16 +53,6 @@ class AuthLocalDataSource {
     return prefs?.getString(_userIdKey);
   }
 
-  Future<String?> getUserName() async {
-    await _initprefs();
-    return prefs?.getString(_userNameKey);
-  }
-
-  Future<String?> getUserEmail() async {
-    await _initprefs();
-    return prefs?.getString(_emailKey);
-  }
-
   Future<void> clearUser() async {
     await _initprefs();
     await prefs?.clear();

@@ -7,10 +7,11 @@ part 'user_cubit.freezed.dart';
 part 'user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
-  final HomeRepositoryImpl _repository;
-  UserCubit(this._repository) : super(const UserState.loading()) {
+  UserCubit() : super(const UserState.loading()) {
     getUser();
   }
+
+  final HomeRepositoryImpl _repository = HomeRepositoryImpl();
 
   Future<void> getUser() async {
     try {

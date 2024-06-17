@@ -1,5 +1,13 @@
 /// [AppConfig] App config class
 class AppConfig {
+  static const String playstoreId = "in.lazyEngineer.lazyEngineer";
+  static const String email = 'harmanjaggi2001@gmail.com';
+  static const String linkdin = '/harman-jaggi-2001';
+  static const String linkdinUrl =
+      'https://www.linkedin.com/in/harman-jaggi-2001';
+  static const String resumeLink =
+      'https://docs.google.com/document/d/1M8o6ghvtMluBYG8vfWd0jE7Z_OfWi-XjQ1YlyR2_BLo/edit?usp=sharing';
+
   /// app data
   static const String apiBaseUrl = 'https://api.lazyengineer.in';
   static const String signUp = '/auth/signUp';
@@ -10,7 +18,7 @@ class AppConfig {
   static const String user = '/home/user';
   static const String notice = '/alert';
   static const String account = '/auth/verifyToken';
-  static const String updateProfile = 'auth/updateUser';
+  static const String updateProfile = '/auth/updateUser';
   static const String notes = '/note';
   static const String notesSearch = '/home/notes/search';
   static const String notesFilter = '/home/notes/filter';

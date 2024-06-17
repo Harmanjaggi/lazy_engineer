@@ -5,9 +5,9 @@ class WritersListCubit extends Cubit<List<String>> {
   final List<String>? initialList;
   final TextEditingController controller = TextEditingController();
   final focusNode = FocusNode();
-  WritersListCubit({this.initialList}) : super(initialList ?? const[]) {
+  WritersListCubit({this.initialList}) : super(initialList ?? const []) {
     focusNode.addListener(() {
-      if(controller.text.isNotEmpty && !focusNode.hasFocus) {
+      if (controller.text.isNotEmpty && !focusNode.hasFocus) {
         addElement(controller.text);
       }
     });

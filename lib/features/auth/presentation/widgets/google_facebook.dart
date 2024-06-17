@@ -6,14 +6,16 @@ class GoogleFacebook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      Expanded(
-        child: CustomButton.google(onPressed: () {}),
-      ),
-      const SizedBox(width: 10),
-      Expanded(
-        child: CustomButton.facebook(onPressed: () {}),
-      ),
-    ],);
+    return Row(
+      children: [
+        Expanded(
+          child: CustomButton.google(onPressed: () {}),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: CustomButton.facebook(onPressed: () {}),
+        ),
+      ],
+    );
   }
 }

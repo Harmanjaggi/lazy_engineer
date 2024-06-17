@@ -3,6 +3,8 @@ const String hiveLazyEngineer = 'lazyEngineer';
 const String lazyEngineer = 'Lazy Engineer';
 
 const String home = 'Home';
+const String message = 'Message';
+const String sendMessage = 'Send Message';
 const String upload = 'Upload';
 const String accounts = 'Accounts';
 
@@ -131,6 +133,9 @@ const String addPaymentMethod = 'Add a payment method';
 const String pushNotifications = 'Push notifications';
 const String darkMode = 'Dark mode';
 const String aboutUs = 'About us';
+const String connectWithMe = 'Connect with me';
+const String resume = 'Resume';
+const String aboutMe = 'About me';
 const String privacyPolicy = 'Privacy policy';
 const String termsAndConditions = 'Terms and conditions';
 const String logOut = 'Log Out';
@@ -140,6 +145,7 @@ const String rateUs = 'Rate us';
 const String invitePeopleToTheSite = 'Invite people to the site';
 const String whatsNew = 'What’s new';
 const String contact = 'Contact';
+const String contactInfo = 'Contact Info';
 const String mobile = 'Mobile';
 const String mobileNumber = 'Mobile Number';
 const String education = 'Education';

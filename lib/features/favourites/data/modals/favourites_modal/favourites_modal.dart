@@ -10,13 +10,14 @@ part 'favourites_modal.g.dart';
 
 @freezed
 class FavouritesModal with _$FavouritesModal {
-    const factory FavouritesModal({
-        List<FileDetail?>? practicleFile,
-        List<PaperDetail?>? questionPaper,
-        List<BookDetail?>? books,
-        List<JobDetail?>? job,
-        List<NoteDetail?>? note,
-    }) = _FavouritesModal;
+  const factory FavouritesModal({
+    List<FileDetail?>? practicleFile,
+    @JsonKey(name: 'question_paper') List<PaperDetail?>? questionPaper,
+    List<BookDetail?>? books,
+    List<JobDetail?>? job,
+    List<NoteDetail?>? note,
+  }) = _FavouritesModal;
 
-    factory FavouritesModal.fromJson(Map<String, dynamic> json) => _$FavouritesModalFromJson(json);
+  factory FavouritesModal.fromJson(Map<String, dynamic> json) =>
+      _$FavouritesModalFromJson(json);
 }

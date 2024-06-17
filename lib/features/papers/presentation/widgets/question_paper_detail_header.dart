@@ -18,7 +18,7 @@ class PapersDetailHeader extends StatelessWidget {
     required this.file,
     required this.image,
     required this.semesterValue,
-    required this.unitValue, 
+    required this.unitValue,
     required this.isFavourite,
   });
   final String title;
@@ -116,14 +116,17 @@ class PapersDetailHeader extends StatelessWidget {
                       //   ],
                       // ),
                       Table(
-                        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                        defaultColumnWidth: const IntrinsicColumnWidth(flex: 4.0),
+                        defaultVerticalAlignment:
+                            TableCellVerticalAlignment.middle,
+                        defaultColumnWidth:
+                            const IntrinsicColumnWidth(flex: 4.0),
                         children: [
                           TableRow(
                             children: [
                               Text(
                                 'Semester: ',
-                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium
+                                    ?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 addOrdinals(int.parse(semesterValue)),
@@ -141,7 +144,8 @@ class PapersDetailHeader extends StatelessWidget {
                             children: [
                               Text(
                                 'Unit: ',
-                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium
+                                    ?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 unitValue,
@@ -173,9 +177,12 @@ class PapersDetailHeader extends StatelessWidget {
                           ),
                         ],
                       ),
-                      if (context.watch<PapersDetailCubit>().isDownloaded != null)
+                      if (context.watch<PapersDetailCubit>().isDownloaded !=
+                          null)
                         Text(
-                          watch.isDownloaded! ? 'Paper is Downloaded' : 'Paper is not Downloaded',
+                          watch.isDownloaded!
+                              ? 'Paper is Downloaded'
+                              : 'Paper is not Downloaded',
                         ),
                     ],
                   ),

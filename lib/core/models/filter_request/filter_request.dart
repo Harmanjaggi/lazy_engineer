@@ -6,11 +6,12 @@ part 'filter_request.g.dart';
 
 @freezed
 class FilterRequest with _$FilterRequest {
-    const factory FilterRequest({
-        List<String>? textField,
-        List<MultioptionModel>? multiOption,
-        String? singleOption,
-    }) = _FilterRequest;
+  const factory FilterRequest({
+    List<String>? textField,
+    List<MultioptionModel>? multiOption,
+    String? singleOption,
+  }) = _FilterRequest;
 
-    factory FilterRequest.fromJson(Map<String, dynamic> json) => _$FilterRequestFromJson(json);
+  factory FilterRequest.fromJson(Map<String, dynamic> json) =>
+      _$FilterRequestFromJson(json);
 }

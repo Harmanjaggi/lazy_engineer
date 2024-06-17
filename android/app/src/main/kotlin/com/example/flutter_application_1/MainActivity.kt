@@ -1,4 +1,4 @@
-package com.example.lazy_engineer
+package in.lazyEngineer.lazyEngineer
 
 import io.flutter.embedding.android.FlutterActivity
 

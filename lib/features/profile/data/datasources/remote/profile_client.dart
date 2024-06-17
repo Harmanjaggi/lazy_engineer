@@ -9,6 +9,13 @@ part 'profile_client.g.dart';
 @RestApi()
 abstract class ProfileClient {
   factory ProfileClient(Dio dio, {String baseUrl}) = _ProfileClient;
+  @PUT(AppConfig.updateProfile)
+  @MultiPart()
+  Future<BaseResponse<AccountModal>> updateProfileWithImage(
+    @Body() FormData body,
+  );
   @POST(AppConfig.updateProfile)
-  Future<BaseResponse<AccountModal>> updateProfile();
+  Future<BaseResponse<AccountModal>> updateProfile(
+    @Body() Map<String, dynamic> body,
+  );
 }

@@ -16,7 +16,8 @@ class SearchBarWidget extends StatefulWidget {
   State<SearchBarWidget> createState() => _SearchBarWidgetState();
 }
 
-class _SearchBarWidgetState extends State<SearchBarWidget> with TickerProviderStateMixin {
+class _SearchBarWidgetState extends State<SearchBarWidget>
+    with TickerProviderStateMixin {
   late TextEditingController searchController;
   late FocusNode focusNode;
   late AnimationController _animationController;

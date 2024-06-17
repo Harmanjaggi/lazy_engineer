@@ -9,7 +9,8 @@ part 'search_papers_bloc.freezed.dart';
 
 class SearchPapersBloc extends Bloc<SearchPapersEvent, SearchPapersState> {
   final PapersRepository _repository;
-  SearchPapersBloc(this._repository) : super(const SearchPapersState.initial()) {
+  SearchPapersBloc(this._repository)
+      : super(const SearchPapersState.initial()) {
     on<SearchPapersEvent>(
       (event, emit) => _search(event.query, emit),
       // transformer: debounce(const Duration(milliseconds: 1000)),

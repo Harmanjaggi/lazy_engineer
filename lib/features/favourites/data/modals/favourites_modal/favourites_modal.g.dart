@@ -13,7 +13,7 @@ _$FavouritesModalImpl _$$FavouritesModalImplFromJson(
           ?.map((e) =>
               e == null ? null : FileDetail.fromJson(e as Map<String, dynamic>))
           .toList(),
-      questionPaper: (json['questionPaper'] as List<dynamic>?)
+      questionPaper: (json['question_paper'] as List<dynamic>?)
           ?.map((e) => e == null
               ? null
               : PaperDetail.fromJson(e as Map<String, dynamic>))
@@ -36,7 +36,7 @@ Map<String, dynamic> _$$FavouritesModalImplToJson(
         _$FavouritesModalImpl instance) =>
     <String, dynamic>{
       'practicleFile': instance.practicleFile,
-      'questionPaper': instance.questionPaper,
+      'question_paper': instance.questionPaper,
       'books': instance.books,
       'job': instance.job,
       'note': instance.note,

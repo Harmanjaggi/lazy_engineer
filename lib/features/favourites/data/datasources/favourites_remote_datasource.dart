@@ -14,7 +14,8 @@ class FavouritesRemoteDatasource {
   factory FavouritesRemoteDatasource() {
     final Dio dio = Dio();
     dio.interceptors.add(PrettyDioLogger());
-    dio.options.headers.addAll({HeaderKeys.tokenHeaderKey: HeaderValues.userToken});
+    dio.options.headers
+        .addAll({HeaderKeys.tokenHeaderKey: HeaderValues.userToken});
     dio.options.connectTimeout = AppConfig.connectTimeout;
     dio.options.receiveTimeout = AppConfig.receiveTimeout;
     final FavouritesClient client = FavouritesClient(
@@ -26,19 +27,24 @@ class FavouritesRemoteDatasource {
 
   FavouritesRemoteDatasource._(this._client);
   Future<BaseResponse<FavouritesModal>> getFavourites() async {
-    final BaseResponse<FavouritesModal> response = await _client.getFavourites();
-    return response;
-  }  
-  
-  Future<BaseResponse<FavouritesModal>> addFavourites(FavouriteBody body) async {
-    print(body.toJson().toString());
-    final BaseResponse<FavouritesModal> response = await _client.addFavourites(body.toJson());
+    final BaseResponse<FavouritesModal> response =
+        await _client.getFavourites();
     return response;
   }
 
-  Future<BaseResponse<FavouriteResponse>> removeFavourites(FavouriteBody body) async {
+  Future<BaseResponse<FavouritesModal>> addFavourites(
+      FavouriteBody body) async {
     print(body.toJson().toString());
-    final BaseResponse<FavouriteResponse> response = await _client.removeFavourites(body.toJson());
+    final BaseResponse<FavouritesModal> response =
+        await _client.addFavourites(body.toJson());
+    return response;
+  }
+
+  Future<BaseResponse<FavouriteResponse>> removeFavourites(
+      FavouriteBody body) async {
+    print(body.toJson().toString());
+    final BaseResponse<FavouriteResponse> response =
+        await _client.removeFavourites(body.toJson());
     return response;
   }
 }

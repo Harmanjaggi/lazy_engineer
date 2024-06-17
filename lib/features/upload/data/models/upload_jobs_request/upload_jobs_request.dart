@@ -6,22 +6,23 @@ part 'upload_jobs_request.g.dart';
 
 @freezed
 class UploadJobsRequest with _$UploadJobsRequest {
-    const factory UploadJobsRequest({
-        String? title,
-        String? profile,
-        String? company,
-        String? aboutCompany,
-        String? location,
-        String? jobType,
-        String? experienceLevel,
-        String? datePosted,
-        required List<String> skillsNeeded,
-        int? expectedSalary,
-        dynamic file,
-        dynamic image,
-    }) = _UploadJobsRequest;
+  const factory UploadJobsRequest({
+    String? title,
+    String? profile,
+    String? company,
+    String? aboutCompany,
+    String? location,
+    String? jobType,
+    String? experienceLevel,
+    String? datePosted,
+    required List<String> skillsNeeded,
+    int? expectedSalary,
+    dynamic file,
+    dynamic image,
+  }) = _UploadJobsRequest;
 
-    factory UploadJobsRequest.fromJson(Map<String, dynamic> json) => _$UploadJobsRequestFromJson(json);
+  factory UploadJobsRequest.fromJson(Map<String, dynamic> json) =>
+      _$UploadJobsRequestFromJson(json);
 }
 
 extension UploadJobsRequestFormData on UploadJobsRequest {

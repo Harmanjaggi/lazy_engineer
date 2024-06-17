@@ -20,7 +20,7 @@ class DioClient {
   Future<User?> getUser({required int id}) async {
     try {
       final response = await _dio.get('/users/$id');
-      return User.fromJson(response.data as Map<String,dynamic>);
+      return User.fromJson(response.data as Map<String, dynamic>);
     } on DioError catch (err) {
       final errorMessage = Exception.DioException.fromDioError(err).toString();
       throw errorMessage;
@@ -33,7 +33,7 @@ class DioClient {
   Future<User?> createUser({required User user}) async {
     try {
       final response = await _dio.post('/users', data: user.toJson());
-      return User.fromJson(response.data as Map<String,dynamic>);
+      return User.fromJson(response.data as Map<String, dynamic>);
     } on DioError catch (err) {
       final errorMessage = Exception.DioException.fromDioError(err).toString();
       throw errorMessage;

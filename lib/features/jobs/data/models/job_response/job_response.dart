@@ -12,7 +12,8 @@ class JobResponse with _$JobResponse {
     int? limit,
   ) = _JobResponse;
 
-  factory JobResponse.fromJson(Map<String, dynamic> json) => _$JobResponseFromJson(json);
+  factory JobResponse.fromJson(Map<String, dynamic> json) =>
+      _$JobResponseFromJson(json);
 }
 
 @freezed
@@ -35,5 +36,6 @@ class JobDetail with _$JobDetail {
     bool? isFavorited,
   }) = _JobDetail;
 
-  factory JobDetail.fromJson(Map<String, dynamic> json) => _$JobDetailFromJson(json);
+  factory JobDetail.fromJson(Map<String, dynamic> json) =>
+      _$JobDetailFromJson(json);
 }

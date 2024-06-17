@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lazy_engineer/assets/constants/strings.dart';
 import 'package:lazy_engineer/core/helper_function.dart';
 
-
- class FileDataBox extends StatelessWidget {
+class FileDataBox extends StatelessWidget {
   const FileDataBox({
     super.key,
     required this.subjectValue,

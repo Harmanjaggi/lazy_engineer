@@ -5,6 +5,7 @@ import 'package:lazy_engineer/features/auth/data/models/sign_in_model/sign_in_mo
 import 'package:lazy_engineer/features/auth/data/models/sign_up_model/sign_up_model.dart';
 import 'package:lazy_engineer/features/auth/data/models/user_dto/user_dto.dart';
 import 'package:lazy_engineer/features/auth/domain/repositories/auth_repository.dart';
+import 'package:lazy_engineer/navigation/dio/header.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
   final AuthLocalDataSource _localDataSource = AuthLocalDataSource();
@@ -16,12 +17,14 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
+
   /// login and return [Token] from internet
   /// parameter [email, password]
   Future<String?> signUp(SignUpModel user) async {
     try {
       final UserDto userDetail = await _remoteDataSource.signUp(user);
       await _localDataSource.setUser(userDetail);
+      HeaderValues(userDetail.token);
       return userDetail.token;
     } catch (e) {
       debugPrint('$e REPOSITORY');
@@ -30,12 +33,14 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
+
   /// signIn and return [Token] from internet
   /// parameter [email, password]
   Future<String?> signIn(SignInModel user) async {
     try {
       final UserDto userDetail = await _remoteDataSource.signIn(user);
       await _localDataSource.setUser(userDetail);
+      HeaderValues(userDetail.token);
       return userDetail.token;
     } catch (e) {
       debugPrint('$e REPOSITORY');
@@ -45,6 +50,6 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future signOut() async {
-    _localDataSource.clearUser();
+    await _localDataSource.clearUser();
   }
 }

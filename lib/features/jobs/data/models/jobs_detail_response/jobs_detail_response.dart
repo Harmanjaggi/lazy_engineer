@@ -33,10 +33,11 @@ class JobsDetailResponse with _$JobsDetailResponse {
 
 @freezed
 class PayRange with _$PayRange {
-    const factory PayRange({
-        int? high,
-        int? low,
-    }) = _PayRange;
+  const factory PayRange({
+    int? high,
+    int? low,
+  }) = _PayRange;
 
-    factory PayRange.fromJson(Map<String, dynamic> json) => _$PayRangeFromJson(json);
+  factory PayRange.fromJson(Map<String, dynamic> json) =>
+      _$PayRangeFromJson(json);
 }

@@ -39,7 +39,7 @@ class CustomImage extends StatelessWidget {
     this.color,
     this.borderColor = Colors.grey,
     this.margin = EdgeInsets.zero,
-    this.padding = EdgeInsets.zero, 
+    this.padding = EdgeInsets.zero,
     this.placeHolder,
   });
 
@@ -66,30 +66,31 @@ class CustomImage extends StatelessWidget {
                   : BorderRadius.circular(radius),
         ),
         child: ClipRRect(
-            borderRadius: onlyTop
-                ? BorderRadius.only(
-                    topLeft: Radius.circular(radius),
-                    topRight: Radius.circular(radius),
-                  )
-                : onlyLeft
-                    ? BorderRadius.only(
-                        topLeft: Radius.circular(radius),
-                        bottomLeft: Radius.circular(radius),
-                      )
-                    : BorderRadius.circular(radius),
-            child: () {
-              if (file != null) {
-                return _fileImage();
-              } else if (networkImage != null) {
-                return _networkImage();
-              } else if (image == null) {
-                return _noImage();
-              } else if (image!.split('.').last == 'svg') {
-                return _svgImage();
-              } else {
-                return _assetImage();
-              }
-            }(),),
+          borderRadius: onlyTop
+              ? BorderRadius.only(
+                  topLeft: Radius.circular(radius),
+                  topRight: Radius.circular(radius),
+                )
+              : onlyLeft
+                  ? BorderRadius.only(
+                      topLeft: Radius.circular(radius),
+                      bottomLeft: Radius.circular(radius),
+                    )
+                  : BorderRadius.circular(radius),
+          child: () {
+            if (file != null) {
+              return _fileImage();
+            } else if (networkImage != null) {
+              return _networkImage();
+            } else if (image == null) {
+              return _noImage();
+            } else if (image!.split('.').last == 'svg') {
+              return _svgImage();
+            } else {
+              return _assetImage();
+            }
+          }(),
+        ),
       ),
     );
   }

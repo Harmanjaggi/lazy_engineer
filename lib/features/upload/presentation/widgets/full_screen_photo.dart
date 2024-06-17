@@ -79,7 +79,7 @@ class _FullScreenPhotoState extends State<FullScreenPhoto>
           child: PageView(
             controller: pageController,
             children: [
-              if (widget.list != null) 
+              if (widget.list != null)
                 ...widget.list!.map(
                   (image) => InteractiveViewer(
                     transformationController: controller,
@@ -87,7 +87,7 @@ class _FullScreenPhotoState extends State<FullScreenPhoto>
                   ),
                 ),
               if (widget.networkImageList != null)
-              ...widget.networkImageList!.map(
+                ...widget.networkImageList!.map(
                   (image) => InteractiveViewer(
                     transformationController: controller,
                     child: Image.network(image),

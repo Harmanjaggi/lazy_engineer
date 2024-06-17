@@ -34,5 +34,6 @@ class PaperDetail with _$PaperDetail {
     bool? isFavorited,
   ) = _PaperDetail;
 
-  factory PaperDetail.fromJson(Map<String, dynamic> json) => _$PaperDetailFromJson(json);
+  factory PaperDetail.fromJson(Map<String, dynamic> json) =>
+      _$PaperDetailFromJson(json);
 }

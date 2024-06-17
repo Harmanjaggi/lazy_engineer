@@ -5,11 +5,12 @@ part 'categories_model.g.dart';
 
 @freezed
 class CategoriesModel with _$CategoriesModel {
-    const factory CategoriesModel({
-        required String title,
-        String? image,
-        required String description,
-    }) = _CategoriesModel;
+  const factory CategoriesModel({
+    required String title,
+    String? image,
+    required String description,
+  }) = _CategoriesModel;
 
-    factory CategoriesModel.fromJson(Map<String, dynamic> json) => _$CategoriesModelFromJson(json);
+  factory CategoriesModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoriesModelFromJson(json);
 }

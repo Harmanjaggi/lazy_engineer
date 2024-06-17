@@ -28,7 +28,9 @@ class SliderView extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => FullScreenPhoto(
-                            networkImageList: noticeList.map((e) => e.imageLink ?? "").toList(),
+                            networkImageList: noticeList
+                                .map((e) => e.imageLink ?? "")
+                                .toList(),
                             index: index,
                           ),
                         ),

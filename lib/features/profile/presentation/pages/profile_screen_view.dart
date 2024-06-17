@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lazy_engineer/assets/constants/strings.dart';
 import 'package:lazy_engineer/assets/icons.dart';
 import 'package:lazy_engineer/features/components/custom_icon.dart';
+import 'package:lazy_engineer/features/components/custom_image.dart';
 import 'package:lazy_engineer/features/home/data/models/account_modal/account_modal.dart';
 import 'package:lazy_engineer/features/profile/presentation/widgets/upload_view.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -10,21 +11,30 @@ import 'package:url_launcher/url_launcher.dart';
 class ProfileScreenView extends StatelessWidget {
   const ProfileScreenView(this.data, {super.key});
   final UserDetail data;
-    Future<void> _launchUrl(String url) async {
-      if (!await launchUrl(Uri.parse(url))) {
-        throw Exception('Could not launch $url');
-      }
+  Future<void> _launchUrl(String url) async {
+    if (!await launchUrl(Uri.parse(url))) {
+      throw Exception('Could not launch $url');
     }
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
 
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
+          CircleAvatar(
+            radius: 70,
+            child: CustomImage(
+              networkImage: data.imageLink,
+              height: 140,
+              width: 140,
+              radius: 70,
+            ),
+          ),
+          const SizedBox(height: 16),
           Center(
             child: Text(
               data.fullName ?? '',
@@ -37,7 +47,10 @@ class ProfileScreenView extends StatelessWidget {
               style: theme.textTheme.bodyMedium,
             ),
           ),
-          if (data.github != null || data.instagram != null || data.linkedin != null || data.twitter != null)
+          if (data.github != null ||
+              data.instagram != null ||
+              data.linkedin != null ||
+              data.twitter != null)
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -134,13 +147,13 @@ class ProfileScreenView extends StatelessWidget {
     );
   }
 
-  Widget contactRow(
-   { required String icon,
+  Widget contactRow({
+    required String icon,
     required String title,
     required String body,
     required Function() onTap,
-    required ThemeData theme,}
-  ) {
+    required ThemeData theme,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
       child: Row(
@@ -151,8 +164,10 @@ class ProfileScreenView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(title, style: theme.textTheme.titleMedium),
-              TextButton(onPressed: onTap,
-              child: Text(body, style: theme.textTheme.titleSmall),),
+              TextButton(
+                onPressed: onTap,
+                child: Text(body, style: theme.textTheme.titleSmall),
+              ),
             ],
           ),
         ],

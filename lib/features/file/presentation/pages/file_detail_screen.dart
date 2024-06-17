@@ -36,7 +36,7 @@ class FileDetailScreen extends StatelessWidget {
                   userId: data?.id ?? '',
                   semesterValue: data?.semester ?? '',
                   file: workingLink(data?.mediaLink) ?? '',
-                  image: workingLink(data?.imageLink) ?? '', 
+                  image: workingLink(data?.imageLink) ?? '',
                   isFavourite: data?.isFavorited ?? false,
                 ),
                 const SizedBox(height: 12),

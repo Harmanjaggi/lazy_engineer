@@ -15,11 +15,12 @@ class NotesDetailCubit extends Cubit<NotesDetailState> {
   final String fileLink;
   NotesDetailCubit(
     this.id,
-    this.fileLink, 
+    this.fileLink,
     this.isFavourite,
   ) : super(NotesDetailState(isFavourite: isFavourite));
   final NotesRepositoryImpl notesRepository = NotesRepositoryImpl();
-  final FavouritesRepositoryImpl favouritesRepository = FavouritesRepositoryImpl();
+  final FavouritesRepositoryImpl favouritesRepository =
+      FavouritesRepositoryImpl();
 
   bool? isDownloaded;
   Future<void> download(String fileLink) async {
@@ -34,14 +35,16 @@ class NotesDetailCubit extends Cubit<NotesDetailState> {
   void like() async {
     if (isFavourite == true) {
       FavouriteBody body = FavouriteBody(id: id, update: false, type: 'note');
-      FavouriteResponse? response = await favouritesRepository.removeFavourites(body);
+      FavouriteResponse? response =
+          await favouritesRepository.removeFavourites(body);
       if (response != null && response.acknowledged == true) {
         isFavourite = false;
         emit(const NotesDetailState(isFavourite: false));
       }
     } else {
       FavouriteBody body = FavouriteBody(id: id, update: true, type: 'note');
-      FavouritesModal? response = await favouritesRepository.addFavourites(body);
+      FavouritesModal? response =
+          await favouritesRepository.addFavourites(body);
       if (response != null) {
         isFavourite = true;
         emit(const NotesDetailState(isFavourite: true));

@@ -141,13 +141,24 @@ class CustomTextField extends StatelessWidget {
                       ),
                     )
                   : null,
-              contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               filled: filled,
-              border: underline ? circularBorder(AppThemes.lightDarkColor) : underlineBorder(AppThemes.lightDarkColor),
-              enabledBorder: !underline ? circularBorder(AppThemes.lightDarkColor) : underlineBorder(AppThemes.lightDarkColor),
-              disabledBorder: !underline ? circularBorder(AppThemes.lightDarkColor) : underlineBorder(AppThemes.lightDarkColor),
-              focusedBorder: !underline ? circularBorder(AppThemes.primaryColor1) : underlineBorder(AppThemes.primaryColor1),
-              errorBorder: !underline ? circularBorder(AppThemes.errorColor) : underlineBorder(AppThemes.errorColor),
+              border: underline
+                  ? circularBorder(AppThemes.lightDarkColor)
+                  : underlineBorder(AppThemes.lightDarkColor),
+              enabledBorder: !underline
+                  ? circularBorder(AppThemes.lightDarkColor)
+                  : underlineBorder(AppThemes.lightDarkColor),
+              disabledBorder: !underline
+                  ? circularBorder(AppThemes.lightDarkColor)
+                  : underlineBorder(AppThemes.lightDarkColor),
+              focusedBorder: !underline
+                  ? circularBorder(AppThemes.primaryColor1)
+                  : underlineBorder(AppThemes.primaryColor1),
+              errorBorder: !underline
+                  ? circularBorder(AppThemes.errorColor)
+                  : underlineBorder(AppThemes.errorColor),
             ),
           ),
         );
@@ -157,7 +168,8 @@ class CustomTextField extends StatelessWidget {
 
   InputBorder circularBorder(Color color) {
     return OutlineInputBorder(
-      borderSide: showBorder ? BorderSide(color: color, width: 0.5) : BorderSide.none,
+      borderSide:
+          showBorder ? BorderSide(color: color, width: 0.5) : BorderSide.none,
       borderRadius: const BorderRadius.all(
         Radius.circular(kRoundedRectangleRadius),
       ),

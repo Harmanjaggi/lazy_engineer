@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lazy_engineer/features/components/custom_button.dart';
-import 'package:lazy_engineer/features/components/custom_image.dart';
 import 'package:lazy_engineer/features/components/failiure_screen.dart';
 import 'package:lazy_engineer/features/components/loading_screen.dart';
-import 'package:lazy_engineer/features/home/data/repositories/home_repository_impl.dart';
 import 'package:lazy_engineer/features/home/presentation/cubit/user/user_cubit.dart';
 import 'package:lazy_engineer/features/profile/presentation/cubit/profile/profile_cubit.dart';
 import 'package:lazy_engineer/features/profile/presentation/pages/edit_profile_screen.dart';
@@ -18,8 +16,8 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => UserCubit()),
         BlocProvider(create: (context) => ProfileCubit()),
-        BlocProvider(create: (context) => UserCubit(HomeRepositoryImpl())),
       ],
       child: BlocBuilder<UserCubit, UserState>(
         builder: (context, state) {
@@ -29,11 +27,13 @@ class ProfileScreen extends StatelessWidget {
             success: (data) {
               return Scaffold(
                 appBar: AppBar(
-                  leading: BlocBuilder<ProfileCubit, bool>(builder: (context, isEdit) {
+                  leading: BlocBuilder<ProfileCubit, bool>(
+                      builder: (context, isEdit) {
                     if (!isEdit) {
                       return IconButton(
                         icon: Icon(Icons.arrow_back),
-                        onPressed: () => context.read<ProfileCubit>().togleIsEditProfile(),
+                        onPressed: () =>
+                            context.read<ProfileCubit>().togleIsEditProfile(),
                       );
                     } else {
                       return IconButton(
@@ -46,7 +46,8 @@ class ProfileScreen extends StatelessWidget {
                     BlocBuilder<ProfileCubit, bool>(builder: (context, isEdit) {
                       if (isEdit) {
                         return CustomButton(
-                          onPressed: () => context.read<ProfileCubit>().togleIsEditProfile(),
+                          onPressed: () =>
+                              context.read<ProfileCubit>().togleIsEditProfile(),
                           text: 'Edit',
                         );
                       }
@@ -55,40 +56,12 @@ class ProfileScreen extends StatelessWidget {
                     SizedBox(width: 16),
                   ],
                 ),
-                body: ListView(
-                  shrinkWrap: true,
-                  children: [
-                    CircleAvatar(
-                      radius: 70,
-                      child: CustomImage(
-                        networkImage: data.imageLink,
-                        height: 140,
-                        width: 140,
-                        radius: 70,
-                      ),
-                    ),
-                    // Stack(
-                    //   children: [
-                    //     Positioned(
-                    //       right: 16,
-                    //       top: 100,
-                    //       child: IconButton(
-                    //         onPressed: () {
-                    //           return context.read<ProfileCubit>().togleIsEditProfile();
-                    //         },
-                    //         icon: BlocBuilder<ProfileCubit, bool>(builder: (context, isEdit) {
-                    //           return isEdit ? const CustomIcon(AppIcons.editIcon) : const CustomIcon(AppIcons.backArrow);
-                    //         }),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                    const SizedBox(height: 16),
+                body:
                     BlocBuilder<ProfileCubit, bool>(builder: (context, isEdit) {
-                      return isEdit ? ProfileScreenView(data) : EditProfileView(data);
-                    })
-                  ],
-                ),
+                  return isEdit
+                      ? ProfileScreenView(data)
+                      : EditProfileView(data);
+                }),
               );
             },
           );

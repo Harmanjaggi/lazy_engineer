@@ -3,7 +3,8 @@ mixin InputValidationMixin {
 
   String? emailValidation(String? value) {
     final RegExp emailRegExp = RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",);
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    );
     if (value?.isEmpty ?? true) return 'Enter Email';
     return emailRegExp.hasMatch(value!) ? null : 'Enter Valid Email';
   }

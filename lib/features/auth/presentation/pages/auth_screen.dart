@@ -19,14 +19,19 @@ class AuthScreen extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         controller: context.read<AuthCubit>().controller,
         children: const [
-          Stack(children: [
-            AuthBackground(),
-            LoginScreen(),
-          ],),
-          Stack(alignment: AlignmentDirectional.bottomCenter, children: [
-            AuthBackground(),
-            RegisterScreen(),
-          ],),
+          Stack(
+            children: [
+              AuthBackground(),
+              LoginScreen(),
+            ],
+          ),
+          Stack(
+            alignment: AlignmentDirectional.bottomCenter,
+            children: [
+              AuthBackground(),
+              RegisterScreen(),
+            ],
+          ),
         ],
       ),
     );
@@ -35,16 +40,19 @@ class AuthScreen extends StatelessWidget {
   Widget nameWithIcon(ThemeData theme) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 50, 16, 0),
-      child: Row(mainAxisSize: MainAxisSize.min, children: [
-        SvgPicture.asset(AppIcons.lazyEngineerIcon),
-        const SizedBox(width: 8),
-        Text(
-          string.lazyEngineer,
-          style: theme.textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w600,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset(AppIcons.lazyEngineerIcon),
+          const SizedBox(width: 8),
+          Text(
+            string.lazyEngineer,
+            style: theme.textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
           ),
-        ),
-      ],),
+        ],
+      ),
     );
   }
 }

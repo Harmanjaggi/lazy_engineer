@@ -3,7 +3,8 @@ import 'package:lazy_engineer/assets/icons.dart';
 import 'package:lazy_engineer/features/components/custom_icon.dart';
 
 class CustomChip extends StatelessWidget {
-  const CustomChip({super.key, this.text, this.toDelete, this.icon, this.onDelete});
+  const CustomChip(
+      {super.key, this.text, this.toDelete, this.icon, this.onDelete});
   final String? text;
   final String? icon;
   final bool? toDelete;

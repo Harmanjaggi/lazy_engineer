@@ -38,7 +38,9 @@ class WriterListWidget extends StatelessWidget {
                         padding: EdgeInsets.all(6),
                         constraints: BoxConstraints(),
                         onPressed: () {
-                          context.read<WritersListCubit>().removeElement(list[index]);
+                          context
+                              .read<WritersListCubit>()
+                              .removeElement(list[index]);
                         },
                         icon: Icon(
                           Icons.close,

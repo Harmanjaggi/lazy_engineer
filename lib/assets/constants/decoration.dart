@@ -53,8 +53,8 @@ final toBeBuildInFutureSnackBar = SnackBar(
     ),
   ),
   shape: RoundedRectangleBorder(
-        side: const BorderSide(),
-        borderRadius: BorderRadius.circular(12),
-      ),
+    side: const BorderSide(),
+    borderRadius: BorderRadius.circular(12),
+  ),
   duration: const Duration(milliseconds: 400),
 );

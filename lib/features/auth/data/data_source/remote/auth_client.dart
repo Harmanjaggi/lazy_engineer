@@ -14,7 +14,7 @@ abstract class AuthClient {
 
   @POST(AppConfig.signUp)
   Future<BaseResponse<UserDto>> signUp(@Body() SignUpModel body);
-  
+
   @POST(AppConfig.signIn)
   Future<BaseResponse<UserDto>> signIn(@Body() SignInModel body);
 }

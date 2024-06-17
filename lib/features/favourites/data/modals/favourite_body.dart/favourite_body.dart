@@ -5,11 +5,12 @@ part 'favourite_body.g.dart';
 
 @freezed
 class FavouriteBody with _$FavouriteBody {
-    const factory FavouriteBody({
-        required String id,
-        required bool update,
-        required String type,
-    }) = _FavouriteBody;
+  const factory FavouriteBody({
+    required String id,
+    required bool update,
+    required String type,
+  }) = _FavouriteBody;
 
-    factory FavouriteBody.fromJson(Map<String, dynamic> json) => _$FavouriteBodyFromJson(json);
+  factory FavouriteBody.fromJson(Map<String, dynamic> json) =>
+      _$FavouriteBodyFromJson(json);
 }

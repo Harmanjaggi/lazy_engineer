@@ -10,7 +10,7 @@ class HomeRepositoryImpl extends HomeRepository {
   final HomeRemoteDatasource _remoteDataSource = HomeRemoteDatasource();
   @override
   Future<AccountModal> getUser() async {
-   final data = await _remoteDataSource.getUser();
+    final data = await _remoteDataSource.getUser();
     return data.data;
   }
 

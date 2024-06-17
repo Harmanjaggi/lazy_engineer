@@ -114,14 +114,17 @@ class FilesDetailHeader extends StatelessWidget {
                       //   ],
                       // ),
                       Table(
-                        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                        defaultColumnWidth: const IntrinsicColumnWidth(flex: 4.0),
+                        defaultVerticalAlignment:
+                            TableCellVerticalAlignment.middle,
+                        defaultColumnWidth:
+                            const IntrinsicColumnWidth(flex: 4.0),
                         children: [
                           TableRow(
                             children: [
                               Text(
                                 'Semester: ',
-                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium
+                                    ?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 '${addOrdinals(int.parse(semesterValue))}',
@@ -153,9 +156,12 @@ class FilesDetailHeader extends StatelessWidget {
                           ),
                         ],
                       ),
-                      if (context.watch<FilesDetailCubit>().isDownloaded != null)
+                      if (context.watch<FilesDetailCubit>().isDownloaded !=
+                          null)
                         Text(
-                          watch.isDownloaded! ? 'File is Downloaded' : 'File is not Downloaded',
+                          watch.isDownloaded!
+                              ? 'File is Downloaded'
+                              : 'File is not Downloaded',
                         ),
                     ],
                   ),

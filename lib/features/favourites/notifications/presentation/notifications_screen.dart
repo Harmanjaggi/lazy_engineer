@@ -30,10 +30,12 @@ class NoticationsScreen extends StatelessWidget {
             success: (List<NoticeModel> data) {
               return ListView.separated(
                 itemCount: data.length,
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 80),
                 itemBuilder: (context, index) {
-                  String startDate = DateFormat("dd-MM-yyyy").format(data[index].startDate ?? DateTime.now());
-                  String endDate = DateFormat("dd-MM-yyyy").format(data[index].endDate ?? DateTime.now());
+                  String startDate = DateFormat("dd-MM-yyyy")
+                      .format(data[index].startDate ?? DateTime.now());
+                  String endDate = DateFormat("dd-MM-yyyy")
+                      .format(data[index].endDate ?? DateTime.now());
                   return Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(

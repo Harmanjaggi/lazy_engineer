@@ -17,10 +17,10 @@ class NotesRemoteDatasource {
     dio.interceptors.add(
       InterceptorsWrapper(
         onError: (error, _) async {
-        //   if (error.response?.statusCode == 403 ||
-        //       error.response?.statusCode == 401) {
-        //     await refreshToken();
-        //   }
+          //   if (error.response?.statusCode == 403 ||
+          //       error.response?.statusCode == 401) {
+          //     await refreshToken();
+          //   }
         },
       ),
     );

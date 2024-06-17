@@ -19,7 +19,7 @@ mixin _$EditProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserDetail data) success,
+    required TResult Function() success,
     required TResult Function() loading,
     required TResult Function(dynamic e) failure,
   }) =>
@@ -27,7 +27,7 @@ mixin _$EditProfileState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserDetail data)? success,
+    TResult? Function()? success,
     TResult? Function()? loading,
     TResult? Function(dynamic e)? failure,
   }) =>
@@ -35,7 +35,7 @@ mixin _$EditProfileState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserDetail data)? success,
+    TResult Function()? success,
     TResult Function()? loading,
     TResult Function(dynamic e)? failure,
     required TResult orElse(),
@@ -125,7 +125,7 @@ class _$EditProfileInitialImpl implements EditProfileInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserDetail data) success,
+    required TResult Function() success,
     required TResult Function() loading,
     required TResult Function(dynamic e) failure,
   }) {
@@ -136,7 +136,7 @@ class _$EditProfileInitialImpl implements EditProfileInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserDetail data)? success,
+    TResult? Function()? success,
     TResult? Function()? loading,
     TResult? Function(dynamic e)? failure,
   }) {
@@ -147,7 +147,7 @@ class _$EditProfileInitialImpl implements EditProfileInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserDetail data)? success,
+    TResult Function()? success,
     TResult Function()? loading,
     TResult Function(dynamic e)? failure,
     required TResult orElse(),
@@ -205,10 +205,6 @@ abstract class _$$EditProfileSuccessImplCopyWith<$Res> {
   factory _$$EditProfileSuccessImplCopyWith(_$EditProfileSuccessImpl value,
           $Res Function(_$EditProfileSuccessImpl) then) =
       __$$EditProfileSuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({UserDetail data});
-
-  $UserDetailCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -218,93 +214,60 @@ class __$$EditProfileSuccessImplCopyWithImpl<$Res>
   __$$EditProfileSuccessImplCopyWithImpl(_$EditProfileSuccessImpl _value,
       $Res Function(_$EditProfileSuccessImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_$EditProfileSuccessImpl(
-      null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as UserDetail,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserDetailCopyWith<$Res> get data {
-    return $UserDetailCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$EditProfileSuccessImpl implements EditProfileSuccess {
-  const _$EditProfileSuccessImpl(this.data);
-
-  @override
-  final UserDetail data;
+  const _$EditProfileSuccessImpl();
 
   @override
   String toString() {
-    return 'EditProfileState.success(data: $data)';
+    return 'EditProfileState.success()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EditProfileSuccessImpl &&
-            (identical(other.data, data) || other.data == data));
+        (other.runtimeType == runtimeType && other is _$EditProfileSuccessImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EditProfileSuccessImplCopyWith<_$EditProfileSuccessImpl> get copyWith =>
-      __$$EditProfileSuccessImplCopyWithImpl<_$EditProfileSuccessImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserDetail data) success,
+    required TResult Function() success,
     required TResult Function() loading,
     required TResult Function(dynamic e) failure,
   }) {
-    return success(data);
+    return success();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserDetail data)? success,
+    TResult? Function()? success,
     TResult? Function()? loading,
     TResult? Function(dynamic e)? failure,
   }) {
-    return success?.call(data);
+    return success?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserDetail data)? success,
+    TResult Function()? success,
     TResult Function()? loading,
     TResult Function(dynamic e)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(data);
+      return success();
     }
     return orElse();
   }
@@ -348,13 +311,7 @@ class _$EditProfileSuccessImpl implements EditProfileSuccess {
 }
 
 abstract class EditProfileSuccess implements EditProfileState {
-  const factory EditProfileSuccess(final UserDetail data) =
-      _$EditProfileSuccessImpl;
-
-  UserDetail get data;
-  @JsonKey(ignore: true)
-  _$$EditProfileSuccessImplCopyWith<_$EditProfileSuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory EditProfileSuccess() = _$EditProfileSuccessImpl;
 }
 
 /// @nodoc
@@ -396,7 +353,7 @@ class _$EditProfileLoadingImpl implements EditProfileLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserDetail data) success,
+    required TResult Function() success,
     required TResult Function() loading,
     required TResult Function(dynamic e) failure,
   }) {
@@ -407,7 +364,7 @@ class _$EditProfileLoadingImpl implements EditProfileLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserDetail data)? success,
+    TResult? Function()? success,
     TResult? Function()? loading,
     TResult? Function(dynamic e)? failure,
   }) {
@@ -418,7 +375,7 @@ class _$EditProfileLoadingImpl implements EditProfileLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserDetail data)? success,
+    TResult Function()? success,
     TResult Function()? loading,
     TResult Function(dynamic e)? failure,
     required TResult orElse(),
@@ -538,7 +495,7 @@ class _$EditProfileFailureImpl implements EditProfileFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(UserDetail data) success,
+    required TResult Function() success,
     required TResult Function() loading,
     required TResult Function(dynamic e) failure,
   }) {
@@ -549,7 +506,7 @@ class _$EditProfileFailureImpl implements EditProfileFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(UserDetail data)? success,
+    TResult? Function()? success,
     TResult? Function()? loading,
     TResult? Function(dynamic e)? failure,
   }) {
@@ -560,7 +517,7 @@ class _$EditProfileFailureImpl implements EditProfileFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(UserDetail data)? success,
+    TResult Function()? success,
     TResult Function()? loading,
     TResult Function(dynamic e)? failure,
     required TResult orElse(),

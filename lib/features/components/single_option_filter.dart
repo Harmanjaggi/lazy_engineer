@@ -27,19 +27,20 @@ class SingleOptionFilter extends FormField<String> {
                   visualDensity:
                       const VisualDensity(horizontal: -4, vertical: -2),
                   leading: Radio<String>(
-                      focusNode: focusNode,
-                      focusColor: Colors.green,
-                      toggleable: true,
-                      value: data[index],
-                      groupValue: controller.text,
-                      onChanged: (String? value) {
-                        controller.text = value ?? '';
-                        state.didChange(value);
-                        focusNode?.requestFocus();
-                        if (focusNode != null) {
-                          FocusScope.of(state.context).nextFocus();
-                        }
-                      },),
+                    focusNode: focusNode,
+                    focusColor: Colors.green,
+                    toggleable: true,
+                    value: data[index],
+                    groupValue: controller.text,
+                    onChanged: (String? value) {
+                      controller.text = value ?? '';
+                      state.didChange(value);
+                      focusNode?.requestFocus();
+                      if (focusNode != null) {
+                        FocusScope.of(state.context).nextFocus();
+                      }
+                    },
+                  ),
                   title: Text(
                     data[index],
                     style: theme.textTheme.titleMedium,

@@ -191,6 +191,7 @@ UserDetail _$UserDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserDetail {
+  @JsonKey(name: '_id')
   String? get id => throw _privateConstructorUsedError;
   String? get fullName => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
@@ -223,7 +224,7 @@ abstract class $UserDetailCopyWith<$Res> {
       _$UserDetailCopyWithImpl<$Res, UserDetail>;
   @useResult
   $Res call(
-      {String? id,
+      {@JsonKey(name: '_id') String? id,
       String? fullName,
       String? email,
       String? bio,
@@ -361,7 +362,7 @@ abstract class _$$UserDetailImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? id,
+      {@JsonKey(name: '_id') String? id,
       String? fullName,
       String? email,
       String? bio,
@@ -492,7 +493,7 @@ class __$$UserDetailImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserDetailImpl implements _UserDetail {
   const _$UserDetailImpl(
-      {this.id,
+      {@JsonKey(name: '_id') this.id,
       this.fullName,
       this.email,
       this.bio,
@@ -515,6 +516,7 @@ class _$UserDetailImpl implements _UserDetail {
       _$$UserDetailImplFromJson(json);
 
   @override
+  @JsonKey(name: '_id')
   final String? id;
   @override
   final String? fullName;
@@ -631,7 +633,7 @@ class _$UserDetailImpl implements _UserDetail {
 
 abstract class _UserDetail implements UserDetail {
   const factory _UserDetail(
-      {final String? id,
+      {@JsonKey(name: '_id') final String? id,
       final String? fullName,
       final String? email,
       final String? bio,
@@ -654,6 +656,7 @@ abstract class _UserDetail implements UserDetail {
       _$UserDetailImpl.fromJson;
 
   @override
+  @JsonKey(name: '_id')
   String? get id;
   @override
   String? get fullName;

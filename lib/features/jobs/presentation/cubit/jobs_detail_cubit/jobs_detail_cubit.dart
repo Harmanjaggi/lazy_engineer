@@ -13,10 +13,12 @@ part 'jobs_detail_cubit.freezed.dart';
 class JobsDetailCubit extends Cubit<JobsDetailState> {
   final String id;
   bool isFavourite;
-  JobsDetailCubit(this.id, this.isFavourite) : super(JobsDetailState(isFavourite: isFavourite));
+  JobsDetailCubit(this.id, this.isFavourite)
+      : super(JobsDetailState(isFavourite: isFavourite));
 
   final JobsRepositoryImpl bookRepository = JobsRepositoryImpl();
-  final FavouritesRepositoryImpl favouritesRepository = FavouritesRepositoryImpl();
+  final FavouritesRepositoryImpl favouritesRepository =
+      FavouritesRepositoryImpl();
 
   bool? isDownloaded;
   bool? rating;
@@ -29,14 +31,16 @@ class JobsDetailCubit extends Cubit<JobsDetailState> {
   void like() async {
     if (isFavourite == true) {
       FavouriteBody body = FavouriteBody(id: id, update: false, type: 'job');
-      FavouriteResponse? response = await favouritesRepository.removeFavourites(body);
+      FavouriteResponse? response =
+          await favouritesRepository.removeFavourites(body);
       if (response != null && response.acknowledged == true) {
         isFavourite = false;
         emit(const JobsDetailState(isFavourite: false));
       }
     } else {
       FavouriteBody body = FavouriteBody(id: id, update: true, type: 'job');
-      FavouritesModal? response = await favouritesRepository.addFavourites(body);
+      FavouritesModal? response =
+          await favouritesRepository.addFavourites(body);
       if (response != null) {
         isFavourite = true;
         emit(const JobsDetailState(isFavourite: true));

@@ -61,7 +61,8 @@ class BooksDetailHeader extends StatelessWidget {
                       color: Colors.grey.shade100,
                     ),
                     Container(
-                      decoration: kRoundedContainer.copyWith(color: Colors.blueGrey),
+                      decoration:
+                          kRoundedContainer.copyWith(color: Colors.blueGrey),
                       padding: const EdgeInsets.all(4.0),
                       child: Text(
                         '$pagesValue pages',
@@ -137,14 +138,17 @@ class BooksDetailHeader extends StatelessWidget {
                       //   ],
                       // ),
                       Table(
-                        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                        defaultColumnWidth: const IntrinsicColumnWidth(flex: 4.0),
+                        defaultVerticalAlignment:
+                            TableCellVerticalAlignment.middle,
+                        defaultColumnWidth:
+                            const IntrinsicColumnWidth(flex: 4.0),
                         children: [
                           TableRow(
                             children: [
                               Text(
                                 'Semester: ',
-                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium
+                                    ?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 4),
@@ -203,9 +207,12 @@ class BooksDetailHeader extends StatelessWidget {
                           ),
                         ],
                       ),
-                      if (context.watch<BooksDetailCubit>().isDownloaded != null)
+                      if (context.watch<BooksDetailCubit>().isDownloaded !=
+                          null)
                         Text(
-                          watch.isDownloaded! ? 'Book is Downloaded' : 'Book is not Downloaded',
+                          watch.isDownloaded!
+                              ? 'Book is Downloaded'
+                              : 'Book is not Downloaded',
                         ),
                     ],
                   ),

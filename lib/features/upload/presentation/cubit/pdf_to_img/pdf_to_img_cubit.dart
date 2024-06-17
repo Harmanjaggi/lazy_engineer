@@ -39,9 +39,10 @@ class PdfToImgCubit extends Cubit<PdfToImgState> {
       // close the page again
       await pdf.closePage(pageIndex: 0);
       pdf.close();
-      // Unit8List ->  File 
+      // Unit8List ->  File
       final tempDir = await getTemporaryDirectory();
-      final File fileImage = await File('${tempDir.path}/${file.name}_image.png').create();
+      final File fileImage =
+          await File('${tempDir.path}/${file.name}_image.png').create();
       fileImage.writeAsBytesSync(img!);
 
       emit(PdfToImgState.success(fileImage));

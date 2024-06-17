@@ -22,54 +22,55 @@ class HomeScreen extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 28),
-            child: MultiBlocProvider(
-              providers: [
-                BlocProvider<UserCubit>(
-                  create: (BuildContext context) => UserCubit(HomeRepositoryImpl()),
-                ),
-                BlocProvider<NoticeCubit>(
-                  create: (BuildContext context) => NoticeCubit(HomeRepositoryImpl()),
-                ),
-              ],
-              child: BlocBuilder<UserCubit, UserState>(
-                builder: (context, state) {
-                  return state.when(
-                    loading: () => const LoadingScreen(),
-                    failure: (e) => FailureScreen(e),
-                    success: (user) {
-                      return Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          _nametag(
-                            context: context,
-                            name: user.fullName ?? "",
-                            image: user.imageLink ?? "",
-                          ),
-                          const SizedBox(height: 12),
-                          const SizedBox(height: 28),
-                          SliderView(),
-                          const SizedBox(height: 24),
-                          // _titleLabel(lastOpened, theme),
-                          // const SizedBox(height: 24),
-                          // const LastOpened(),
-                          // const SizedBox(height: 24),
-                          _titleLabel(categories, theme),
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: StaggeredView(
-                              categoriesList.map((element) => GridCard.category(element)).toList(),
-                              onTap: (context, index) => _navigation(context, index),
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 28),
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider<UserCubit>(
+                create: (BuildContext context) => UserCubit(),
               ),
+              BlocProvider<NoticeCubit>(
+                create: (BuildContext context) =>
+                    NoticeCubit(HomeRepositoryImpl()),
+              ),
+            ],
+            child: BlocBuilder<UserCubit, UserState>(
+              builder: (context, state) {
+                return state.when(
+                  loading: () => const LoadingScreen(),
+                  failure: (e) => FailureScreen(e),
+                  success: (user) {
+                    return ListView(
+                      children: [
+                        _nametag(
+                          context: context,
+                          name: user.fullName ?? "",
+                          image: user.imageLink ?? "",
+                        ),
+                        const SizedBox(height: 12),
+                        const SizedBox(height: 28),
+                        SliderView(),
+                        const SizedBox(height: 24),
+                        // _titleLabel(lastOpened, theme),
+                        // const SizedBox(height: 24),
+                        // const LastOpened(),
+                        // const SizedBox(height: 24),
+                        _titleLabel(categories, theme),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: StaggeredView(
+                            categoriesList
+                                .map((element) => GridCard.category(element))
+                                .toList(),
+                            onTap: (context, index) =>
+                                _navigation(context, index),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
             ),
           ),
         ),
@@ -109,7 +110,10 @@ class HomeScreen extends StatelessWidget {
     context.push(nav());
   }
 
-  Widget _nametag({required BuildContext context, required String name, required String image}) {
+  Widget _nametag(
+      {required BuildContext context,
+      required String name,
+      required String image}) {
     void onPress() {
       context.go(RouteGenerator.accountRoute);
     }
@@ -118,22 +122,28 @@ class HomeScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                hello,
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  hello,
+                  style: theme.textTheme.headlineMedium?.copyWith(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
-              Text(name, style: theme.textTheme.headlineMedium),
-            ],
+                Text(
+                  name,
+                  style: theme.textTheme.headlineMedium,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
+              ],
+            ),
           ),
-          const Spacer(),
           GestureDetector(
             onTap: onPress,
             child: CustomImage(

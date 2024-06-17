@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lazy_engineer/assets/constants/strings.dart' as string;
-import 'package:lazy_engineer/assets/icons.dart';
 import 'package:lazy_engineer/config/theme/app_theme.dart';
-import 'package:lazy_engineer/features/components/custom_icon.dart';
 import 'package:lazy_engineer/navigation/routes.dart';
 
 class BottomNavScreen extends StatefulWidget {
@@ -20,38 +19,30 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     const tabs = [
       ScaffoldWithNavBarTabItem(
         initialLocation: RouteGenerator.homeRoute,
-        icon: CustomIcon(AppIcons.home, color: Colors.grey),
-        activeIcon: CustomIcon(
-          AppIcons.home,
-          color: AppThemes.primaryColor2,
-        ),
+        icon: FaIcon(FontAwesomeIcons.house, color: Colors.grey),
+        activeIcon:
+            FaIcon(FontAwesomeIcons.house, color: AppThemes.primaryColor2),
         label: string.home,
       ),
       ScaffoldWithNavBarTabItem(
         initialLocation: RouteGenerator.favouritesRoute,
-        icon: CustomIcon(AppIcons.accounts, color: Colors.grey),
-        activeIcon: CustomIcon(
-          AppIcons.favourites,
-          color: AppThemes.primaryColor2,
-        ),
+        icon: FaIcon(FontAwesomeIcons.solidHeart, color: Colors.grey),
+        activeIcon:
+            FaIcon(FontAwesomeIcons.solidHeart, color: AppThemes.primaryColor2),
         label: string.favourites,
       ),
       ScaffoldWithNavBarTabItem(
         initialLocation: RouteGenerator.uploadRoute,
-        icon: CustomIcon(AppIcons.uploadIcon, color: Colors.grey),
-        activeIcon: CustomIcon(
-          AppIcons.uploadIcon,
-          color: AppThemes.primaryColor2,
-        ),
+        icon: FaIcon(FontAwesomeIcons.upload, color: Colors.grey),
+        activeIcon:
+            FaIcon(FontAwesomeIcons.upload, color: AppThemes.primaryColor2),
         label: string.upload,
       ),
-       ScaffoldWithNavBarTabItem(
+      ScaffoldWithNavBarTabItem(
         initialLocation: RouteGenerator.downloadRoute,
-        icon: CustomIcon(AppIcons.downloadIcon, color: Colors.grey),
-        activeIcon: CustomIcon(
-          AppIcons.downloadIcon,
-          color: AppThemes.primaryColor2,
-        ),
+        icon: FaIcon(FontAwesomeIcons.download, color: Colors.grey),
+        activeIcon:
+            FaIcon(FontAwesomeIcons.download, color: AppThemes.primaryColor2),
         label: string.download,
       ),
     ];
@@ -63,7 +54,11 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
       return index < 0 ? 0 : index;
     }
 
-    final int currentIndex = locationToTabIndex(GoRouter.of(context).routerDelegate.currentConfiguration.uri.toString());
+    final int currentIndex = locationToTabIndex(GoRouter.of(context)
+        .routerDelegate
+        .currentConfiguration
+        .uri
+        .toString());
     // callback used to navigate to the desired tab
     void onItemTapped(BuildContext context, int tabIndex) {
       if (tabIndex != currentIndex) {
