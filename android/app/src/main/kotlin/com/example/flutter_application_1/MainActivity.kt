@@ -1,4 +1,4 @@
-package in.lazyEngineer.lazyEngineer
+package `in`.lazyEngineer.lazyEngineer
 
 import io.flutter.embedding.android.FlutterActivity
 
