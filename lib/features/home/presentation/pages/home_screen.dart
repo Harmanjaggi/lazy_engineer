@@ -22,56 +22,54 @@ class HomeScreen extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 28),
-          child: MultiBlocProvider(
-            providers: [
-              BlocProvider<UserCubit>(
-                create: (BuildContext context) => UserCubit(),
-              ),
-              BlocProvider<NoticeCubit>(
-                create: (BuildContext context) =>
-                    NoticeCubit(HomeRepositoryImpl()),
-              ),
-            ],
-            child: BlocBuilder<UserCubit, UserState>(
-              builder: (context, state) {
-                return state.when(
-                  loading: () => const LoadingScreen(),
-                  failure: (e) => FailureScreen(e),
-                  success: (user) {
-                    return ListView(
-                      children: [
-                        _nametag(
-                          context: context,
-                          name: user.fullName ?? "",
-                          image: user.imageLink ?? "",
-                        ),
-                        const SizedBox(height: 12),
-                        const SizedBox(height: 28),
-                        SliderView(),
-                        const SizedBox(height: 24),
-                        // _titleLabel(lastOpened, theme),
-                        // const SizedBox(height: 24),
-                        // const LastOpened(),
-                        // const SizedBox(height: 24),
-                        _titleLabel(categories, theme),
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: StaggeredView(
-                            categoriesList
-                                .map((element) => GridCard.category(element))
-                                .toList(),
-                            onTap: (context, index) =>
-                                _navigation(context, index),
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
+        body: MultiBlocProvider(
+          providers: [
+            BlocProvider<UserCubit>(
+              create: (BuildContext context) => UserCubit(),
             ),
+            BlocProvider<NoticeCubit>(
+              create: (BuildContext context) =>
+                  NoticeCubit(HomeRepositoryImpl()),
+            ),
+          ],
+          child: BlocBuilder<UserCubit, UserState>(
+            builder: (context, state) {
+              return state.when(
+                loading: () => const LoadingScreen(),
+                failure: (e) => FailureScreen(e),
+                success: (user) {
+                  return ListView(
+                    padding: const EdgeInsets.symmetric(vertical: 28),
+                    children: [
+                      _nametag(
+                        context: context,
+                        name: user.fullName ?? "",
+                        image: user.imageLink ?? "",
+                      ),
+                      const SizedBox(height: 12),
+                      const SizedBox(height: 28),
+                      SliderView(),
+                      const SizedBox(height: 24),
+                      // _titleLabel(lastOpened, theme),
+                      // const SizedBox(height: 24),
+                      // const LastOpened(),
+                      // const SizedBox(height: 24),
+                      _titleLabel(categories, theme),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: StaggeredView(
+                          categoriesList
+                              .map((element) => GridCard.category(element))
+                              .toList(),
+                          onTap: (context, index) =>
+                              _navigation(context, index),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
           ),
         ),
       ),
