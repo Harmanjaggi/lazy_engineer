@@ -11,7 +11,8 @@ class AuthorizationInterceptor extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     if (_needAuthorizationHeader(options)) {
       // adds the access-token with the header
-      options.headers['Authorization'] = 'Bearer $API_KEY';
+      // TODO: options.headers['Authorization'] = 'Bearer $API_KEY';
+      options.headers['Authorization'] = '$API_KEY';
     }
     // continue with the request
     super.onRequest(options, handler);

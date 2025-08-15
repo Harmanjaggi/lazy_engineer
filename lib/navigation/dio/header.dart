@@ -6,6 +6,7 @@ class HeaderKeys {
 class HeaderValues {
   static String? userToken;
   HeaderValues(String? token) {
-    userToken = token;
+    // TODO: userToken = "Bearer: $token";
+    userToken = "$token";
   }
 }

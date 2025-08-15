@@ -1,23 +1,17 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:feedback/feedback.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lazy_engineer/assets/constants/decoration.dart';
 import 'package:lazy_engineer/assets/constants/strings.dart';
-import 'package:lazy_engineer/assets/icons.dart';
 import 'package:lazy_engineer/config/app_config.dart';
 import 'package:lazy_engineer/features/account/presentation/pages/widgets/rate_dialog_box.dart';
 import 'package:lazy_engineer/features/auth/presentation/auth_cubit/auth_cubit.dart';
 import 'package:lazy_engineer/features/components/custom_button.dart';
-import 'package:lazy_engineer/features/components/custom_icon.dart';
-import 'package:lazy_engineer/features/home/presentation/cubit/user/user_cubit.dart';
 import 'package:lazy_engineer/navigation/dio/rate_my_app.dart';
 import 'package:lazy_engineer/navigation/routes.dart';
 import 'package:path_provider/path_provider.dart';

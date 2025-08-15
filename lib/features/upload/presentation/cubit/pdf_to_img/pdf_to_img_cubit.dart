@@ -18,7 +18,7 @@ class PdfToImgCubit extends Cubit<PdfToImgState> {
   Future<void> renderPdfImage() async {
     try {
       // Initialize the renderer
-      final pdf = PdfImageRendererPdf(path: file.path!);
+      final pdf = PdfImageRenderer(path: file.path!);
 
       // open the pdf document
       await pdf.open();
